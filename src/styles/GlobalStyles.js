@@ -92,6 +92,7 @@ html, body, #root {
 /* DESIGN TOKENS */
 html {
   --color-white: ${COLORS.white};
+  --color-black: ${COLORS.black};
   --color-offblack: ${COLORS.offblack};
   --color-gray-100: ${COLORS.gray[100]};
   --color-gray-300: ${COLORS.gray[300]};

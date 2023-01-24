@@ -1,5 +1,6 @@
 export const COLORS = {
   white: "hsl(0deg 0% 100%)",
+  black: "hsl(0deg 0% 0%)",
   offblack: "hsl(24deg 5% 6%)",
   gray: {
     100: "hsl(185deg 5% 95%)",

@@ -1,14 +1,46 @@
 import Head from "next/head";
+import Link from "next/link";
+import styled from "styled-components";
 import { useQuery } from "react-query";
+
+import PublicLayout from "@/components/layouts/PublicLayout";
+import WelcomeImages from "@/components/WelcomeImages";
+import Icon from "@/components/Icon";
+import UnstyledButton from "@/components/UnstyledButton";
+import VisuallyHidden from "@/components/VisuallyHidden";
 
 import {
   getCollectionSort,
   getAllCollectionData,
 } from "@/api/public/publicAPI";
 
-export default function Home() {
+const Home = () => {
   const collectionSort = useQuery(["collectionSort"], getCollectionSort);
   const collections = useQuery(["collections"], getAllCollectionData);
+
+  let nextUrl = "/art/about";
+
+  // logic to get collections data and collections order > filter collections data to get the first collection > construct the url for the first collection and update the nexturl variable.
+
+  const arrayOfOrderedCollections =
+    collectionSort?.data?.data?.data[0]?.collections;
+  const arrayOfAllCollections = collections?.data?.data?.data;
+
+  if (arrayOfOrderedCollections && arrayOfAllCollections) {
+    const filteredArray = arrayOfOrderedCollections.filter((collection) => {
+      const collectionId = collection;
+      const collectionData = arrayOfAllCollections.find(
+        (collectionObj) => collectionObj._id === collectionId
+      );
+      if (collectionData) {
+        return collectionId;
+      }
+    });
+
+    if (filteredArray.length > 0) {
+      nextUrl = `/art/collections/${filteredArray[0]}`;
+    }
+  }
 
   return (
     <>
@@ -18,9 +50,41 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
-        <h1>Welcome to Wangari Mathenge</h1>
-      </main>
+      <Link href={nextUrl}>
+        <Main>
+          <Button as={Link} href={nextUrl}>
+            <VisuallyHidden>Next</VisuallyHidden>
+            <Icon id="arrowRight" size={50} />
+          </Button>
+          <WelcomeImages />
+        </Main>
+      </Link>
     </>
   );
-}
+};
+
+Home.getLayout = function getLayout(page) {
+  return <PublicLayout>{page}</PublicLayout>;
+};
+
+const Button = styled(UnstyledButton)`
+  position: absolute;
+  top: 50%;
+  left: 3rem;
+  transform: translateY(-50%);
+  z-index: 1;
+  color: var(--color-white);
+
+  &:hover {
+    opacity: 0.9;
+  }
+`;
+
+const Main = styled.main`
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: clip;
+`;
+
+export default Home;
