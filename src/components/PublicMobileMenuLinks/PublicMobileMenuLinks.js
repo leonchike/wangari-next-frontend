@@ -2,7 +2,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 
-const PublicMobileMenuLinks = ({ links, staticLinks }) => {
+const PublicMobileMenuLinks = ({ links, staticLinks, onDismiss }) => {
   const router = useRouter();
 
   return (
@@ -15,6 +15,7 @@ const PublicMobileMenuLinks = ({ links, staticLinks }) => {
               <StyledLink
                 href={link.path}
                 data-active={router.pathname === link.path ? "true" : "false"}
+                onClick={onDismiss}
               >
                 {link.name}
               </StyledLink>
@@ -26,7 +27,9 @@ const PublicMobileMenuLinks = ({ links, staticLinks }) => {
         <ul role="list">
           {staticLinks.map((link) => (
             <LinkWrapper key={link.path}>
-              <StyledLink href={link.path}>{link.name}</StyledLink>
+              <StyledLink href={link.path} onClick={onDismiss}>
+                {link.name}
+              </StyledLink>
             </LinkWrapper>
           ))}
         </ul>

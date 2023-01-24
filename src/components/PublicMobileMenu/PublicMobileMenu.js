@@ -41,6 +41,7 @@ const PublicMobileMenu = ({ isOpen, onDismiss }) => {
             <PublicMobileMenuLinks
               links={collectionsData}
               staticLinks={staticLinks}
+              onDismiss={onDismiss}
             />
           </Nav>
         </InnerWrapper>
