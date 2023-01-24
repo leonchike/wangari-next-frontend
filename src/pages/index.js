@@ -1,6 +1,15 @@
 import Head from "next/head";
+import { useQuery } from "react-query";
+
+import {
+  getCollectionSort,
+  getAllCollectionData,
+} from "@/api/public/publicAPI";
 
 export default function Home() {
+  const collectionSort = useQuery(["collectionSort"], getCollectionSort);
+  const collections = useQuery(["collections"], getAllCollectionData);
+
   return (
     <>
       <Head>
