@@ -1,11 +1,17 @@
 import Image from "next/image";
+import { useRouter } from "next/router";
 import styled from "styled-components";
 
 import { LOGO } from "@/constants/images";
 
 const PublicFooter = () => {
+  const router = useRouter();
+  const goHome = () => {
+    router.push("/");
+  };
+
   return (
-    <Footer className="footer">
+    <Footer className="footer" onClick={goHome}>
       <FooterContainer>
         <ImageWrapper>
           <Image src={LOGO} alt="logo" />
@@ -24,6 +30,9 @@ const Footer = styled.footer`
   justify-content: center;
   backdrop-filter: blur(4px);
   border-top: 1px solid var(--color-gray-300);
+  cursor: pointer;
+
+  grid-area: footer;
 `;
 
 const FooterContainer = styled.div`

@@ -80,7 +80,7 @@ const Button = styled(UnstyledButton)`
   }
 `;
 
-const Main = styled.main`
+const Main = styled.div`
   width: 100vw;
   height: 100vh;
   position: relative;

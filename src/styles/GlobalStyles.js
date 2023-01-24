@@ -28,6 +28,7 @@ dd {
 ul[role='list'],
 ol[role='list'] {
   list-style: none;
+  padding: 0;
 }
 
 /* Set core root defaults */
@@ -85,7 +86,7 @@ html {
   --reach-dialog: 1;
 }
 
-html, body, #root {
+html, body, #root, #__next {
   height: 100%;
 }
 
@@ -101,6 +102,7 @@ html {
   --color-gray-900: ${COLORS.gray[900]};
   --color-primary: ${COLORS.primary};
   --color-secondary: ${COLORS.secondary};
+  --color-orange: ${COLORS.orange};
   --color-urgent: ${COLORS.urgent};
   --color-backdrop: ${COLORS.backdrop};
 

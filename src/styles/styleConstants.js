@@ -11,14 +11,15 @@ export const COLORS = {
   },
   primary: "hsl(267deg 45% 59%)",
   secondary: "hsl(240deg 60% 63%)",
+  orange: "hsl(30deg 100% 60%)",
   urgent: "hsl(0deg 55% 54%)",
   backdrop: "hsl(220deg 5% 40% / 0.8)",
 };
 
 export const WEIGHTS = {
   normal: 400,
-  medium: 550,
   bold: 700,
+  heavy: 900,
 };
 
 export const BREAKPOINTS = {
@@ -39,7 +40,7 @@ export const QUERIES = {
 export const FAMILIES = {
   serif: "Georgia, serif",
   sansSerif:
-    'Helvetica, "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", sans-serif',
+    'Lato, Helvetica, "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", sans-serif',
 };
 
 export const THEME = {
