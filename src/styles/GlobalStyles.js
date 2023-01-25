@@ -126,7 +126,7 @@ html {
 body {
   font-family: var(--font-family-sans-serif);
   font-variation-settings: 'slnt' 0;
-  --max-large-width: 1100px;
+  --max-large-width: 1600px;
 }
 
 /*
@@ -145,6 +145,18 @@ button {
   color: inherit;
 }
 
+/*
+  Changing the default link styles to match the design
+*/
+
+::selection {
+  color: var(--color-white);
+  background: var(--color-offblack); /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+  color: var(--color-white);
+  background: var(--color-offblack); /* Gecko Browsers */
+}
 `;
 
 export default GlobalStyles;

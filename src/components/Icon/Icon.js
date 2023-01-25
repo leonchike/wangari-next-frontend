@@ -1,10 +1,12 @@
 import styled from "styled-components";
-import { Menu, X, ArrowRightCircle } from "react-feather";
+import { Menu, X, ArrowRightCircle, Instagram, Twitter } from "react-feather";
 
 const icons = {
   menu: Menu,
   close: X,
   arrowRight: ArrowRightCircle,
+  instagram: Instagram,
+  twitter: Twitter,
 };
 
 const Icon = ({ id, color, size, strokeWidth, ...delegated }) => {

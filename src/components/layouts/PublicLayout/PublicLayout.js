@@ -45,7 +45,7 @@ const Wrapper = styled.div`
       "footer footer";
 
     grid-template-rows: 1fr auto;
-    grid-template-columns: clamp(200px, 25vw, 300px) 1fr;
+    grid-template-columns: clamp(150px, 20vw, 225px) 1fr;
 
     ${(p) => p.home && "grid-template-columns: 0 1fr;"}
   }

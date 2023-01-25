@@ -74,7 +74,7 @@ Collections.getLayout = function getLayout(page) {
 
 const PageWrapper = styled.div`
   margin: 0 auto;
-  max-width: 1600px;
+  max-width: var(--max-large-width);
   padding-inline-start: 1rem;
   padding-inline-end: 1rem;
   padding-block-start: 1rem;
