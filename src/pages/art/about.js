@@ -1,9 +1,11 @@
 import styled from "styled-components";
 import { useQuery } from "react-query";
 
+//API imports
 import { getAboutData } from "@/api/public/publicAPI";
+
+// Layout imports
 import PublicLayout from "@/components/layouts/PublicLayout";
-import { QUERIES } from "@/styles/styleConstants";
 import Loader from "@/components/Loader";
 import ImageOutput from "@/components/ImageOutput";
 import PublicAboutSocial from "@/components/PublicAboutSocial";

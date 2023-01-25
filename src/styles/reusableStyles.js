@@ -29,3 +29,24 @@ export const Title = styled.h1`
   font-size: 2rem;
   color: var(--color-offblack);
 `;
+
+// Styles for the CV Page Components
+export const CVHeading = styled.h2`
+  font-size: 1.2rem;
+  color: var(--color-orange);
+  margin-block-start: 0;
+  margin-block-end: 0.75rem;
+  font-weight: var(--font-weight-medium);
+`;
+
+export const CVYearTitle = styled.p`
+  font-size: 1rem;
+  color: var(--color-offblack);
+`;
+
+export const CVContent = styled.p`
+  font-size: 1rem;
+  color: var(--color-offblack);
+  margin-block-start: 0;
+  margin-block-end: 0.75rem;
+`;
