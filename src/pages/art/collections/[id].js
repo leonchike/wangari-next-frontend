@@ -4,9 +4,14 @@ import styled, { keyframes } from "styled-components";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
-import PublicLayout from "@/components/layouts/PublicLayout";
-import GalleryAsset from "@/components/GalleryAsset";
+//API imports
 import { getCollectionData } from "@/api/public/publicAPI";
+
+//Component imports
+import GalleryAsset from "@/components/GalleryAsset";
+
+//Layout imports
+import PublicLayout from "@/components/layouts/PublicLayout";
 import { QUERIES } from "@/styles/styleConstants";
 import { fadeIn } from "@/styles/animations";
 
@@ -79,6 +84,8 @@ const PageWrapper = styled.div`
   padding-inline-end: 1rem;
   padding-block-start: 1rem;
   padding-block-end: 4rem;
+
+  animation: ${fadeIn} 2s 250ms both;
 
   @media ${QUERIES.tabletAndUp} {
     padding-block-start: calc(37 / 16 * 1rem);

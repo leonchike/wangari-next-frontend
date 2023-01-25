@@ -53,7 +53,7 @@ const LogoWrapper = styled.div`
   height: 60px;
   overflow: clip;
   display: grid;
-  place-content: center;
+  align-items: center;
 
   img {
     width: auto;
