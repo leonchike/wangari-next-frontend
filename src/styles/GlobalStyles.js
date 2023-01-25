@@ -48,6 +48,10 @@ a:not([class]) {
   text-decoration-skip-ink: auto;
 }
 
+a[role="link"] {
+  text-decoration: none;
+}
+
 /* Make images easier to work with */
 img,
 picture {
@@ -115,6 +119,8 @@ html {
 
   --large-body-padding: 2rem;
   --small-body-padding: 1rem;
+
+  --masonry-spacing: calc(20 / 16 * 1rem);
 }
 
 body {

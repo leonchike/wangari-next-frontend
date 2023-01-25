@@ -22,15 +22,15 @@ const PublicFooter = () => {
 };
 
 const Footer = styled.footer`
-  background-color: var(--color-white);
+  background-color: #ffffff95;
   position: fixed;
   bottom: 0;
   width: 100%;
   display: flex;
   justify-content: center;
-  backdrop-filter: blur(4px);
   border-top: 1px solid var(--color-gray-300);
   cursor: pointer;
+  backdrop-filter: blur(100px);
 
   grid-area: footer;
 `;

@@ -7,6 +7,7 @@ import Icon from "@/components/Icon";
 import UnstyledButton from "@/components/UnstyledButton";
 import VisuallyHidden from "@/components/VisuallyHidden";
 import PublicMobileMenu from "@/components/PublicMobileMenu";
+import { fadeIn } from "@/styles/animations";
 
 const PublicHeader = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
@@ -40,7 +41,8 @@ const Header = styled.header`
   background-color: var(--color-white);
   display: flex;
   justify-content: flex-end;
-  border-bottom: 1px solid var(--color-gray-300);
+  border-bottom: 1px solid var(--color-gray-100);
+  animation: ${fadeIn} 2000ms 500ms both;
 
   @media ${QUERIES.tabletAndUp} {
     display: none;

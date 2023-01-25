@@ -2,13 +2,15 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 
+import { fadeIn } from "@/styles/animations";
+
 const PublicSideBarLinkArea = ({ links, staticLinks }) => {
   const router = useRouter();
 
   return (
     <Wrapper>
       <div>
-        <h2>Collections</h2>
+        <Title>Collections</Title>
         <ul role="list">
           {links.map((link) => (
             <LinkWrapper key={link.path}>
@@ -40,6 +42,11 @@ const Wrapper = styled.div`
   flex-direction: column;
   padding-inline-start: 1rem;
   padding-block-start: calc(40 / 16 * 1rem);
+  animation: ${fadeIn} 2000ms 500ms both;
+`;
+
+const Title = styled.h2`
+  color: var(--color-gray-900);
 `;
 
 const LinkWrapper = styled.li`
@@ -47,18 +54,20 @@ const LinkWrapper = styled.li`
 `;
 
 const StyledLink = styled(Link)`
-  color: var(--color-offblack);
+  color: var(--color-gray-700);
   text-decoration: none;
   border-left: 2px solid transparent;
   text-transform: uppercase;
-  padding-inline-start: 0.5rem;
-  padding-inline-end: 0.5rem;
   padding-block-start: 0.5rem;
   padding-block-end: 0.5rem;
 
   &[data-active="true"] {
     color: var(--color-orange);
     border-left: 2px solid var(--color-orange);
+  }
+
+  &:hover {
+    opacity: 0.9;
   }
 `;
 

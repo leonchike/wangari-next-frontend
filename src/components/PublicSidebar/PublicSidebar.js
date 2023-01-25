@@ -50,7 +50,6 @@ const Sidebar = styled.aside`
 
   @media ${QUERIES.tabletAndUp} {
     display: flex;
-    background: orange;
   }
 `;
 
