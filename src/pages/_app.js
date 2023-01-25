@@ -12,6 +12,8 @@ const lato = Lato({
 export default function App({ Component, pageProps }) {
   const getLayout = Component.getLayout || ((page) => page);
 
+  console.log(process.env.NEXT_PUBLIC_API_URL);
+
   return getLayout(
     <QueryClientProvider client={new QueryClient()}>
       <GlobalStyles />

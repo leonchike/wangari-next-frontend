@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_API_URL = process.env.BASE_API_URL || "http://localhost:3001";
+const BASE_API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001";
 
 export const getAboutData = async () => {
   const response = await axios.get(`${BASE_API_URL}/public-api/about`);
@@ -40,6 +40,7 @@ export const submitContactform = async ({
 // get collection data
 export const getAllCollectionData = async () => {
   const response = await axios.get(`${BASE_API_URL}/public-api/collections/`);
+  console.log(process.env.NEXT_PUBLIC_API_URL);
   return response;
 };
 
