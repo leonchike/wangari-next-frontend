@@ -7,7 +7,7 @@ import { QUERIES } from "@/styles/styleConstants";
 import Loader from "@/components/Loader";
 import ImageOutput from "@/components/ImageOutput";
 import PublicAboutSocial from "@/components/PublicAboutSocial";
-import { fadeIn } from "@/styles/animations";
+import { PageWrapper, Header, Title } from "@/styles/reusableStyles";
 
 const About = () => {
   const { data, isLoading, error } = useQuery("about", getAboutData);
@@ -57,7 +57,7 @@ const About = () => {
           </SocialContainer>
           <BioContainer>
             <BioMobileHeading>
-              <h2>Artist's Bio</h2>
+              <h2>Artist&rsquo;s Bio</h2>
             </BioMobileHeading>
             <Bio>{bio}</Bio>
           </BioContainer>
@@ -70,34 +70,6 @@ const About = () => {
 About.getLayout = function getLayout(page) {
   return <PublicLayout>{page}</PublicLayout>;
 };
-
-const PageWrapper = styled.div`
-  margin: 0 auto;
-  max-width: var(--max-large-width);
-  padding-inline-start: 1rem;
-  padding-inline-end: 1rem;
-  padding-block-start: 1rem;
-  padding-block-end: calc(110 / 16 * 1rem);
-
-  animation: ${fadeIn} 2s 500ms both;
-
-  @media ${QUERIES.tabletAndUp} {
-    padding-block-start: calc(37 / 16 * 1rem);
-  }
-
-  --max-mobile-width: 500px;
-`;
-
-const Header = styled.header`
-  display: flex;
-  justify-content: flex-start;
-  height: 70px;
-`;
-
-const Title = styled.h1`
-  font-size: 2rem;
-  color: var(--color-offblack);
-`;
 
 const AboutSection = styled.section`
   display: grid;
