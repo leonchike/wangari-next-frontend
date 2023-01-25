@@ -4,6 +4,7 @@ import { QUERIES } from "@/styles/styleConstants";
 
 export const PageWrapper = styled.div`
   margin: 0 auto;
+  width: 100%;
   max-width: var(--max-large-width);
   padding-inline-start: 1rem;
   padding-inline-end: 1rem;
@@ -37,11 +38,6 @@ export const CVHeading = styled.h2`
   margin-block-start: 0;
   margin-block-end: 0.75rem;
   font-weight: var(--font-weight-medium);
-`;
-
-export const CVYearTitle = styled.p`
-  font-size: 1rem;
-  color: var(--color-offblack);
 `;
 
 export const CVContent = styled.p`

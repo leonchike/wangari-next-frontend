@@ -6,7 +6,6 @@ import { getCVData } from "@/api/public/publicAPI";
 
 //Layout imports
 import PublicLayout from "@/components/layouts/PublicLayout";
-import { QUERIES } from "@/styles/styleConstants";
 import Loader from "@/components/Loader";
 import { PageWrapper, Header, Title } from "@/styles/reusableStyles";
 
