@@ -83,7 +83,7 @@ const PageWrapper = styled.div`
   padding-inline-start: 1rem;
   padding-inline-end: 1rem;
   padding-block-start: 1rem;
-  padding-block-end: 4rem;
+  padding-block-end: 6rem;
 
   animation: ${fadeIn} 2s 250ms both;
 
@@ -124,10 +124,12 @@ const AbstractTitleSkeletonWrapper = styled.div`
 const PageDivider = styled.div`
   width: 50px;
   border-top: 2px solid var(--color-gray-900);
+  animation: ${fadeIn} 2s 350ms both;
 `;
 
 const ImageSection = styled.section`
   margin-block-start: 40px;
+  animation: ${fadeIn} 2s 450ms both;
 `;
 
 function createCSSMasonryLoop() {
@@ -156,7 +158,7 @@ const MasonryGrid = styled.div`
     pointer-events: none;
   }
 
-  @media (max-width: ${QUERIES.tabletAndUp}) {
+  @media ${QUERIES.tabletAndUp} {
     & a {
       pointer-events: auto;
     }

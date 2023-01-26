@@ -10,6 +10,7 @@ import Loader from "@/components/Loader";
 import ImageOutput from "@/components/ImageOutput";
 import PublicAboutSocial from "@/components/PublicAboutSocial";
 import { PageWrapper, Header, Title } from "@/styles/reusableStyles";
+import Spacer from "@/components/layouts/Spacer";
 
 const About = () => {
   const { data, isLoading, error } = useQuery("about", getAboutData);
@@ -42,7 +43,7 @@ const About = () => {
   return (
     <PageWrapper>
       <Header>
-        <Title>About</Title>
+        <Title>Wangari Mathenge</Title>
       </Header>
       {isLoading ? (
         <Loader />
@@ -59,12 +60,13 @@ const About = () => {
           </SocialContainer>
           <BioContainer>
             <BioMobileHeading>
-              <h2>Artist&rsquo;s Bio</h2>
+              <h2>Biography</h2>
             </BioMobileHeading>
             <Bio>{bio}</Bio>
           </BioContainer>
         </AboutSection>
       )}
+      <Spacer size={48} />
     </PageWrapper>
   );
 };
@@ -112,14 +114,17 @@ const BioContainer = styled.div`
 const BioMobileHeading = styled.div`
   h2 {
     font-size: 1.5rem;
-    color: var(--color-orange);
+    color: var(--color-offblack);
+    font-weight: var(--font-weight-medium);
   }
   padding-block-end: 0.75rem;
 `;
 
 const Bio = styled.p`
   color: var(--color-gray-900);
-  line-height: 1.75;
+  line-height: 1.85;
+  font-weight: var(--font-weight-normal);
+  white-space: pre-wrap;
 `;
 
 export default About;

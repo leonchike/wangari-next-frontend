@@ -110,6 +110,7 @@ html {
   --color-urgent: ${COLORS.urgent};
   --color-backdrop: ${COLORS.backdrop};
 
+  --font-weight-light: ${WEIGHTS.light};
   --font-weight-normal: ${WEIGHTS.normal};
   --font-weight-medium: ${WEIGHTS.medium};
   --font-weight-bold: ${WEIGHTS.bold};
