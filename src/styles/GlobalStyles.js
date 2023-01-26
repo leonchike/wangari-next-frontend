@@ -106,9 +106,11 @@ html {
   --color-gray-900: ${COLORS.gray[900]};
   --color-primary: ${COLORS.primary};
   --color-secondary: ${COLORS.secondary};
+  --color-green: ${COLORS.green};
   --color-orange: ${COLORS.orange};
   --color-urgent: ${COLORS.urgent};
   --color-backdrop: ${COLORS.backdrop};
+  --color-form-input: ${COLORS.formInput};
 
   --font-weight-light: ${WEIGHTS.light};
   --font-weight-normal: ${WEIGHTS.normal};
@@ -122,12 +124,17 @@ html {
   --small-body-padding: 1rem;
 
   --masonry-spacing: calc(20 / 16 * 1rem);
+
+  --border-radius: 2px;
+  --form-padding: 10px;
+  
 }
 
 body {
   font-family: var(--font-family-sans-serif);
   font-variation-settings: 'slnt' 0;
   --max-large-width: 1600px;
+  --max-collections-width: calc(10000 / 16 * 1rem);
 }
 
 /*

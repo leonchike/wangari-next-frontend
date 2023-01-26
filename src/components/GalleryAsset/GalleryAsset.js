@@ -46,7 +46,6 @@ const AssetWrapper = styled.article`
 `;
 
 const Asset = styled.img`
-  display: block;
   width: 100%;
   height: auto;
 `;

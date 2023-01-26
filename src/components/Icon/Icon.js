@@ -1,5 +1,12 @@
 import styled from "styled-components";
-import { Menu, X, ArrowRightCircle, Instagram, Twitter } from "react-feather";
+import {
+  CheckCircle,
+  Menu,
+  X,
+  ArrowRightCircle,
+  Instagram,
+  Twitter,
+} from "react-feather";
 
 const icons = {
   menu: Menu,
@@ -7,6 +14,7 @@ const icons = {
   arrowRight: ArrowRightCircle,
   instagram: Instagram,
   twitter: Twitter,
+  checkCircle: CheckCircle,
 };
 
 const Icon = ({ id, color, size, strokeWidth, ...delegated }) => {

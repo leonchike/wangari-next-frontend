@@ -79,7 +79,7 @@ Collections.getLayout = function getLayout(page) {
 
 const PageWrapper = styled.div`
   margin: 0 auto;
-  max-width: var(--max-large-width);
+  max-width: var(--max-collections-width);
   padding-inline-start: 1rem;
   padding-inline-end: 1rem;
   padding-block-start: 1rem;
@@ -136,7 +136,7 @@ function createCSSMasonryLoop() {
   let css = "";
 
   for (let i = 1; i <= 36; i++) {
-    const height = Math.floor(Math.random() * 400) + 100;
+    const height = Math.floor(Math.random() * 600) + 100;
     css += `
       .masonry-with-columns:nth-child(${i}) {
         height: ${height}px;
@@ -149,7 +149,8 @@ function createCSSMasonryLoop() {
 }
 
 const MasonryGrid = styled.div`
-  columns: 4 400px;
+  column-count: auto;
+  column-width: clamp(200px, 80vw, 500px);
   column-gap: var(--masonry-spacing);
 
   ${createCSSMasonryLoop()}

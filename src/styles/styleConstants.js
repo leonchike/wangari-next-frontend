@@ -12,8 +12,10 @@ export const COLORS = {
   primary: "hsl(267deg 45% 59%)",
   secondary: "hsl(240deg 60% 63%)",
   orange: "hsl(30deg 100% 60%)",
+  green: "hsl(119, 54%, 47%)",
   urgent: "hsl(0deg 55% 54%)",
   backdrop: "hsl(220deg 5% 40% / 0.8)",
+  formInput: "hsl(0deg 0% 91.4%)",
 };
 
 export const WEIGHTS = {
