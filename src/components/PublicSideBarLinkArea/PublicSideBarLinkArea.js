@@ -3,36 +3,63 @@ import { useRouter } from "next/router";
 import styled from "styled-components";
 
 import { fadeIn } from "@/styles/animations";
+import NavLink from "@/components/NavLink";
 
 const PublicSideBarLinkArea = ({ links, staticLinks }) => {
   const router = useRouter();
+  // get current path
+  const currentPath = router.asPath;
 
   return (
     <Wrapper>
       <div>
         <Title>Collections</Title>
         <ul role="list">
-          {links.map((link) => (
-            <LinkWrapper key={link.path}>
-              <StyledLink
-                href={link.path}
-                data-active={router.pathname === link.path ? "true" : "false"}
-              >
-                {link.name}
-              </StyledLink>
-            </LinkWrapper>
-          ))}
+          {links.map((link) => {
+            let active = false;
+            console.log(link.path);
+            console.log(currentPath);
+            if (link.path === currentPath) {
+              active = true;
+            } else {
+              active = false;
+            }
+
+            return (
+              <LinkWrapper key={link.path}>
+                <StyledLink
+                  href={link.path}
+                  data-active={active ? "true" : "false"}
+                >
+                  {link.name}
+                </StyledLink>
+              </LinkWrapper>
+            );
+          })}
         </ul>
       </div>
       <SecondaryLinks>
         <ul role="list">
-          {staticLinks.map((link) => (
-            <LinkWrapper key={link.path} data-secondary-link="true">
-              <StyledLink data-secondary-link="true" href={link.path}>
-                {link.name}
-              </StyledLink>
-            </LinkWrapper>
-          ))}
+          {staticLinks.map((link) => {
+            let active = false;
+            if (link.path === currentPath) {
+              active = true;
+            } else {
+              active = false;
+            }
+
+            return (
+              <LinkWrapper key={link.path} data-secondary-link="true">
+                <StyledLink
+                  data-secondary-link="true"
+                  data-active={active ? "true" : "false"}
+                  href={link.path}
+                >
+                  {link.name}
+                </StyledLink>
+              </LinkWrapper>
+            );
+          })}
         </ul>
       </SecondaryLinks>
     </Wrapper>
@@ -81,8 +108,7 @@ const StyledLink = styled(Link)`
   }
 
   &[data-active="true"] {
-    color: var(--color-orange);
-    border-left: 2px solid var(--color-orange);
+    font-weight: var(--font-weight-heavy);
   }
 
   &:hover {

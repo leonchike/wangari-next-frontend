@@ -26,7 +26,7 @@ const PressItem = ({ data }) => {
         <h4>{publication}</h4>
       </PublicationNameWrapper>
       <TitleWrapper>
-        <h3>{title}</h3>
+        <Title>{title}</Title>
       </TitleWrapper>
       <ArthorDateWrapper>
         <p>{author} </p>
@@ -77,6 +77,10 @@ const TitleWrapper = styled.div`
     font-size: 1.3rem;
     font-weight: 700;
   }
+`;
+
+const Title = styled.h3`
+  font-weight: var(--font-weight-normal);
 `;
 
 const ArthorDateWrapper = styled.div`

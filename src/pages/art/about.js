@@ -115,7 +115,7 @@ const BioMobileHeading = styled.div`
   h2 {
     font-size: 1.5rem;
     color: var(--color-offblack);
-    font-weight: var(--font-weight-medium);
+    font-weight: var(--font-weight-normal);
   }
   padding-block-end: 0.75rem;
 `;

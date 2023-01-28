@@ -24,11 +24,12 @@ export const Header = styled.header`
   display: flex;
   justify-content: flex-start;
   height: 70px;
+  font-weight: var(--font-weight-normal);
 `;
 
 export const Title = styled.h1`
   font-size: 2rem;
-  font-weight: var(--font-weight-medium);
+  font-weight: var(--font-weight-normal);
   color: var(--color-offblack);
 `;
 
@@ -38,7 +39,7 @@ export const CVHeading = styled.h2`
   color: var(--color-orange);
   margin-block-start: 0;
   margin-block-end: 0.75rem;
-  font-weight: var(--font-weight-medium);
+  font-weight: var(--font-weight-normal);
 `;
 
 export const CVContent = styled.p`

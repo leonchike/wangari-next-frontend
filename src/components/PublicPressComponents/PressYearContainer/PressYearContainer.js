@@ -43,7 +43,7 @@ const YearTitle = styled.p`
 const ArticleContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  gap: 48px;
+  gap: 70px;
 
   @media ${QUERIES.tabletAndUp} {
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));

@@ -20,7 +20,7 @@ const Label = styled.label`
   --padding-margin: ${(p) => p.padding || "var(--form-padding)"};
   display: grid;
   grid-template-columns: 1fr;
-  font-weight: var(--font-weight-medium);
+  font-weight: var(--font-weight-normal);
 
   input,
   textarea {
