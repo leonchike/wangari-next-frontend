@@ -47,8 +47,10 @@ const PublicSidebar = () => {
 const Sidebar = styled.aside`
   grid-area: sidebar;
   display: none;
+  position: relative;
 
   @media ${QUERIES.tabletAndUp} {
+    position: relative;
     display: flex;
   }
 `;

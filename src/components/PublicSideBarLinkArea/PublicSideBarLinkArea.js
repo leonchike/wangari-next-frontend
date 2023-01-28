@@ -40,11 +40,14 @@ const PublicSideBarLinkArea = ({ links, staticLinks }) => {
 };
 
 const Wrapper = styled.div`
+  position: sticky;
   display: flex;
   flex-direction: column;
   padding-inline-start: 1rem;
   padding-block-start: calc(40 / 16 * 1rem);
   animation: ${fadeIn} 2000ms 500ms both;
+  top: 0;
+  align-self: start;
 `;
 
 const SecondaryLinks = styled.div``;

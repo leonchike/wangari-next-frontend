@@ -38,6 +38,7 @@ const Wrapper = styled.div`
 
   grid-template-rows: auto 1fr auto;
   grid-template-columns: 1fr;
+  isolation: isolate;
 
   @media ${QUERIES.tabletAndUp} {
     grid-template-areas:
