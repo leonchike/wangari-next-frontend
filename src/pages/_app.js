@@ -3,6 +3,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { Lato } from "@next/font/google";
 import { ThemeProvider } from "styled-components";
 import { THEME } from "@/styles/styleConstants";
+import { ProvideAuth } from "@/hooks/use-auth";
 
 const lato = Lato({
   subsets: ["latin"],
@@ -18,9 +19,11 @@ export default function App({ Component, pageProps }) {
     <QueryClientProvider client={new QueryClient()}>
       <GlobalStyles />
       <ThemeProvider theme={THEME}>
-        <main className={lato.className}>
-          <Component {...pageProps} />
-        </main>
+        <ProvideAuth>
+          <main className={lato.className}>
+            <Component {...pageProps} />
+          </main>
+        </ProvideAuth>
       </ThemeProvider>
     </QueryClientProvider>
   );
