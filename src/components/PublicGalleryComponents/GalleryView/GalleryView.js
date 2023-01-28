@@ -6,18 +6,19 @@ import inTOcm from "@/utils/convertInchesToCentimeters";
 import { fadeIn } from "@/styles/animations";
 
 const GalleryView = ({ id, assetData }) => {
+  let WindowHeight = typeof window !== "undefined" && window.innerHeight;
+
   return (
-    <Wrapper>
-      <Fill />
+    <Wrapper WindowHeight={WindowHeight}>
       <ImageWrapper>
-        <picture className="gallery-image">
+        <Picture className="gallery-image">
           <source
             srcSet={assetData?.WebPOriginalSizePublicURL}
             type="image/webp"
           />
           <source srcSet={assetData?.assetURL} type="image/jpeg" />
           <StyledImage src={assetData?.assetURL} alt={assetData?.title} />
-        </picture>
+        </Picture>
       </ImageWrapper>
       <TextWrapper>
         <Placard>
@@ -63,84 +64,104 @@ const Wrapper = styled.article`
   height: 100%;
   width: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  flex-direction: row;
   gap: 1rem;
-
-  /* animation: ${fadeIn} 0.5s ease-in-out; */
+  padding: 0.5rem;
 
   @media ${QUERIES.laptopAndUp} {
+    padding: 1rem;
   }
 `;
 
 const ImageWrapper = styled.div`
   flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  place-content: center;
+  padding: 1rem;
+  height: 100%;
+  width: 100%;
+
+  @media ${QUERIES.laptopAndUp} {
+    padding: 2rem;
+  }
 `;
 
-const Fill = styled.div``;
-
 const TextWrapper = styled.div`
-  flex: 0;
   position: relative;
-  width: 100%;
+  width: 200px;
   display: flex;
-  justify-content: flex-end;
   align-items: flex-end;
+
+  @media ${QUERIES.laptopAndUp} {
+    width: 250px;
+  }
 `;
 
 const StyledImage = styled.img`
-  object-fit: contain;
-  width: 100%;
+  object-fit: cover;
   height: auto;
-  /* max-width: 600px; */
-  max-height: min(70vh, 700px);
+  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  margin: 0 auto;
 
   transition: opacity 0.5s ease-in-out;
+`;
 
-  @media ${QUERIES.laptopAndUp} {
-    max-width: minmax(80vw, 1200px);
-    max-height: min(70vh, 800px);
-  }
-
-  @media ${QUERIES.desktopAndUp} {
-    max-width: minmax(80vw, 1400px);
-    max-height: min(70vh, 1900px);
-  }
+const Picture = styled.picture`
+  overflow: hidden;
 `;
 
 const Placard = styled.div`
   max-width: 250px;
+
+  @media ${QUERIES.laptopAndUp} {
+    max-width: 350px;
+  }
 `;
 
 const Title = styled.h1`
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 600;
-  margin-bottom: 10px;
+  margin-block-end: 6px;
   color: var(--color-offblack);
   animation: ${fadeIn} 1.5s ease-in-out;
+
+  @media ${QUERIES.laptopAndUp} {
+    font-size: 1.2rem;
+    margin-block-end: 10px;
+  }
 `;
 
 const Story = styled.p`
-  margin-bottom: 20px;
+  font-size: 0.9rem;
+  margin-block-end: 1rem;
+  color: var(--color-offblack);
   animation: ${fadeIn} 1.65s ease-in-out;
+
+  @media ${QUERIES.laptopAndUp} {
+    font-size: 1rem;
+    margin-block-end: 1.2rem;
+  }
 `;
 
 const Medium = styled.p`
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 400;
-  margin-bottom: 5px;
+  margin-block-end: 4px;
   color: var(--color-gray-700);
   animation: ${fadeIn} 1.7s ease-in-out;
+
+  @media ${QUERIES.laptopAndUp} {
+    font-size: 0.9rem;
+    margin-block-end: 6px;
+  }
 `;
 
 const SIZE = styled.span``;
 
 const Measurements = styled.p`
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 400;
   color: var(--color-gray-700);
   animation: ${fadeIn} 1.7s ease-in-out;
