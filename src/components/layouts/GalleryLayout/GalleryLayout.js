@@ -28,11 +28,10 @@ const GalleryViewContainer = styled.main`
   --dynamic-padding: clamp(0.6rem, 5vw, 5rem);
   position: fixed;
   display: flex;
-  z-index: 10000;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   padding: var(--dynamic-padding);
 `;
 
