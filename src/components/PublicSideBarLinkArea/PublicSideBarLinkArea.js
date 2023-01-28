@@ -17,8 +17,6 @@ const PublicSideBarLinkArea = ({ links, staticLinks }) => {
         <ul role="list">
           {links.map((link) => {
             let active = false;
-            console.log(link.path);
-            console.log(currentPath);
             if (link.path === currentPath) {
               active = true;
             } else {
