@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 import styled from "styled-components";
 
 import { fadeIn } from "@/styles/animations";
-import NavLink from "@/components/NavLink";
 
 const PublicSideBarLinkArea = ({ links, staticLinks }) => {
   const router = useRouter();
