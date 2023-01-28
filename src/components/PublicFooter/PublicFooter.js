@@ -14,7 +14,7 @@ const PublicFooter = () => {
     <Footer className="footer" onClick={goHome}>
       <FooterContainer>
         <ImageWrapper>
-          <Image src={LOGO} alt="logo" />
+          <Image src={LOGO} alt="logo" priority />
         </ImageWrapper>
       </FooterContainer>
     </Footer>

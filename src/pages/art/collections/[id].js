@@ -15,6 +15,10 @@ import PublicLayout from "@/components/layouts/PublicLayout";
 import { QUERIES } from "@/styles/styleConstants";
 import { fadeIn } from "@/styles/animations";
 
+// hooks
+import useScrollToLocation from "@/hooks/useScrollToLocation";
+import { useEffect } from "react";
+
 const Collections = () => {
   const router = useRouter();
   const id = router.query.id;

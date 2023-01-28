@@ -16,7 +16,7 @@ const GalleryAsset = ({ id }) => {
   const data = assetQuery.data.data.data;
 
   return (
-    <Link href={`/art/gallery/${id}`} role="link">
+    <Link href={`/art/gallery/${id}`} role="link" id={id}>
       <AssetWrapper className="gallery-asset masonry-item">
         <picture>
           <source srcSet={data.WebP500wPublicURL} type="image/webp" />

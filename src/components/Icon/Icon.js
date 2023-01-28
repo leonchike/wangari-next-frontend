@@ -1,20 +1,24 @@
 import styled from "styled-components";
 import {
+  ArrowLeftCircle,
   CheckCircle,
   Menu,
   X,
   ArrowRightCircle,
   Instagram,
   Twitter,
+  XCircle,
 } from "react-feather";
 
 const icons = {
   menu: Menu,
   close: X,
+  arrowLeft: ArrowLeftCircle,
   arrowRight: ArrowRightCircle,
   instagram: Instagram,
   twitter: Twitter,
   checkCircle: CheckCircle,
+  closeCircle: XCircle,
 };
 
 const Icon = ({ id, color, size, strokeWidth, ...delegated }) => {

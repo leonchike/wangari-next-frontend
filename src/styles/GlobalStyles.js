@@ -24,6 +24,10 @@ dd {
   margin: 0;
 }
 
+main {
+  width: 100%;
+}
+
 /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
 ul[role='list'],
 ol[role='list'] {
@@ -165,6 +169,7 @@ button {
   color: var(--color-white);
   background: var(--color-offblack); /* Gecko Browsers */
 }
+
 `;
 
 export default GlobalStyles;
