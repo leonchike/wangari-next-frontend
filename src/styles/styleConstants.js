@@ -29,6 +29,7 @@ export const BREAKPOINTS = {
   tabletMin: 600,
   laptopMin: 1100,
   desktopMin: 1500,
+  ultrawideMin: 2200,
 };
 
 export const QUERIES = {

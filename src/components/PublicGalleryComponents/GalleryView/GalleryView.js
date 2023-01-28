@@ -6,21 +6,18 @@ import inTOcm from "@/utils/convertInchesToCentimeters";
 import { fadeIn } from "@/styles/animations";
 
 const GalleryView = ({ id, assetData }) => {
-  console.log(assetData);
-
   return (
     <Wrapper>
+      <Fill />
       <ImageWrapper>
-        <div>
-          <picture className="gallery-image">
-            <source
-              srcSet={assetData?.WebPOriginalSizePublicURL}
-              type="image/webp"
-            />
-            <source srcSet={assetData?.assetURL} type="image/jpeg" />
-            <StyledImage src={assetData?.assetURL} alt={assetData?.title} />
-          </picture>
-        </div>
+        <picture className="gallery-image">
+          <source
+            srcSet={assetData?.WebPOriginalSizePublicURL}
+            type="image/webp"
+          />
+          <source srcSet={assetData?.assetURL} type="image/jpeg" />
+          <StyledImage src={assetData?.assetURL} alt={assetData?.title} />
+        </picture>
       </ImageWrapper>
       <TextWrapper>
         <Placard>
@@ -65,57 +62,58 @@ const Wrapper = styled.article`
   position: relative;
   height: 100%;
   width: 100%;
-  display: grid;
-  grid-template-columns: 1.5rem 3fr 1fr 1fr 1fr 1fr 3fr 1.5rem;
-  grid-auto-rows: 1fr min-content;
-  grid-template-areas:
-    ". image image image image image image ."
-    ". . . . . . text .";
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
 
-  overflow-y: scroll;
-
-  animation: ${fadeIn} 0.5s ease-in-out;
+  /* animation: ${fadeIn} 0.5s ease-in-out; */
 
   @media ${QUERIES.laptopAndUp} {
-    grid-template-columns: minmax(250px, 1fr) auto minmax(250px, 1fr);
-    grid-template-areas:
-      ". image ."
-      ". . text";
   }
 `;
 
 const ImageWrapper = styled.div`
-  grid-area: image;
-  display: grid;
-  place-content: center;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const Fill = styled.div``;
+
+const TextWrapper = styled.div`
+  flex: 0;
+  position: relative;
   width: 100%;
-  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
 `;
 
 const StyledImage = styled.img`
   object-fit: contain;
   width: 100%;
-  max-height: 70vh;
+  height: auto;
+  /* max-width: 600px; */
+  max-height: min(70vh, 700px);
+
+  transition: opacity 0.5s ease-in-out;
 
   @media ${QUERIES.laptopAndUp} {
-    max-height: calc(100vh - 15rem);
+    max-width: minmax(80vw, 1200px);
+    max-height: min(70vh, 800px);
   }
-`;
 
-const TextWrapper = styled.div`
-  grid-area: text;
-  align-self: flex-end;
-  position: relative;
-  width: 100%;
+  @media ${QUERIES.desktopAndUp} {
+    max-width: minmax(80vw, 1400px);
+    max-height: min(70vh, 1900px);
+  }
 `;
 
 const Placard = styled.div`
-  @media ${QUERIES.laptopAndUp} {
-    position: absolute;
-    bottom: 0;
-    left: clamp(1rem, 5vw, 3rem);
-    width: calc(100% - clamp(1rem, 5vw, 3rem));
-  }
+  max-width: 250px;
 `;
 
 const Title = styled.h1`

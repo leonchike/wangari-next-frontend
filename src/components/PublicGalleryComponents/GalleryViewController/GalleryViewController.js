@@ -43,7 +43,14 @@ const GalleryViewController = ({ id, collectionId, assetArray, assetData }) => {
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, []);
+  }, [
+    collectionUrl,
+    nextAssetId,
+    nextAssetUrl,
+    previousAssetId,
+    previousAssetUrl,
+    router,
+  ]);
 
   // event handlers for navigation
   const handlePreviousNav = () => {
