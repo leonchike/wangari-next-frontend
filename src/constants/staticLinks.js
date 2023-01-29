@@ -1,7 +1,7 @@
 export const staticLinks = [
   { name: "About", path: "/art/about", dashPath: "/admin/about" },
   { name: "CV", path: "/art/cv", dashPath: "/admin/cv" },
-  { name: "Press", path: "/art/press", dashPath: "/admin/about" },
+  { name: "Press", path: "/art/press", dashPath: "/admin/press" },
   {
     name: "Contact",
     path: "/art/contact",

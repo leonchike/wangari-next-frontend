@@ -17,7 +17,6 @@ const Login = () => {
 
   // Get the user from the auth context
   const { login, user } = useAuth();
-  console.log(user);
 
   // checks if use is logged in and redirect to home page
   if (user) {

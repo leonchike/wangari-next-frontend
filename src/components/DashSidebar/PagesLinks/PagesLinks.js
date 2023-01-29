@@ -3,8 +3,6 @@ import styled from "styled-components";
 
 import { staticLinks } from "@/constants/staticLinks";
 
-console.log(staticLinks[0].dashPath);
-
 const PagesLinks = () => {
   return (
     <Wrapper>
