@@ -1,8 +1,13 @@
-import { useState } from "react";
+import { useState, useId } from "react";
 import styled from "styled-components";
 
-import FullPageLayout from "@/components/layouts/FullPage/FullPageLayout";
 import { useAuth } from "@/hooks/use-auth";
+
+//layout
+import FullPageLayout from "@/components/layouts/FullPage/FullPageLayout";
+import Input from "@/components/Input";
+import Button from "@/components/Button";
+import Spacer from "@/components/layouts/Spacer";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -10,61 +15,78 @@ const Login = () => {
 
   const { login } = useAuth();
 
+  const id = useId();
+  const emailId = `${id}-email`;
+  const passwordId = `${id}-password`;
+
   const handleLogin = async (e) => {
     e.preventDefault();
-
     // Use email and password to log the user in
     // and set the user state
-
     try {
       await login({ email, password });
     } catch (error) {
       console.log(error);
     }
-
-    // Clear the form
   };
 
   return (
     <FullPageLayout>
       <Main>
-        <Title>Login</Title>
-        <div>
-          <form onSubmit={handleLogin}>
-            <label htmlFor="email">Email</label>
-            <input
+        <LoginFormWrapper>
+          <Title>Login</Title>
+          <Form onSubmit={handleLogin}>
+            <Input
+              label="Email"
               type="email"
               name="email"
-              id="email"
+              maxLength="100"
+              id={emailId}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            <label htmlFor="password">Password</label>
-            <input
+            {/* <Spacer size={6} /> */}
+            <Input
+              label="Password"
               type="password"
               name="password"
-              id="password"
+              maxLength="100"
+              id={passwordId}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <button type="submit">Login</button>
-          </form>
-        </div>
+            <Spacer size={29} />
+            <Button type="submit">Login</Button>
+          </Form>
+        </LoginFormWrapper>
       </Main>
     </FullPageLayout>
   );
 };
 
 const Main = styled.div`
+  height: 100vh;
   display: grid;
   place-content: center;
-  background-color: hotpink;
 `;
 
 const Title = styled.h1`
-  font-size: 2rem;
+  font-size: calc(24 / 16 * 1rem);
   font-weight: 700;
-  color: black;
+  color: var(--color-offblack);
+  margin-block-end: calc(20 / 16 * 1rem);
+`;
+
+const LoginFormWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  max-width: (300 / 16 * 1rem);
+  width: 100%;
+`;
+
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
 `;
 
 export default Login;

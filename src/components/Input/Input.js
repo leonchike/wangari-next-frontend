@@ -8,9 +8,9 @@ const MyInput = forwardRef(function MyInput(props, ref) {
     <Label padding={padding} paddingBlockEnd={paddingBlockEnd}>
       {label}
       {type === "textarea" ? (
-        <textarea {...otherProps} ref={ref} />
+        <textarea type={type} {...otherProps} ref={ref} />
       ) : (
-        <input {...otherProps} ref={ref} />
+        <input type={type} {...otherProps} ref={ref} />
       )}
     </Label>
   );

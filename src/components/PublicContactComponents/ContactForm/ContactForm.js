@@ -26,7 +26,7 @@ const ContactForm = () => {
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
 
-  //Create unique id for each input
+  //Globally unique id for each input
   const id = useId();
   const firstNameId = `${id}-firstName`;
   const lastNameId = `${id}-lastName`;
