@@ -1,3 +1,9 @@
+import styled from "styled-components";
+
 const DashboardLayout = ({ children }) => {
-  return <div>{children}</div>;
+  return <Wrapper>{children}</Wrapper>;
 };
+
+const Wrapper = styled.div``;
+
+export default DashboardLayout;
