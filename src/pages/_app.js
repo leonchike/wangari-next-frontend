@@ -13,16 +13,19 @@ const lato = Lato({
 export default function App({ Component, pageProps }) {
   const getLayout = Component.getLayout || ((page) => page);
 
-  console.log(process.env.NEXT_PUBLIC_API_URL);
-
-  return getLayout(
+  return (
     <QueryClientProvider client={new QueryClient()}>
       <GlobalStyles />
       <ThemeProvider theme={THEME}>
         <ProvideAuth>
-          <main className={lato.className}>
-            <Component {...pageProps} />
-          </main>
+          {getLayout(
+            <main className={lato.className}>
+              <Component {...pageProps} />
+            </main>
+          )}
+          {/* // <main className={lato.className}>
+          //   <Component {...pageProps} />
+          // </main> */}
         </ProvideAuth>
       </ThemeProvider>
     </QueryClientProvider>

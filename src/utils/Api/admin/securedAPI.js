@@ -1,6 +1,6 @@
 // This file will absctract the authenticated API calls to the backend
 import axios from "axios";
-import { GetRoute } from "@/utils/Api/APIRoutes";
+import API_Routes from "@/utils/Api/APIRoutes";
 
 //get user from local storage
 const getAuthDataFromLocalStorage = () => {
@@ -8,23 +8,21 @@ const getAuthDataFromLocalStorage = () => {
   if (typeof window === "undefined") {
     return null;
   }
-  const storedUser = JSON.parse(localStorage.getItem("user"));
-  const storedToken = localStorage.getItem("token");
-  if (storedUser && storedToken) {
-    return {
-      user: storedUser,
-      token: storedToken,
-    };
+  const token = localStorage.getItem("token");
+  if (token) {
+    return token;
   }
   return null;
 };
 
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
+
 const ApiClient = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: BASE_URL,
   headers: {
     Accept: "application/json",
     "Content-Type": "application/json",
-    Authorization: "Bearer " + getAuthDataFromLocalStorage().token,
+    Authorization: "Bearer " + getAuthDataFromLocalStorage(),
   },
 });
 
@@ -32,7 +30,8 @@ export const Get = async ({ endpoint, id }) => {
   if (id) {
     endpoint = endpoint + "/" + id;
   }
-  const response = await ApiClient.get(GetRoute(endpoint));
+
+  const response = await ApiClient.get(endpoint);
   return response;
 };
 
@@ -40,7 +39,7 @@ export const Post = async ({ endpoint, id, data }) => {
   if (id) {
     endpoint = endpoint + "/" + id;
   }
-  const response = await ApiClient.post(GetRoute(endpoint), data);
+  const response = await ApiClient.post(endpoint, data);
   return response;
 };
 
@@ -48,7 +47,7 @@ export const Put = async ({ endpoint, id, data }) => {
   if (id) {
     endpoint = endpoint + "/" + id;
   }
-  const response = await ApiClient.put(GetRoute(endpoint), data);
+  const response = await ApiClient.put(endpoint, data);
   return response;
 };
 
@@ -56,7 +55,7 @@ export const Delete = async ({ endpoint, id }) => {
   if (id) {
     endpoint = endpoint + "/" + id;
   }
-  const response = await ApiClient.delete(GetRoute(endpoint));
+  const response = await ApiClient.delete(endpoint);
   return response;
 };
 

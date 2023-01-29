@@ -115,6 +115,7 @@ html {
   --color-urgent: ${COLORS.urgent};
   --color-backdrop: ${COLORS.backdrop};
   --color-form-input: ${COLORS.formInput};
+  --color-sidebar: ${COLORS.adminSidebar}
 
   --font-weight-light: ${WEIGHTS.light};
   --font-weight-normal: ${WEIGHTS.normal};

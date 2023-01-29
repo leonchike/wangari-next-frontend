@@ -16,6 +16,7 @@ export const COLORS = {
   urgent: "hsl(0deg 55% 54%)",
   backdrop: "hsl(220deg 5% 40% / 0.8)",
   formInput: "hsl(0deg 0% 91.4%)",
+  adminSidebar: "hsl(240deg 17% 98%)",
 };
 
 export const WEIGHTS = {

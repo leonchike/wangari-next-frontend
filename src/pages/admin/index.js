@@ -1,6 +1,6 @@
-import { useEffect } from "react";
 import { useAuth } from "@/hooks/use-auth";
-import withAuth from "@/utils/Api/auth/WithAuth";
+
+import DashboardLayout from "@/components/layouts/DashboardLayout";
 
 const Dashboard = () => {
   const { logout } = useAuth();
@@ -13,4 +13,6 @@ const Dashboard = () => {
   );
 };
 
-export default withAuth(Dashboard);
+Dashboard.getLayout = (page) => <DashboardLayout>{page}</DashboardLayout>;
+
+export default Dashboard;

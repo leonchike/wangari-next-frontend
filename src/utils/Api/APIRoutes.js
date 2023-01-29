@@ -1,7 +1,10 @@
 const API_Routes = {
   BASE: process.env.NEXT_PUBLIC_API_URL,
+  privateApi: "/api",
   login: "/login",
-  REGISTER: "/register",
+  register: "/register",
+  collection: "/api/collection",
+  collectionSort: "/api/collectionsort",
 
   get LOGINROUTE() {
     return this.BASE + this.login;
