@@ -1,4 +1,5 @@
 import { useState, useId } from "react";
+import Router from "next/router";
 import styled from "styled-components";
 
 import { useAuth } from "@/hooks/use-auth";
@@ -10,15 +11,25 @@ import Button from "@/components/Button";
 import Spacer from "@/components/layouts/Spacer";
 
 const Login = () => {
+  // State for email and password
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const { login } = useAuth();
+  // Get the user from the auth context
+  const { login, user } = useAuth();
+  console.log(user);
 
+  // checks if use is logged in and redirect to home page
+  if (user) {
+    Router.push("/admin");
+  }
+
+  // Global unique id for the forms
   const id = useId();
   const emailId = `${id}-email`;
   const passwordId = `${id}-password`;
 
+  // Handle the login -> Calls the login function from the auth context
   const handleLogin = async (e) => {
     e.preventDefault();
     // Use email and password to log the user in
@@ -78,10 +89,10 @@ const Title = styled.h1`
 `;
 
 const LoginFormWrapper = styled.div`
+  max-width: calc(300 / 16 * 1rem);
+  width: 100%;
   display: flex;
   flex-direction: column;
-  max-width: (300 / 16 * 1rem);
-  width: 100%;
 `;
 
 const Form = styled.form`
