@@ -1,18 +1,13 @@
 import { useState } from "react";
-import { useRouter } from "next/router";
 import styled from "styled-components";
 
 import FullPageLayout from "@/components/layouts/FullPage/FullPageLayout";
-// import { loginAPI } from "@/utils/Api/auth/APIAuth";
-// import useUser from "@/hooks/useUser";\
 import { useAuth } from "@/hooks/use-auth";
 
 const Login = () => {
-  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  // const { login } = useUser();
   const { login } = useAuth();
 
   const handleLogin = async (e) => {

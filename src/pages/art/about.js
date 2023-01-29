@@ -3,7 +3,6 @@ import { useQuery } from "react-query";
 
 //API imports
 import { getAboutData } from "@/api/public/publicAPI";
-import useUser from "@/hooks/useUser";
 
 // Layout imports
 import PublicLayout from "@/components/layouts/PublicLayout";

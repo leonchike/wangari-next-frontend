@@ -8,4 +8,8 @@ const API_Routes = {
   },
 };
 
+export const GetRoute = (endpoint) => {
+  return API_Routes.BASE + API_Routes.endpoint;
+};
+
 export default API_Routes;
