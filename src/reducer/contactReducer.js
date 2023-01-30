@@ -1,26 +1,24 @@
 import { useReducer } from "react";
-import { useContactData } from "@/hooks/useContactData";
 
-const initialState = {
-  isAuthenticated: false,
-  token: null,
+export const initialState = {
+  messages: [],
 };
 
-const authReducer = (state, action) => {
+const contactReducer = (state, action) => {
   switch (action.type) {
-    case "LOGIN_SUCCESS":
+    case "UPDATE_MESSAGES_FROM_API":
       return {
         ...state,
-        isAuthenticated: true,
-        token: action.token,
+        messages: action.messages,
       };
-    case "LOGOUT":
+    case "DELETE_MESSAGE":
       return {
         ...state,
-        isAuthenticated: false,
-        token: null,
+        messages: state.messages.filter((message) => message._id !== action.id),
       };
     default:
       return state;
   }
 };
+
+export default contactReducer;

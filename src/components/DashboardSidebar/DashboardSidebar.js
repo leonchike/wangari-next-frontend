@@ -4,6 +4,8 @@ import styled from "styled-components";
 
 import { DASHLOGO } from "@/constants/images";
 import SidebarFooter from "@/components/DashSidebar/SidebarFooter";
+import UnstyledButton from "@/components/UnstyledButton";
+import VisuallyHidden from "@/components/VisuallyHidden";
 
 import CollectionsLinks from "@/components/DashSidebar/CollectionsLinks";
 import PagesLinks from "@/components/DashSidebar/PagesLinks";
@@ -13,7 +15,12 @@ const DashboardSidebar = () => {
     <Sidebar>
       <SideBarInside>
         <LogoWrapper>
-          <StyledImage src={DASHLOGO} alt="Admin Logo" />
+          <Link href="/admin" passHref>
+            <UnstyledButton>
+              <StyledImage src={DASHLOGO} alt="Admin Logo" />
+              <VisuallyHidden>Go to Main Dashboard</VisuallyHidden>
+            </UnstyledButton>
+          </Link>
         </LogoWrapper>
         <Label>Admin</Label>
         <div>

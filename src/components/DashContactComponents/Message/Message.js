@@ -9,7 +9,7 @@ import Button from "@/components/Button";
 import UnstyledButton from "@/components/UnstyledButton";
 import DeleteConfirmation from "@/components/DeleteConfirmation";
 
-const Message = ({ data }) => {
+const Message = ({ data, dispatch }) => {
   const { firstName, lastName, email, subject, message, dateCreatedManual } =
     data;
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
@@ -17,8 +17,13 @@ const Message = ({ data }) => {
   const handleDelete = async () => {
     const { _id } = data;
     const id = _id;
+    dispatch({ type: "DELETE_MESSAGE", id });
     await updateContactData(id, { deletedStatus: true });
     setShowDeleteConfirmation(false);
+  };
+
+  const openEmailClient = () => {
+    window.open(`mailto:${email}`);
   };
 
   return (
@@ -46,7 +51,7 @@ const Message = ({ data }) => {
       </MessageText>
 
       <Actions>
-        <Button>Respond via Email</Button>
+        <Button onClick={openEmailClient}>Respond via Email</Button>
         <UnstyledButton onClick={() => setShowDeleteConfirmation(true)}>
           Remove
         </UnstyledButton>
