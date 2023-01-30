@@ -13,7 +13,7 @@ export const COLORS = {
   secondary: "hsl(240deg 60% 63%)",
   orange: "hsl(30deg 100% 60%)",
   green: "hsl(119, 54%, 47%)",
-  urgent: "hsl(0deg 55% 54%)",
+  urgent: "hsl(349deg 100% 59%)",
   backdrop: "hsl(220deg 5% 40% / 0.8)",
   formInput: "hsl(0deg 0% 91.4%)",
   adminSidebar: "hsl(240deg 17% 98%)",

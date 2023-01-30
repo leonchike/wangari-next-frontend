@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useContext, createContext } from "react";
-
 import { useRouter } from "next/router";
-
 import { loginAPI } from "@/utils/Api/auth/APIAuth";
+import { checkForExpiredJWT } from "@/utils/helpers/checkJWT";
 
 const authContext = createContext();
 
@@ -23,7 +22,10 @@ function useProvideAuth() {
     }
     const storedUser = JSON.parse(localStorage.getItem("user"));
     if (storedUser) {
-      return storedUser;
+      const jwtStatus = checkForExpiredJWT();
+      if (jwtStatus) {
+        return storedUser;
+      }
     }
     return null;
   };
@@ -60,6 +62,7 @@ function useProvideAuth() {
   };
 
   const isAuth = () => {
+    console.log("isAuth");
     return user !== null;
   };
 

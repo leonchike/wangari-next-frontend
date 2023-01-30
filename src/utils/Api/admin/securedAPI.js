@@ -1,8 +1,6 @@
 // This file will absctract the authenticated API calls to the backend
 import axios from "axios";
-import { logout } from "@/hooks/use-auth";
 
-//get user from local storage
 const getAuthDataFromLocalStorage = () => {
   // check if local storage is available
   if (typeof window === "undefined") {
@@ -17,13 +15,6 @@ const getAuthDataFromLocalStorage = () => {
 
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
-// checks if 401 is returned from the API and logs the user out
-const handle401 = (response) => {
-  if (response.status === 401) {
-    logout();
-  }
-};
-
 const ApiClient = axios.create({
   baseURL: BASE_URL,
   headers: {
@@ -33,13 +24,24 @@ const ApiClient = axios.create({
   },
 });
 
+ApiClient.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error.response.status === 401) {
+      // Dispatch an action or perform other logic to log the user out
+      console.log("error 401");
+      logout();
+    }
+    return Promise.reject(error);
+  }
+);
+
 export const Get = async ({ endpoint, id }) => {
   if (id) {
     endpoint = endpoint + "/" + id;
   }
 
   const response = await ApiClient.get(endpoint);
-  handle401(response);
   return response;
 };
 
@@ -48,16 +50,18 @@ export const Post = async ({ endpoint, id, data }) => {
     endpoint = endpoint + "/" + id;
   }
   const response = await ApiClient.post(endpoint, data);
-  handle401(response);
   return response;
 };
 
 export const Put = async ({ endpoint, id, data }) => {
+  console.log(endpoint);
+  console.log(id);
+  console.log(data);
+
   if (id) {
     endpoint = endpoint + "/" + id;
   }
   const response = await ApiClient.put(endpoint, data);
-  handle401(response);
   return response;
 };
 
@@ -66,8 +70,15 @@ export const Delete = async ({ endpoint, id }) => {
     endpoint = endpoint + "/" + id;
   }
   const response = await ApiClient.delete(endpoint);
-  handle401(response);
   return response;
+};
+
+const logout = () => {
+  console.log("logout envoked");
+  localStorage.removeItem("user");
+  localStorage.removeItem("token");
+  // use javascript to redirect the user to the login page
+  window.location.href = "/login";
 };
 
 export default ApiClient;

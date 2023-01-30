@@ -46,7 +46,7 @@ const SideBarInside = styled.div`
   flex-direction: column;
   position: sticky;
   align-self: start;
-  top: 0;
+  top: 40px;
 `;
 
 const LogoWrapper = styled.div``;
@@ -63,8 +63,8 @@ const Label = styled.div`
 `;
 
 const SidebarFooterWrapper = styled.footer`
-  position: absolute;
-  bottom: 30px;
+  position: fixed;
+  top: calc(100vh - 50px);
   width: 100%;
 `;
 export default DashboardSidebar;

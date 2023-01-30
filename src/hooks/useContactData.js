@@ -1,5 +1,5 @@
 import useSWR from "swr";
-import { Get } from "@/utils/Api/admin/securedAPI";
+import { Get, Put } from "@/utils/Api/admin/securedAPI";
 import API_Routes from "@/utils/Api/APIRoutes";
 
 export const GetContactData = async (url) => {
@@ -15,3 +15,9 @@ export const useContactData = () => {
     error,
   };
 };
+
+export const updateContactData = async (id, data) => {
+  const response = await Put({ endpoint: API_Routes.contact, id, data });
+  return response.data;
+};
+``;

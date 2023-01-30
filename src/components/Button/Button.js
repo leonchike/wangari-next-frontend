@@ -1,6 +1,17 @@
 import styled from "styled-components";
 
 const Button = ({ children, onClick, block, ...otherProps }) => {
+  const type = {
+    primary: {
+      backgroundColor: "var(--color-offblack)",
+      color: "white",
+    },
+    secondary: {
+      backgroundColor: "var(--color-white)",
+      color: "var(--color-offblack)",
+    },
+  };
+
   return (
     <StyledButton block={block} onClick={onClick} {...otherProps}>
       {children}
@@ -20,7 +31,7 @@ const StyledButton = styled.button`
   font-size: 1rem;
   cursor: pointer;
   &:hover {
-    opacity: 0.9;
+    opacity: 0.85;
   }
 `;
 
