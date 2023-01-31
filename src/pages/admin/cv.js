@@ -4,15 +4,18 @@ import DashboardLayout from "@/components/layouts/DashboardLayout";
 import { PageWrapper, Title } from "@/styles/reusableStyles";
 
 import CVContent from "@/components/DashCVComponents/CVContent";
+import { CVProvider } from "@/context/adminCVContext";
 
 const CV = () => {
   return (
-    <AdminPageWrapper>
-      <InnerWrapper>
-        <Title>Curriculum Vitae</Title>
-        <CVContent />
-      </InnerWrapper>
-    </AdminPageWrapper>
+    <CVProvider>
+      <AdminPageWrapper>
+        <InnerWrapper>
+          <Title>Curriculum Vitae</Title>
+          <CVContent />
+        </InnerWrapper>
+      </AdminPageWrapper>
+    </CVProvider>
   );
 };
 

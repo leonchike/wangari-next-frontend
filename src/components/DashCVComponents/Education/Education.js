@@ -1,6 +1,12 @@
 import EducationForm from "@/components/DashCVComponents/EducationForm";
 
-const Education = ({ data }) => {
+import { useCVState } from "@/context/adminCVContext";
+
+const Education = () => {
+  const state = useCVState();
+  // filter for state.cv.type === education
+  const data = state.cv.filter((item) => item.type === "education");
+
   return (
     <div>
       {data.map((item) => (

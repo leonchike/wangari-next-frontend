@@ -1,14 +1,16 @@
 import { useEffect, useReducer } from "react";
 import styled from "styled-components";
 
-import cvReducer, { initialState } from "@/reducer/cvReducer";
 import { useCVData } from "@/hooks/useCVData";
 import { useDataOrder } from "@/hooks/useDataOrder";
+import { useCVState, useCVDispatch } from "@/context/adminCVContext";
 
 import Education from "@/components/DashCVComponents/Education";
 
 const CVContent = () => {
-  const [state, dispatch] = useReducer(cvReducer, initialState);
+  const state = useCVState();
+  const dispatch = useCVDispatch();
+
   const { cvData, isLoading, error } = useCVData();
   const {
     dataOrder,
@@ -21,7 +23,7 @@ const CVContent = () => {
     if (!!cvData?.data) {
       dispatch({ type: "UPDATE_CV_FROM_API", cv: cvData.data });
     }
-  }, [cvData]);
+  }, [cvData, dispatch]);
 
   useEffect(() => {
     // if contact.data is not empty, update the reducer state with the data
@@ -31,37 +33,41 @@ const CVContent = () => {
         cvOrder: dataOrder.data[0].cvOrder,
       });
     }
-  }, [dataOrder]);
+  }, [dataOrder, dispatch]);
 
   if (isLoading && !cvData && isLoadingOrder && !dataOrder) {
     return <div>Loading...</div>;
   }
 
   if (error || errorOrder) {
-    return <div>Error: {error.message}</div>;
+    return <div>Error occured with using cvData API</div>;
+  }
+
+  if (!state) {
+    return <div>Loading...</div>;
   }
 
   // state.cv array ordered by state.cvOrder
-  console.log(state.cv);
-  const orderData = state.cvOrder.map((id) => {
-    return state.cv.find((item) => item._id === id);
-  });
-  console.log(orderData);
+  console.log(state);
+  // const orderData = state.cvOrder.map((id) => {
+  //   return state.cv.find((item) => item._id === id);
+  // });
+  // console.log(orderData);
 
-  // filter orderedDat for type === education
-  const educationData = orderData.filter((item) => item.type === "education");
+  // // filter orderedDat for type === education
+  // const educationData = orderData.filter((item) => item.type === "education");
 
-  // filter orderedDat for type === solo
-  const soloData = orderData.filter((item) => item.type === "solo");
+  // // filter orderedDat for type === solo
+  // const soloData = orderData.filter((item) => item.type === "solo");
 
-  // filter orderedDat for type === group
-  const groupData = orderData.filter((item) => item.type === "group");
+  // // filter orderedDat for type === group
+  // const groupData = orderData.filter((item) => item.type === "group");
 
   return (
     <ContentWrapper>
       <Section>
         <SectionHeadings>Education</SectionHeadings>
-        <Education data={educationData} dispatch={dispatch} />
+        <Education />
       </Section>
     </ContentWrapper>
   );
