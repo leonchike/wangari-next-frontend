@@ -23,8 +23,6 @@ const Messages = () => {
     return <div>Error: {error.message}</div>;
   }
 
-  //useeffect to update the inital reducer state with data from the contact variable
-
   // If contact.data is empty, return a message
   if (!state.messages.length) {
     return (

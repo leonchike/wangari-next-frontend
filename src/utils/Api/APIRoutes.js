@@ -6,6 +6,8 @@ const API_Routes = {
   collection: "/api/collection",
   collectionSort: "/api/collectionsort",
   contact: "/api/contact",
+  cv: "/api/cv",
+  dataOrder: "/api/dataOrder",
 
   get LOGINROUTE() {
     return this.BASE + this.login;

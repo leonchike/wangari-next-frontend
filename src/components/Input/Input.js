@@ -21,6 +21,7 @@ const Label = styled.label`
   display: grid;
   grid-template-columns: 1fr;
   font-weight: var(--font-weight-normal);
+  width: 100%;
 
   input,
   textarea {
