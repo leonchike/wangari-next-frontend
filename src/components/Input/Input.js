@@ -2,13 +2,34 @@ import { forwardRef } from "react";
 import styled from "styled-components";
 
 const MyInput = forwardRef(function MyInput(props, ref) {
-  const { label, type, padding, paddingBlockEnd, ...otherProps } = props;
+  const {
+    label,
+    type,
+    padding,
+    paddingBlockEnd,
+    defaultValue,
+    noWidth,
+    ...otherProps
+  } = props;
+
+  const width = noWidth ? "revert" : "100%";
 
   return (
-    <Label padding={padding} paddingBlockEnd={paddingBlockEnd}>
+    <Label
+      padding={padding}
+      paddingBlockEnd={paddingBlockEnd}
+      noWidth={noWidth}
+    >
       {label}
       {type === "textarea" ? (
         <textarea type={type} {...otherProps} ref={ref} />
+      ) : type === "select" ? (
+        <select
+          type={type}
+          defaultValue={defaultValue}
+          {...otherProps}
+          ref={ref}
+        />
       ) : (
         <input type={type} {...otherProps} ref={ref} />
       )}
@@ -21,10 +42,12 @@ const Label = styled.label`
   display: grid;
   grid-template-columns: 1fr;
   font-weight: var(--font-weight-normal);
-  width: 100%;
+  /* width: 100%; */
+  width: ${(p) => (p.noWidth ? "auto" : "100%")};
 
   input,
-  textarea {
+  textarea,
+  select {
     font: inherit;
     border: none;
     background-color: var(--color-form-input);

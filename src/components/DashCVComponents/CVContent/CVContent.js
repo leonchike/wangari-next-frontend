@@ -6,6 +6,7 @@ import { useDataOrder } from "@/hooks/useDataOrder";
 import { useCVState, useCVDispatch } from "@/context/adminCVContext";
 
 import Education from "@/components/DashCVComponents/Education";
+import Exhibition from "@/components/DashCVComponents/Exhibition";
 
 const CVContent = () => {
   const state = useCVState();
@@ -53,6 +54,14 @@ const CVContent = () => {
         <SectionHeadings>Education</SectionHeadings>
         <Education />
       </Section>
+      <Section>
+        <SectionHeadings>Solo Exhibition</SectionHeadings>
+        <Exhibition type="solo" />
+      </Section>
+      <Section>
+        <SectionHeadings>Group Exhibition</SectionHeadings>
+        <Exhibition type="group" />
+      </Section>
     </ContentWrapper>
   );
 };
@@ -62,7 +71,9 @@ const ContentWrapper = styled.div`
   margin-block-end: calc(40 / 16 * 1rem);
 `;
 
-const Section = styled.section``;
+const Section = styled.section`
+  margin-block-end: calc(40 / 16 * 1rem);
+`;
 
 const SectionHeadings = styled.h2`
   font-size: 1.3rem;

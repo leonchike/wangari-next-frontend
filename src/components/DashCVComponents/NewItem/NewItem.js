@@ -23,7 +23,7 @@ const NewItem = ({ type }) => {
       dbType: "solo",
     },
     group: {
-      title: "+ Add a Exhibition field",
+      title: "+ Add a Group Exhibition field",
       dbType: "group",
     },
   };
