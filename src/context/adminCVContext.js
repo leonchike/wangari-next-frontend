@@ -2,11 +2,12 @@
 This file focuses on the context API and the reducer function for providing data and state to the CV Page on the Admin Dashboard.
 */
 import { createContext, useContext, useReducer } from "react";
-import { updateCVData } from "@/hooks/useCVData";
+import { updateCVData, postCVData } from "@/hooks/useCVData";
 
 const CVDataContext = createContext(null);
 const CVDispatchContext = createContext(null);
 const CVUpdate = createContext(null);
+const CVPost = createContext(null);
 
 export function CVProvider({ children }) {
   const [state, dispatch] = useReducer(cvReducer, initialState);
@@ -14,7 +15,9 @@ export function CVProvider({ children }) {
   return (
     <CVDataContext.Provider value={state}>
       <CVDispatchContext.Provider value={dispatch}>
-        <CVUpdate.Provider value={updateCVData}>{children}</CVUpdate.Provider>
+        <CVUpdate.Provider value={updateCVData}>
+          <CVPost.Provider value={postCVData}>{children}</CVPost.Provider>
+        </CVUpdate.Provider>
       </CVDispatchContext.Provider>
     </CVDataContext.Provider>
   );
@@ -32,8 +35,11 @@ export function useCVUpdate() {
   return useContext(CVUpdate);
 }
 
+export function useCVPost() {
+  return useContext(CVPost);
+}
+
 function cvReducer(state, action) {
-  console.log(action);
   switch (action.type) {
     case "UPDATE_CV_FROM_API":
       return {

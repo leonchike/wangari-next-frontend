@@ -1,6 +1,7 @@
 import EducationForm from "@/components/DashCVComponents/EducationForm";
 
 import { useCVState } from "@/context/adminCVContext";
+import NewItem from "@/components/DashCVComponents/NewItem";
 
 const Education = () => {
   const state = useCVState();
@@ -9,9 +10,12 @@ const Education = () => {
 
   return (
     <div>
-      {data.map((item) => (
-        <EducationForm key={item.id} data={item} />
-      ))}
+      <div>
+        {data.map((item) => (
+          <EducationForm key={item._id} data={item} />
+        ))}
+      </div>
+      <NewItem type="education" />
     </div>
   );
 };

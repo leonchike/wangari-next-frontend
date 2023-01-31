@@ -47,22 +47,6 @@ const CVContent = () => {
     return <div>Loading...</div>;
   }
 
-  // state.cv array ordered by state.cvOrder
-  console.log(state);
-  // const orderData = state.cvOrder.map((id) => {
-  //   return state.cv.find((item) => item._id === id);
-  // });
-  // console.log(orderData);
-
-  // // filter orderedDat for type === education
-  // const educationData = orderData.filter((item) => item.type === "education");
-
-  // // filter orderedDat for type === solo
-  // const soloData = orderData.filter((item) => item.type === "solo");
-
-  // // filter orderedDat for type === group
-  // const groupData = orderData.filter((item) => item.type === "group");
-
   return (
     <ContentWrapper>
       <Section>

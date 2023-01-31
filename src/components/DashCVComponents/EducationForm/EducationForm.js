@@ -5,10 +5,12 @@ import { useCVDispatch, useCVUpdate } from "@/context/adminCVContext";
 
 import Input from "@/components/Input";
 import UnstyledButton from "@/components/UnstyledButton";
+import DeleteConfirmation from "@/components/DeleteConfirmation";
 
 const EducationForm = ({ data }) => {
   const { title } = data;
   const [formTitle, setFormTitle] = useState(title);
+  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
   const dispatch = useCVDispatch();
   const updateCVData = useCVUpdate();
 
@@ -40,7 +42,14 @@ const EducationForm = ({ data }) => {
         onBlur={handleUpdate}
         placeholder="Title"
       />
-      <Button onClick={handleDelete}>Delete</Button>
+      <Button onClick={() => setShowDeleteConfirmation(true)}>Delete</Button>
+
+      <DeleteConfirmation
+        isOpen={showDeleteConfirmation}
+        onDismiss={() => setShowDeleteConfirmation(false)}
+        title="Remove Field?"
+        handleDelete={handleDelete}
+      />
     </InputWrapper>
   );
 };
