@@ -8,6 +8,7 @@ import {
   Instagram,
   Trash,
   Twitter,
+  Upload,
   XCircle,
 } from "react-feather";
 
@@ -21,6 +22,7 @@ const icons = {
   checkCircle: CheckCircle,
   closeCircle: XCircle,
   trash: Trash,
+  upload: Upload,
 };
 
 const Icon = ({ id, color, size, strokeWidth, ...delegated }) => {

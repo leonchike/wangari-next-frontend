@@ -17,12 +17,27 @@ const AboutDetails = () => {
     alt: "profile image",
   };
 
+  const RemoveImage = {
+    jpg: null,
+    webp: null,
+    alt: null,
+  };
+
+  const id = state.about[0]?._id;
+
+  console.log(state);
+
   return (
     <Article>
       <ImageWrapper>
-        <ImageHandler image={image} dispatch={dispatch} />
+        <ImageHandler
+          id={id}
+          image={image}
+          intent="about-profile"
+          dispatch={dispatch}
+        />
       </ImageWrapper>
-      <div id="bioContainer"></div>
+      <div id="bioContainer">bio</div>
       <div id="socialLinks"></div>
     </Article>
   );
@@ -39,6 +54,7 @@ const Article = styled.article`
 const ImageWrapper = styled.div`
   width: 100%;
   height: auto;
+  position: relative;
 
   img {
     width: 100%;

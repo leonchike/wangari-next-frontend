@@ -41,6 +41,33 @@ function aboutReducer(state, action) {
         ...state,
         about: action.about,
       };
+    case "CHANGED_IMAGE":
+      return {
+        ...state,
+        about: state.about.map((about) => {
+          if (about._id === action.id) {
+            return {
+              ...about,
+              profileURL: "",
+              profileURLWebPOriginalSize: "",
+            };
+          }
+          return about;
+        }),
+      };
+    case "IMAGE_UPDATED":
+      return {
+        ...state,
+        about: state.about.map((about) => {
+          if (about._id === action.id) {
+            return {
+              ...about,
+              profileURL: action.jpg,
+            };
+          }
+          return about;
+        }),
+      };
     default:
       throw new Error(`Unhandled action type: ${action.type}`);
   }

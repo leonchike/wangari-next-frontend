@@ -10,6 +10,7 @@ const API_Routes = {
   dataOrder: "/api/dataOrder",
   press: "/api/press",
   about: "/api/about",
+  image: "/api/upload",
 
   get LOGINROUTE() {
     return this.BASE + this.login;
