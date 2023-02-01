@@ -11,6 +11,7 @@ const API_Routes = {
   press: "/api/press",
   about: "/api/about",
   image: "/api/upload",
+  asset: "/api/asset",
 
   get LOGINROUTE() {
     return this.BASE + this.login;
