@@ -41,6 +41,19 @@ function aboutReducer(state, action) {
         ...state,
         about: action.about,
       };
+    case "UPDATED_ABOUT":
+      return {
+        ...state,
+        about: state.about.map((about) => {
+          if (about._id === action.id) {
+            return {
+              ...about,
+              ...action.about,
+            };
+          }
+          return about;
+        }),
+      };
     case "CHANGED_IMAGE":
       return {
         ...state,

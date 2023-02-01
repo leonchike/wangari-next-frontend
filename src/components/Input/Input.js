@@ -12,8 +12,6 @@ const MyInput = forwardRef(function MyInput(props, ref) {
     ...otherProps
   } = props;
 
-  const width = noWidth ? "revert" : "100%";
-
   return (
     <Label
       padding={padding}

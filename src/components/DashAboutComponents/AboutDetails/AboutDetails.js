@@ -5,6 +5,7 @@ import { useAboutState, useAboutDispatch } from "@/context/adminAboutContext";
 
 // components
 import ImageHandler from "@/components/ImageHandler";
+import Bio from "@/components/DashAboutComponents/Bio";
 
 const AboutDetails = () => {
   const state = useAboutState();
@@ -17,15 +18,7 @@ const AboutDetails = () => {
     alt: "profile image",
   };
 
-  const RemoveImage = {
-    jpg: null,
-    webp: null,
-    alt: null,
-  };
-
   const id = state.about[0]?._id;
-
-  console.log(state);
 
   return (
     <Article>
@@ -37,8 +30,7 @@ const AboutDetails = () => {
           dispatch={dispatch}
         />
       </ImageWrapper>
-      <div id="bioContainer">bio</div>
-      <div id="socialLinks"></div>
+      <Bio data={state.about[0]} />
     </Article>
   );
 };
@@ -54,6 +46,7 @@ const Article = styled.article`
 const ImageWrapper = styled.div`
   width: 100%;
   height: auto;
+  max-height: calc(600 / 16 * 1rem);
   position: relative;
 
   img {

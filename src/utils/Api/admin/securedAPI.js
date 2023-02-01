@@ -54,10 +54,6 @@ export const Post = async ({ endpoint, id, data }) => {
 };
 
 export const Put = async ({ endpoint, id, data }) => {
-  console.log(endpoint);
-  console.log(id);
-  console.log(data);
-
   if (id) {
     endpoint = endpoint + "/" + id;
   }
@@ -74,7 +70,6 @@ export const Delete = async ({ endpoint, id }) => {
 };
 
 const logout = () => {
-  console.log("logout envoked");
   localStorage.removeItem("user");
   localStorage.removeItem("token");
   // use javascript to redirect the user to the login page

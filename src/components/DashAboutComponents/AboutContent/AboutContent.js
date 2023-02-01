@@ -29,7 +29,7 @@ const AboutContent = () => {
     return <div>Error: {error.message}</div>;
   }
 
-  if (!state) {
+  if (!state.about[0]) {
     return <div>Loading...</div>;
   }
 
