@@ -54,8 +54,9 @@ const Login = () => {
               id={emailId}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              required
             />
-            {/* <Spacer size={6} /> */}
+            <Spacer size={6} />
             <Input
               label="Password"
               type="password"
@@ -64,6 +65,7 @@ const Login = () => {
               id={passwordId}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              required
             />
             <Spacer size={29} />
             <Button type="submit">Login</Button>
@@ -88,7 +90,7 @@ const Title = styled.h1`
 `;
 
 const LoginFormWrapper = styled.div`
-  max-width: calc(300 / 16 * 1rem);
+  max-width: 400px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -97,6 +99,8 @@ const LoginFormWrapper = styled.div`
 const Form = styled.form`
   display: flex;
   flex-direction: column;
+  max-width: 300px;
+  min-width: 250px;
 `;
 
 export default Login;

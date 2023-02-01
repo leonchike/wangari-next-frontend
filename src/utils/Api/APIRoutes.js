@@ -9,6 +9,7 @@ const API_Routes = {
   cv: "/api/cv",
   dataOrder: "/api/dataOrder",
   press: "/api/press",
+  about: "/api/about",
 
   get LOGINROUTE() {
     return this.BASE + this.login;

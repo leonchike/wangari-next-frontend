@@ -1,8 +1,8 @@
 const ImageOutput = ({ jpg, webp, alt }) => {
   return (
     <picture>
-      <source type="image/webp" srcSet={webp} />
-      <source type="image/jpeg" srcSet={jpg} />
+      {webp && <source type="image/webp" srcSet={webp} />}
+      {jpg && <source type="image/jpeg" srcSet={jpg} />}
       <img src={jpg} alt={alt} />
     </picture>
   );
