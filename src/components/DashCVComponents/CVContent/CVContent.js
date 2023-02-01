@@ -1,4 +1,4 @@
-import { useEffect, useReducer } from "react";
+import { useEffect } from "react";
 import styled from "styled-components";
 
 import { useCVData } from "@/hooks/useCVData";

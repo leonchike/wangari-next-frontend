@@ -73,10 +73,7 @@ const Article = styled.article`
   border-radius: 5px;
   color: var(--color-offblack);
 
-  box-shadow: 0px 0px 0.4px rgba(0, 0, 0, 0.013),
-    0px 0px 1px rgba(0, 0, 0, 0.017), 0px 0px 1.9px rgba(0, 0, 0, 0.014),
-    0px 0px 3.4px rgba(0, 0, 0, 0.008), 0px 0px 6.3px rgba(0, 0, 0, 0.012),
-    0px 0px 15px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--box-shadow);
 `;
 
 const DateStampWrapper = styled.div`
