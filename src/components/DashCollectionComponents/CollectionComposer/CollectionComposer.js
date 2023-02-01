@@ -36,7 +36,7 @@ const CollectionComposer = ({ collectionId }) => {
         assetSort: collection.data.assetSort,
       });
     }
-  }, [collection, dispatch]);
+  }, [collection, collectionId, dispatch]);
 
   useEffect(() => {
     if (assets && assets.data) {

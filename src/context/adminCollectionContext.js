@@ -113,6 +113,14 @@ function collectionReducer(state, action) {
         ...state,
         assets: [...state.assets, action.asset],
       };
+    case "UPDATED_COLLECTION":
+      return {
+        ...state,
+        collection: {
+          ...state.collection,
+          [action.name]: action.value,
+        },
+      };
     default:
       throw new Error(`Unhandled action type: ${action.type}`);
   }
