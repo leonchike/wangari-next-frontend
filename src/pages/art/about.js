@@ -88,8 +88,10 @@ const AboutSection = styled.section`
 `;
 
 const ImageContainer = styled.div`
+  position: relative;
   grid-area: image;
   width: 100%;
+  min-height: 600px;
   max-width: var(--max-mobile-width);
   border-radius: 2px;
   overflow: clip;
