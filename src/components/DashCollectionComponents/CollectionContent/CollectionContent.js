@@ -1,11 +1,12 @@
 import Header from "@/components/DashCollectionComponents/Header";
+import StorySection from "@/components/DashCollectionComponents/StorySection";
 
 const CollectionContent = () => {
   return (
     <div>
       <Header />
-      {/* <div>Story</div>
-      <div>Assets</div> */}
+      <StorySection />
+      {/*<div>Assets</div> */}
     </div>
   );
 };

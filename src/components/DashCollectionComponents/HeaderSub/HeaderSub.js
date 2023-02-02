@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 import {
@@ -11,7 +10,7 @@ import {
 import formatDate from "@/utils/formatDate";
 import { formatWorksLabel } from "@/utils/helpers/collectionHelpers";
 
-const HeaderSub = ({}) => {
+const HeaderSub = () => {
   const updateCollectionData = useCollectionUpdate();
   const dispatch = useCollectionDispatch();
   const state = useCollectionState();
