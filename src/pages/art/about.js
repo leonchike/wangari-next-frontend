@@ -97,8 +97,6 @@ const ImageContainer = styled.div`
   overflow: clip;
 
   img {
-    width: 100%;
-    height: 100%;
     object-fit: cover;
   }
 `;
