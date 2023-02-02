@@ -5,7 +5,7 @@ import Icon from "@/components/Icon";
 
 import { uploadImage } from "@/utils/Api/uploadImage";
 
-const ImageUpload = ({ id, intent, dispatch }) => {
+const ImageUpload = ({ id, intent, imageUpdatedWithAPIRepsonse }) => {
   const [image, setImage] = useState(null);
   const [error, setError] = useState(null);
 
@@ -30,7 +30,7 @@ const ImageUpload = ({ id, intent, dispatch }) => {
     uploadImage(id, selectedFile, intent).then((response) => {
       // check is response ends with .jpg
       if (response.endsWith(".jpg")) {
-        dispatch({ id: id, type: "IMAGE_UPDATED", jpg: response });
+        imageUpdatedWithAPIRepsonse(response);
         console.log(response);
       } else {
         setError(response);
@@ -57,7 +57,7 @@ const ImageUpload = ({ id, intent, dispatch }) => {
       {image && (
         <picture>
           <source type="image" srcSet={URL.createObjectURL(image)} />
-          <img src={URL.createObjectURL(image)} alt="Uploaded Image" />
+          <StyledImage src={URL.createObjectURL(image)} alt="Uploaded Image" />
         </picture>
       )}
     </UploadWrapper>
@@ -70,10 +70,11 @@ const UploadWrapper = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: auto;
+  height: 100%;
   min-height: minmax(min-content, 300px);
   border: 1px dashed var(--color-primary);
   border-radius: var(--border-radius);
+  cursor: pointer;
 
   &[data-image="true"] {
     border: none;
@@ -93,6 +94,17 @@ const IconWrapper = styled.div`
   padding-block-start: 3rem;
   padding-block-end: 2rem;
   pointer-events: none;
+
+  &:hover {
+    opacity: 0.9;
+  }
+`;
+
+const StyledImage = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  position: relative;
 `;
 
 export default ImageUpload;

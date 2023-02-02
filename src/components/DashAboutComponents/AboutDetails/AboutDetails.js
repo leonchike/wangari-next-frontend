@@ -20,6 +20,14 @@ const AboutDetails = () => {
 
   const id = state.about[0]?._id;
 
+  const handleChangeImage = () => {
+    dispatch({ id: id, type: "CHANGED_IMAGE" });
+  };
+
+  const imageUpdatedWithAPIRepsonse = (jpg) => {
+    dispatch({ id: id, type: "IMAGE_UPDATED", jpg: jpg });
+  };
+
   return (
     <Article>
       <ImageWrapper>
@@ -28,6 +36,8 @@ const AboutDetails = () => {
           image={image}
           intent="about-profile"
           dispatch={dispatch}
+          handleChangeImage={handleChangeImage}
+          imageUpdatedWithAPIRepsonse={imageUpdatedWithAPIRepsonse}
         />
       </ImageWrapper>
       <Bio data={state.about[0]} />
@@ -46,6 +56,7 @@ const Article = styled.article`
 const ImageWrapper = styled.div`
   width: 100%;
   height: auto;
+  min-height: 400px;
   max-height: calc(600 / 16 * 1rem);
   position: relative;
 

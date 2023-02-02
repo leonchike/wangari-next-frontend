@@ -118,6 +118,32 @@ function collectionReducer(state, action) {
           ...action,
         },
       };
+    case "REMOVE_ASSET_IMAGE_FROM_VIEW":
+      return {
+        ...state,
+        assets: state.assets.map((asset) => {
+          if (asset._id === action.id) {
+            return {
+              ...asset,
+              assetURL: null,
+            };
+          }
+          return asset;
+        }),
+      };
+    case "ASSET_IMAGE_UPDATED":
+      return {
+        ...state,
+        assets: state.assets.map((asset) => {
+          if (asset._id === action.id) {
+            return {
+              ...asset,
+              assetURL: action.assetURL,
+            };
+          }
+          return asset;
+        }),
+      };
     default:
       throw new Error(`Unhandled action type: ${action.type}`);
   }
@@ -126,5 +152,5 @@ function collectionReducer(state, action) {
 const initialState = {
   collection: {},
   assetSort: [],
-  assets: {},
+  assets: [],
 };

@@ -56,7 +56,7 @@ const CollectionComposer = ({ collectionId }) => {
     return <div>Error...</div>;
   }
 
-  if (!state.collection) {
+  if (!state.collection || !state.assets) {
     return <div>Loading...</div>;
   }
 
