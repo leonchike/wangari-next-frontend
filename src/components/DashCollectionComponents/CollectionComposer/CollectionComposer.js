@@ -40,7 +40,6 @@ const CollectionComposer = ({ collectionId }) => {
 
   useEffect(() => {
     if (assets && assets.data) {
-      console.log(assets.data);
       const filteredAssets = filterAssets(assets, collectionId);
       dispatch({
         type: "UPDATED_ASSETS_FROM_API",

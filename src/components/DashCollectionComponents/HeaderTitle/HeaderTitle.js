@@ -6,18 +6,18 @@ import {
   useCollectionUpdate,
 } from "@/context/adminCollectionContext";
 
-const HeaderTitle = ({ id }) => {
+const HeaderTitle = () => {
   const updateCollectionData = useCollectionUpdate();
   const dispatch = useCollectionDispatch();
   const state = useCollectionState();
   const title = state.collection.name;
+  const id = state.collection._id;
 
   const updateState = (e) => {
     const { name, value } = e.target;
     dispatch({
       type: "UPDATED_COLLECTION",
-      name: name,
-      value: value,
+      name: value,
     });
   };
 
@@ -25,7 +25,7 @@ const HeaderTitle = ({ id }) => {
     e.preventDefault();
     const { name, value } = e.target;
     // update database
-    updateCollectionData(id, { name: value });
+    updateCollectionData(id, { [name]: value });
   };
 
   return (

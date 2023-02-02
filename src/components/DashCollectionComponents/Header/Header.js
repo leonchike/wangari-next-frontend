@@ -14,11 +14,7 @@ const Header = () => {
 
   return (
     <HeaderWrappper>
-      <HeaderTitle
-        id={state.collection._id}
-        title={state.collection.name}
-        dispatch={dispatch}
-      />
+      <HeaderTitle id={state.collection._id} />
       <HeaderSub
         id={state.collection._id}
         newStatus={state.collection.newStatus}

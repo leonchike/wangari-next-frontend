@@ -115,7 +115,7 @@ function collectionReducer(state, action) {
         ...state,
         collection: {
           ...state.collection,
-          [action.name]: action.value,
+          ...action,
         },
       };
     default:

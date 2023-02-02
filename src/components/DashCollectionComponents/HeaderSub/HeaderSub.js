@@ -1,48 +1,36 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 
-// Data
-import { useCollectionUpdate } from "@/context/adminCollectionContext";
+import {
+  useCollectionDispatch,
+  useCollectionState,
+  useCollectionUpdate,
+} from "@/context/adminCollectionContext";
 
 // Helpers
 import formatDate from "@/utils/formatDate";
 import { formatWorksLabel } from "@/utils/helpers/collectionHelpers";
 
-const HeaderSub = ({
-  id,
-  newStatus,
-  liveStatus,
-  numberOfWorks,
-  createdAt,
-  dispatch,
-}) => {
+const HeaderSub = ({}) => {
   const updateCollectionData = useCollectionUpdate();
-  const [liveStatusState, setLiveStatusState] = useState(liveStatus);
-  // const [newStatusState, setNewStatusState] = useState(newStatus);
+  const dispatch = useCollectionDispatch();
+  const state = useCollectionState();
 
-  // const setIniitalValues = () => {
-  //   setLiveStatusState(liveStatus);
-  //   setNewStatusState(newStatus);
-  // };
+  // Simple variables for state objects
+  const id = state.collection._id;
+  const newStatus = state.collection.newStatus;
+  const liveStatus = state.collection.liveStatus;
+  const numberOfWorks = state.collection.numberOfWorks;
+  const createdAt = state.collection.createdAt;
 
-  // useEffect(() => {
-  //   setIniitalValues();
-  // }, [id, liveStatus, newStatus]);
-
-  useEffect(() => {
-    setLiveStatusState(liveStatus);
-  }, [liveStatus]);
-
-  const handleStatusChange = (e) => {
+  const updateStateAndDB = (e) => {
     const { name, checked } = e.target;
-    // update state with dispatch
-    console.log("name", name);
-    console.log("checked", checked);
-    setLiveStatusState(checked);
+
     dispatch({
       type: "UPDATED_COLLECTION",
-      liveStatus: liveStatusState,
+      [name]: checked,
     });
+    updateCollectionData(id, { [name]: checked });
   };
 
   return (
@@ -57,7 +45,7 @@ const HeaderSub = ({
                 type="checkbox"
                 checked={liveStatus}
                 name="liveStatus"
-                onChange={handleStatusChange}
+                onChange={updateStateAndDB}
               />
               <Slider className="round"></Slider>
             </StyledLabel>
@@ -74,7 +62,7 @@ const HeaderSub = ({
                 type="checkbox"
                 checked={newStatus}
                 name="newStatus"
-                onChange={handleStatusChange}
+                onChange={updateStateAndDB}
               />
               <Slider className="round"></Slider>
             </StyledLabel>
