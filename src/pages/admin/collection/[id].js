@@ -27,7 +27,7 @@ const Collection = () => {
 };
 
 const AdminPageWrapper = styled(PageWrapper)`
-  padding-block-start: 1.7rem;
+  padding-block-start: 2.1rem;
 `;
 
 const InnerWrapper = styled.div`

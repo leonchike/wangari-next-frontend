@@ -47,10 +47,12 @@ const StyledInput = styled.input`
   color: var(--color-offblack);
   display: block;
   width: 100%;
+  padding: 0;
+  border-bottom: 2px solid transparent;
 
   &:focus {
     outline: none;
-    border-bottom: 1px solid var(--color-gray-700);
+    border-bottom: 2px solid var(--color-offblack);
   }
 `;
 
