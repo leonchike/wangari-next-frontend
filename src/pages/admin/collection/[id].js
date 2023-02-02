@@ -33,7 +33,7 @@ const AdminPageWrapper = styled(PageWrapper)`
 const InnerWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 900px;
+  max-width: calc(1000 / 16 * 1rem);
   margin: 0 auto;
 `;
 

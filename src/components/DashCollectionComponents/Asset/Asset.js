@@ -53,6 +53,10 @@ const Wrapper = styled.article`
   @media ${QUERIES.tabletAndUp} {
     grid-template-columns: minmax(300px, 0.5fr) 1fr;
   }
+
+  @media ${QUERIES.laptopAndUp} {
+    grid-template-columns: minmax(400px, 0.7fr) 1fr;
+  }
 `;
 
 const ImageWrapper = styled.div`
