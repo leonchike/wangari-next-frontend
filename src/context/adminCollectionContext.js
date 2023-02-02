@@ -118,6 +118,19 @@ function collectionReducer(state, action) {
           ...action,
         },
       };
+    case "UPDATED_ASSET":
+      return {
+        ...state,
+        assets: state.assets.map((asset) => {
+          if (asset._id === action.id) {
+            return {
+              ...asset,
+              ...action,
+            };
+          }
+          return asset;
+        }),
+      };
     case "REMOVE_ASSET_IMAGE_FROM_VIEW":
       return {
         ...state,

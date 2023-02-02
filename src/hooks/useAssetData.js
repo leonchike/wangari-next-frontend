@@ -1,5 +1,5 @@
 import useSWR from "swr";
-import { Get } from "@/utils/Api/admin/securedAPI";
+import { Get, Post, Put } from "@/utils/Api/admin/securedAPI";
 import API_Routes from "@/utils/Api/APIRoutes";
 
 export const GetAssetData = async (url) => {

@@ -9,6 +9,8 @@ const MyInput = forwardRef(function MyInput(props, ref) {
     paddingBlockEnd,
     defaultValue,
     noWidth,
+    labelFont,
+    labelWeight,
     ...otherProps
   } = props;
 
@@ -18,7 +20,9 @@ const MyInput = forwardRef(function MyInput(props, ref) {
       paddingBlockEnd={paddingBlockEnd}
       noWidth={noWidth}
     >
-      {label}
+      <LabelText labelFont={labelFont} labelWeight={labelWeight}>
+        {label}
+      </LabelText>
       {type === "textarea" ? (
         <textarea type={type} {...otherProps} ref={ref} />
       ) : type === "select" ? (
@@ -58,6 +62,11 @@ const Label = styled.label`
       outline: 2px solid var(--color-offblack);
     }
   }
+`;
+
+const LabelText = styled.span`
+  font-size: ${(p) => p.labelFont || "var(--normal-font-size)"};
+  font-weight: ${(p) => p.labelWeight || "var(--font-weight-normal)"};
 `;
 
 export default MyInput;

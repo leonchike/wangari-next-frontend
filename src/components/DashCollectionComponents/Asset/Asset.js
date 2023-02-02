@@ -5,6 +5,7 @@ import { useCollectionDispatch } from "@/context/adminCollectionContext";
 
 import { QUERIES } from "@/styles/styleConstants";
 import ImageHandler from "@/components/ImageHandler";
+import AssetDetails from "@/components/DashCollectionComponents/AssetDetails";
 
 const Asset = ({ collectionId, data }) => {
   const dispatch = useCollectionDispatch();
@@ -35,13 +36,13 @@ const Asset = ({ collectionId, data }) => {
           imageUpdatedWithAPIRepsonse={imageUpdatedWithAPIRepsonse}
         />
       </ImageWrapper>
-      <FormWrapper></FormWrapper>
+      <AssetDetails data={data} />
     </Wrapper>
   );
 };
 
 const Wrapper = styled.article`
-  padding: 1rem;
+  padding: 2rem 1rem;
   margin-block-end: 2rem;
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);

@@ -108,6 +108,8 @@ const Top = styled.div`
   align-items: center;
   margin-block-start: 1rem;
   padding-block-end: 1.5rem;
+  padding-inline-start: 1rem;
+  padding-inline-end: 1rem;
   border-bottom: 1px solid hsl(240deg 23% 90%);
 `;
 

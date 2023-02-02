@@ -132,6 +132,7 @@ html {
 
   --border-radius: 2px;
   --form-padding: 10px;
+  --normal-font-size: 1rem;
 
   --box-shadow:  0px 0px 0.4px rgba(0, 0, 0, 0.013),
     0px 0px 1px rgba(0, 0, 0, 0.017), 0px 0px 1.9px rgba(0, 0, 0, 0.014),
