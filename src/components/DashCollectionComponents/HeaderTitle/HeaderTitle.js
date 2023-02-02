@@ -1,25 +1,29 @@
-import { useEffect, useState } from "react";
 import styled from "styled-components";
 
-import { useCollectionUpdate } from "@/context/adminCollectionContext";
+import {
+  useCollectionDispatch,
+  useCollectionState,
+  useCollectionUpdate,
+} from "@/context/adminCollectionContext";
 
-const HeaderTitle = ({ id, title, dispatch }) => {
+const HeaderTitle = ({ id }) => {
   const updateCollectionData = useCollectionUpdate();
-  const [collectionName, setCollectionName] = useState(title);
+  const dispatch = useCollectionDispatch();
+  const state = useCollectionState();
+  const title = state.collection.name;
 
-  useEffect(() => {
-    setCollectionName(title);
-  }, [title]);
-
-  const updateName = (e) => {
-    e.preventDefault();
+  const updateState = (e) => {
     const { name, value } = e.target;
-    //update state
     dispatch({
       type: "UPDATED_COLLECTION",
-      [name]: value,
+      name: name,
+      value: value,
     });
+  };
 
+  const updateDB = (e) => {
+    e.preventDefault();
+    const { name, value } = e.target;
     // update database
     updateCollectionData(id, { name: value });
   };
@@ -30,11 +34,12 @@ const HeaderTitle = ({ id, title, dispatch }) => {
       <StyledInput
         type="text"
         placeholder="Collection Name"
-        value={collectionName}
+        name="name"
+        value={title}
         maxLength="60"
         required
-        onChange={(e) => setCollectionName(e.target.value)}
-        onBlur={updateName}
+        onChange={updateState}
+        onBlur={updateDB}
       />
     </>
   );

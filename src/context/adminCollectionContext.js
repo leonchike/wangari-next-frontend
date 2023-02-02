@@ -26,15 +26,11 @@ export function CollectionProvider({ children }) {
       <CollectionDispatchContext.Provider value={dispatch}>
         <CollectionUpdate.Provider value={updateCollectionData}>
           <CollectionPost.Provider value={postCollectionData}>
-            <AssetDataContext.Provider value={state}>
-              <AssetDispatchContext.Provider value={dispatch}>
-                <AssetUpdate.Provider value={updateAssetData}>
-                  <AssetPost.Provider value={postAssetData}>
-                    {children}
-                  </AssetPost.Provider>
-                </AssetUpdate.Provider>
-              </AssetDispatchContext.Provider>
-            </AssetDataContext.Provider>
+            <AssetUpdate.Provider value={updateAssetData}>
+              <AssetPost.Provider value={postAssetData}>
+                {children}
+              </AssetPost.Provider>
+            </AssetUpdate.Provider>
           </CollectionPost.Provider>
         </CollectionUpdate.Provider>
       </CollectionDispatchContext.Provider>
@@ -114,6 +110,7 @@ function collectionReducer(state, action) {
         assets: [...state.assets, action.asset],
       };
     case "UPDATED_COLLECTION":
+      console.log(action);
       return {
         ...state,
         collection: {

@@ -10,3 +10,11 @@ export const sortAssets = (assetSort, assets) => {
   });
   return sortedAssets;
 };
+
+export const formatWorksLabel = (numberOfWorks) => {
+  if (numberOfWorks === 1) {
+    return `${numberOfWorks} Masterpiece`;
+  } else {
+    return `${numberOfWorks} Masterpieces`;
+  }
+};
