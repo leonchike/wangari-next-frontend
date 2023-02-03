@@ -146,6 +146,7 @@ body {
   font-variation-settings: 'slnt' 0;
   --max-large-width: 1600px;
   --max-collections-width: calc(10000 / 16 * 1rem);
+  color: var(--color-offblack);
 }
 
 /*

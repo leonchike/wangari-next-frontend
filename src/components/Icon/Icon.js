@@ -5,6 +5,8 @@ import {
   Menu,
   X,
   ArrowRightCircle,
+  FileMinus,
+  Grid,
   Instagram,
   Trash,
   Twitter,
@@ -23,6 +25,8 @@ const icons = {
   closeCircle: XCircle,
   trash: Trash,
   upload: Upload,
+  collection: Grid,
+  page: FileMinus,
 };
 
 const Icon = ({ id, color, size, strokeWidth, ...delegated }) => {
