@@ -9,7 +9,6 @@ import AssetDetails from "@/components/DashCollectionComponents/AssetDetails";
 
 const Asset = ({ collectionId, data }) => {
   const dispatch = useCollectionDispatch();
-  console.log(data);
 
   const image = {
     jpg: data?.assetURL,

@@ -1,7 +1,6 @@
 import Image from "next/image";
 
 const ImageOutput = ({ jpg, webp, alt }) => {
-  console.log(jpg);
   return (
     // <picture>
     //   {webp && <source type="image/webp" srcSet={webp} />}

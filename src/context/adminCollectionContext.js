@@ -108,6 +108,7 @@ function collectionReducer(state, action) {
       return {
         ...state,
         assets: [...state.assets, action.asset],
+        assetSort: [...state.assetSort, action.asset._id],
       };
     case "UPDATED_COLLECTION":
       console.log(action);
@@ -157,6 +158,22 @@ function collectionReducer(state, action) {
           return asset;
         }),
       };
+    case "TOGGLED_ADD_ASSET_FORM":
+      return {
+        ...state,
+        addAsset: {
+          ...state.addAsset,
+          showForm: !state.addAsset.showForm,
+        },
+      };
+    case "UPDATED_ADD_ASSET_FORM":
+      return {
+        ...state,
+        addAsset: {
+          ...state.addAsset,
+          ...action,
+        },
+      };
     default:
       throw new Error(`Unhandled action type: ${action.type}`);
   }
@@ -166,4 +183,8 @@ const initialState = {
   collection: {},
   assetSort: [],
   assets: [],
+  addAsset: {
+    title: "",
+    showForm: false,
+  },
 };
