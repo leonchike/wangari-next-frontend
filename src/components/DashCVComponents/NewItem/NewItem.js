@@ -15,7 +15,7 @@ const NewItem = ({ type }) => {
 
   const options = {
     education: {
-      title: "+ Add a Education field",
+      title: "+ Add an Education field",
       dbType: "education",
     },
     solo: {

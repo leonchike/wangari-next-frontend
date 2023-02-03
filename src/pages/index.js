@@ -8,6 +8,7 @@ import WelcomeImages from "@/components/WelcomeImages";
 import Icon from "@/components/Icon";
 import UnstyledButton from "@/components/UnstyledButton";
 import VisuallyHidden from "@/components/VisuallyHidden";
+import { fadeIn } from "@/styles/animations";
 
 import {
   getCollectionSort,
@@ -85,6 +86,8 @@ const Main = styled.div`
   height: 100vh;
   position: relative;
   overflow: clip;
+
+  animation: ${fadeIn} 2s ease-in-out both;
 `;
 
 export default Home;
