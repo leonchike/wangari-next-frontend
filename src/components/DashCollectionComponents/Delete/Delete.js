@@ -35,7 +35,7 @@ const Delete = () => {
           onDismiss={() => setShowDeleteConfirmation(false)}
           setShowDeleteConfirmation={setShowDeleteConfirmation}
           handleDelete={handleDelete}
-          title="Delete Collection?"
+          title={`Delete ${collection.name} collection?`}
         />
       )}
     </DeleteWrapper>
@@ -45,8 +45,8 @@ const Delete = () => {
 const DeleteWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
-  margin-block-start: 4rem;
-  margin-block-end: 2rem;
+  margin-block-start: 10rem;
+  margin-block-end: 4rem;
 `;
 
 const DeleteBtn = styled(UnstyledButton)`
