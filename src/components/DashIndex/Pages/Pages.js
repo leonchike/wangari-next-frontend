@@ -3,31 +3,18 @@ import styled from "styled-components";
 import { useDashboardState } from "@/context/adminDashboardContext";
 import Tile from "@/components/DashIndex/Tile";
 import { QUERIES } from "@/styles/styleConstants";
+import { staticLinks } from "@/constants/staticLinks";
 
-const Collections = () => {
+const Pages = () => {
   const state = useDashboardState();
-  const collections = state.collections;
-  const collectionSort = state.collectionSort;
-
-  // order collections by collectionSort using the collection _id
-  const orderedCollections = collectionSort.map((id) => {
-    return collections.find((collection) => collection._id === id);
-  });
-
-  const addNewCollection = {
-    _id: "addNewCollection",
-    name: "Add New Collection",
-    addNew: true,
-  };
-
-  orderedCollections.push(addNewCollection);
+  const user = state.user;
 
   return (
     <Wrapper>
-      <Title>Collections</Title>
+      <Title>Pages</Title>
       <Grid>
-        {orderedCollections.map((collection) => (
-          <Tile key={collection._id} type="collection" data={collection} />
+        {staticLinks.map((link) => (
+          <Tile key={link.name} type="page" data={link} user={user} />
         ))}
       </Grid>
     </Wrapper>
@@ -35,7 +22,7 @@ const Collections = () => {
 };
 
 const Wrapper = styled.section`
-  margin-block-start: 2rem;
+  margin-block-start: 4rem;
   margin-block-end: 2rem;
 `;
 
@@ -61,4 +48,4 @@ const Grid = styled.div`
   }
 `;
 
-export default Collections;
+export default Pages;

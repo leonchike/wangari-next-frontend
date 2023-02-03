@@ -28,7 +28,7 @@ const DeleteConfirmation = ({ id, isOpen, onDismiss, title, handleDelete }) => {
               color="primary"
               autoFocus
             >
-              Remove
+              Delete
             </RemoveButton>
           </DialogActions>
         </Bottom>
@@ -97,7 +97,7 @@ const Content = styled(DialogContent)`
   border-radius: 2px;
 
   @media (prefers-reduced-motion: no-preference) {
-    animation: ${slideIn} 500ms both cubic-bezier(0, 0.6, 0.32, 1.06);
+    animation: ${slideIn} 200ms both cubic-bezier(0, 0.6, 0.32, 1.06);
     animation-delay: 200ms;
   }
 `;

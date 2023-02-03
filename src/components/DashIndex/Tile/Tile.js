@@ -3,16 +3,36 @@ import styled from "styled-components";
 import pluralize from "pluralize";
 
 import Icon from "@/components/Icon";
+import formatDate from "@/utils/formatDate";
+import AddNewBtn from "@/components/DashIndex/AddNewBtn";
 
-const Tile = ({ type, data }) => {
+const Tile = ({ type, data, user }) => {
   const urlContructor = (type) => {
     if (type === "collection") {
       return `/admin/collection/${data._id}`;
     }
     if (type === "page") {
-      return `admin/page/${data.page}`;
+      return `admin/${data.name.toLowerCase()}`;
     }
   };
+
+  let lastupdated;
+
+  if (user && user.pagesUpdates) {
+    switch (data.name) {
+      case "About":
+        lastupdated = user.pagesUpdates.aboutLastUpdate;
+      case "CV":
+        lastupdated = user.pagesUpdates.cvLastUpdate;
+      case "Press":
+        lastupdated = user.pagesUpdates.pressLastUpdate;
+        break;
+    }
+  }
+
+  if (data.addNew) {
+    return <AddNewBtn />;
+  }
 
   return (
     <Link href={urlContructor(type)} role="link">
@@ -36,7 +56,14 @@ const Tile = ({ type, data }) => {
             </Data>
           </Details>
         )}
-        {type === "page" && <div>Last updated:</div>}
+        {type === "page" && data.name !== "Contact" && (
+          <Status>Last updated: {formatDate(lastupdated, "en-UK")}</Status>
+        )}
+        {type === "page" && data.name === "Contact" && (
+          <Status>
+            Unread Messages: {user?.pagesUpdates?.contactUnReadMessages}{" "}
+          </Status>
+        )}
       </Article>
     </Link>
   );

@@ -11,7 +11,9 @@ import { useUserData } from "@/hooks/useUserData";
 import { useDashboardDispatch } from "@/context/adminDashboardContext";
 
 //components
+import Header from "@/components/DashIndex/Header";
 import Collections from "@/components/DashIndex/Collections";
+import Pages from "@/components/DashIndex/Pages";
 
 const CollectionsComposer = () => {
   const dispatch = useDashboardDispatch();
@@ -62,7 +64,9 @@ const CollectionsComposer = () => {
 
   return (
     <div>
+      <Header />
       <Collections />
+      <Pages />
     </div>
   );
 };

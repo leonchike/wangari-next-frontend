@@ -71,6 +71,12 @@ function dashboardReducer(state, action) {
         ...state,
         user: action.user,
       };
+    case "ADDED_COLLECTION":
+      return {
+        ...state,
+        collections: [...state.collections, action.collection],
+        collectionSort: [...state.collectionSort, action.collectionSort],
+      };
     default:
       throw new Error(`Unhandled action type: ${action.type}`);
   }

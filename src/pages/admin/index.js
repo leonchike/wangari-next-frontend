@@ -11,7 +11,6 @@ const Dashboard = () => {
     <DashboardProvider>
       <AdminPageWrapper>
         <InnerWrapper>
-          <Title>Dashboard</Title>
           <Composer />
         </InnerWrapper>
       </AdminPageWrapper>
