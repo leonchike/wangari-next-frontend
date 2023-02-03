@@ -29,12 +29,17 @@ const CollectionsLinks = () => {
   // Sorting collections by order from db
   const sortedCollections = sortCollections(collections, order);
 
+  // check if any items in sortedCollections are undefined and remove them
+  const filteredCollections = sortedCollections.filter(
+    (collection) => collection !== undefined
+  );
+
   return (
     <Wrapper>
       <Title>Collections</Title>
       <nav>
         <List role="list">
-          {sortedCollections.map((collection) => (
+          {filteredCollections.map((collection) => (
             <li key={collection._id}>
               <StyledLink
                 href={`/admin/collection/${collection._id}`}
