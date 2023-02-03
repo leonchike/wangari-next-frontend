@@ -16,9 +16,6 @@ const DeleteConfirmation = ({ id, isOpen, onDismiss, title, handleDelete }) => {
           <DialogTitle>{title}</DialogTitle>
         </Top>
         <Bottom>
-          {/* <Body>
-            <DialogContentText>This action cannot be undone.</DialogContentText>
-          </Body> */}
           <DialogActions>
             <CancelButton onClick={onDismiss} color="primary">
               Cancel
@@ -46,15 +43,6 @@ const fadeIn = keyframes`
   }
 `;
 
-const slideIn = keyframes`
-  from {
-    transform: translateY(100%);
-  }
-  to {
-    transform: translateY(0%);
-  }
-`;
-
 const Wrapper = styled(DialogOverlay)`
   position: fixed;
   top: 0;
@@ -74,7 +62,7 @@ const Backdrop = styled.div`
   right: 0;
   bottom: 0;
   background: var(--color-backdrop);
-  animation: ${fadeIn} 500ms;
+  animation: ${fadeIn} 200ms;
 `;
 
 const IconWrapper = styled.div`
@@ -97,7 +85,7 @@ const Content = styled(DialogContent)`
   border-radius: 2px;
 
   @media (prefers-reduced-motion: no-preference) {
-    animation: ${slideIn} 200ms both cubic-bezier(0, 0.6, 0.32, 1.06);
+    animation: ${fadeIn} 200ms both cubic-bezier(0, 0.6, 0.32, 1.06);
     animation-delay: 200ms;
   }
 `;

@@ -16,7 +16,7 @@ const AddNewBtn = () => {
     e.preventDefault();
     const data = {
       name,
-      liveStatus: true,
+      liveStatus: false,
       newStatus: true,
     };
     setShowModal(false);

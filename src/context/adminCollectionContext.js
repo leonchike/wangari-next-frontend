@@ -111,7 +111,6 @@ function collectionReducer(state, action) {
         assetSort: [...state.assetSort, action.asset._id],
       };
     case "UPDATED_COLLECTION":
-      console.log(action);
       return {
         ...state,
         collection: {

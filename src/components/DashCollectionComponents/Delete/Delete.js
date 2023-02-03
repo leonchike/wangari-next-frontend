@@ -1,13 +1,28 @@
 import { useState } from "react";
+import { useRouter } from "next/router";
 import styled from "styled-components";
+
+import {
+  useCollectionState,
+  useCollectionUpdate,
+} from "@/context/adminCollectionContext";
 
 import UnstyledButton from "@/components/UnstyledButton";
 import DeleteConfirmation from "@/components/DeleteConfirmation";
+import { routes } from "@/constants/staticLinks";
 
 const Delete = () => {
+  const router = useRouter();
+  const updateCollectionData = useCollectionUpdate();
+  const { collection } = useCollectionState();
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
 
-  const handleDelete = () => {};
+  const handleDelete = () => {
+    const id = collection._id;
+    updateCollectionData(id, { deletedStatus: true }).then(() => {
+      router.push(routes.adminIndex);
+    });
+  };
 
   return (
     <DeleteWrapper>
@@ -20,7 +35,7 @@ const Delete = () => {
           onDismiss={() => setShowDeleteConfirmation(false)}
           setShowDeleteConfirmation={setShowDeleteConfirmation}
           handleDelete={handleDelete}
-          title="Confirm Deleting Collection?"
+          title="Delete Collection?"
         />
       )}
     </DeleteWrapper>
