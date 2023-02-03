@@ -21,7 +21,6 @@ const AddNewBtn = () => {
     };
     setShowModal(false);
     postCollectionData(data).then((res) => {
-      console.log(res);
       dispatch({
         type: "ADDED_COLLECTION",
         collection: res.data,

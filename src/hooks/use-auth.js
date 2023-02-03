@@ -49,8 +49,7 @@ function useProvideAuth() {
       router.push("/admin");
       // Redirect the user to the dashboard
     } else if (response.status === 401) {
-      console.log(response);
-      console.log("invalid credentials");
+      console.log("auth error");
     }
   };
 
@@ -62,7 +61,6 @@ function useProvideAuth() {
   };
 
   const isAuth = () => {
-    console.log("isAuth");
     return user !== null;
   };
 

@@ -10,9 +10,6 @@ export default function WithAuth(WrappedComponent) {
       setTimeout(() => {
         if (!user) {
           Router.push("/login"); //note the hook "useAuth" will also redirect to login if the user is not authenticated
-          console.log("not authenticated");
-        } else {
-          console.log("authenticated");
         }
       }, 100);
     }, []);

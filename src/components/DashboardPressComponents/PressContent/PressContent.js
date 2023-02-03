@@ -31,8 +31,6 @@ const PressContent = () => {
     return <div>Loading...</div>;
   }
 
-  console.log(state.press);
-
   return (
     <Wrapper>
       <AddNew />

@@ -31,7 +31,6 @@ const ImageUpload = ({ id, intent, imageUpdatedWithAPIRepsonse }) => {
       // check is response ends with .jpg
       if (response.endsWith(".jpg")) {
         imageUpdatedWithAPIRepsonse(response);
-        console.log(response);
       } else {
         setError(response);
       }

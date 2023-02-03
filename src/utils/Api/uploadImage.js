@@ -6,8 +6,6 @@ export const uploadImage = async (id, file, intent) => {
   let formData = new FormData();
   formData.append("file", file);
 
-  console.log(`imageurl: ${baseURL}${API_Routes.image}`);
-
   try {
     const response = await fetch(`${baseURL}${API_Routes.image}`, {
       method: "POST",
