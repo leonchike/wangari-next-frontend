@@ -40,7 +40,6 @@ export const submitContactform = async ({
 // get collection data
 export const getAllCollectionData = async () => {
   const response = await axios.get(`${BASE_API_URL}/public-api/collections/`);
-  console.log(process.env.NEXT_PUBLIC_API_URL);
   return response;
 };
 

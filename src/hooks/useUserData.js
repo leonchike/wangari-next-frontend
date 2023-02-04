@@ -20,6 +20,6 @@ export const useUserData = () => {
 };
 
 export const updateUserData = async (data) => {
-  const response = await Put({ endpoint: API_Routes.currentUser, data });
+  const response = await Put({ endpoint: API_Routes.updateCurrentUser, data });
   return response.data;
 };
