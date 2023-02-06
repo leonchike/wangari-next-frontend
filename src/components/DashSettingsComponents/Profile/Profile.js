@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { useEffect } from "react";
 
 import SettingSection from "@/components/DashSettingsComponents/SettingSection";
 import {
@@ -102,7 +101,7 @@ const Profile = () => {
                 <Spacer size={10} />
                 <Button
                   type="button"
-                  onClick={updateDB("profile")}
+                  onClick={() => updateDB("profile")}
                   disabled={
                     state.user.firstName === "" || state.user.lastName === ""
                   }
@@ -147,7 +146,7 @@ const Profile = () => {
                 <Spacer size={10} />
                 <Button
                   type="button"
-                  onClick={updateDB("email")}
+                  onClick={() => updateDB("email")}
                   disabled={state.user.email === ""}
                 >
                   Save
