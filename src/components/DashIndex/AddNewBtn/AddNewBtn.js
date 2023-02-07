@@ -32,7 +32,7 @@ const AddNewBtn = () => {
   return (
     <>
       <Article onClick={() => setShowModal(true)}>
-        <Container>+ Add a New Collection</Container>
+        <Container>+ Add a new Collection</Container>
       </Article>
       {showModal && (
         <AddModal

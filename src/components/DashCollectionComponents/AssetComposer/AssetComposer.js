@@ -6,7 +6,7 @@ import AddAsset from "@/components/DashCollectionComponents/AddAsset";
 const AssetComposer = () => {
   return (
     <Section>
-      <h3>Assets</h3>
+      <h3>Works</h3>
       <AddAsset />
       <Assets />
     </Section>

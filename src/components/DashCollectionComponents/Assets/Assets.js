@@ -17,11 +17,11 @@ const Assets = () => {
   const sortOrder = state.assetSort;
 
   if (!assets) {
-    return <div>No Assets Found</div>;
+    return <div>No Works Found</div>;
   }
 
   if (assets.length === 0) {
-    return <NoAssets>This collection does not have any assets</NoAssets>;
+    return <NoAssets>This collection does not have any works.</NoAssets>;
   }
 
   const sortedAssets = sortAssets(sortOrder, assets);
