@@ -4,7 +4,15 @@ import styled from "styled-components";
 import formatDate from "@/utils/formatDate";
 
 const PressItem = ({ data }) => {
-  const { title, publication, author, datePublished, description, url } = data;
+  const {
+    title,
+    publication,
+    author,
+    datePublished,
+    description,
+    url,
+    publicationLogoUrl,
+  } = data;
 
   const altURL = [
     "https://upload.wikimedia.org/wikipedia/commons/7/77/The_New_York_Times_logo.png",
@@ -15,7 +23,7 @@ const PressItem = ({ data }) => {
 
   const randomNumber = Math.floor(Math.random() * 4);
 
-  const logoURL = altURL[randomNumber];
+  const logoURL = publicationLogoUrl;
 
   return (
     <ArticleWrapper>

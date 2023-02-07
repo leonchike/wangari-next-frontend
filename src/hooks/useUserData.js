@@ -23,3 +23,8 @@ export const updateUserData = async (data) => {
   const response = await Put({ endpoint: API_Routes.updateCurrentUser, data });
   return response.data;
 };
+
+export const updatePassword = async (data) => {
+  const response = await Put({ endpoint: API_Routes.updatePassword, data });
+  return response.data;
+};

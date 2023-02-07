@@ -14,6 +14,7 @@ const API_Routes = {
   asset: "/api/asset",
   currentUser: "/api/user/getcurrent",
   updateCurrentUser: "/api/user/updatecurrent",
+  updatePassword: "/passwordUpdate",
 
   get LOGINROUTE() {
     return this.BASE + this.login;

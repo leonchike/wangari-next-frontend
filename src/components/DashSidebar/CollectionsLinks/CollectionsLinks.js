@@ -20,7 +20,7 @@ const CollectionsLinks = () => {
   if (isLoading || sortLoading) return <div>Loading...</div>;
   if (isError || sortError) return <div>Error...</div>;
 
-  if (!collectionSort || !collections) {
+  if (!collectionSort || !collections || !collectionSort.data.length) {
     return <div>No collections</div>;
   }
   // Extracting nesting data

@@ -35,7 +35,7 @@ const CollectionsComposer = () => {
   }, [collections, dispatch]);
 
   useEffect(() => {
-    if (collectionSort) {
+    if (collectionSort && collectionSort.data.length > 0) {
       dispatch({
         type: "SET_COLLECTION_SORT",
         collectionSort: collectionSort.data[0].collections,

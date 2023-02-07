@@ -92,7 +92,7 @@ const AssetDetails = ({ data }) => {
           <Input
             label="Width (in)"
             type="number"
-            name="width"
+            name="widthInInches"
             value={asset.widthInInches}
             onChange={handleChange}
             onBlur={handleBlur}
@@ -104,7 +104,7 @@ const AssetDetails = ({ data }) => {
           <Input
             label="Height (in)"
             type="number"
-            name="height"
+            name="heightInInches"
             value={asset.heightInInches}
             onChange={handleChange}
             onBlur={handleBlur}

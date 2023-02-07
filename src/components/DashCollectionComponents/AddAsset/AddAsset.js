@@ -35,7 +35,7 @@ const AddAsset = () => {
     });
   };
 
-  const handleAddDB = () => {
+  const handleAddDB = (e) => {
     e.preventDefault();
     // use mutate from SWR to make API call
     mutate("/api/asset", async () => {

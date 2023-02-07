@@ -7,6 +7,7 @@ import { useSettingsDispatch } from "@/context/adminUserContext";
 
 import Header from "@/components/DashSettingsComponents/Header";
 import Profile from "@/components/DashSettingsComponents/Profile";
+import Password from "@/components/DashSettingsComponents/Password";
 
 const Composer = () => {
   const dispatch = useSettingsDispatch();
@@ -33,6 +34,7 @@ const Composer = () => {
     <>
       <Header />
       <Profile />
+      <Password />
     </>
   );
 };
