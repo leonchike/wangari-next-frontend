@@ -25,9 +25,6 @@ export default function App({ Component, pageProps }) {
               <Analytics />
             </main>
           )}
-          {/* // <main className={lato.className}>
-          //   <Component {...pageProps} />
-          // </main> */}
         </ProvideAuth>
       </ThemeProvider>
     </QueryClientProvider>
