@@ -4,6 +4,7 @@ import { Lato } from "@next/font/google";
 import { ThemeProvider } from "styled-components";
 import { THEME } from "@/styles/styleConstants";
 import { ProvideAuth } from "@/hooks/use-auth";
+import { Analytics } from "@vercel/analytics/react";
 
 const lato = Lato({
   subsets: ["latin"],
@@ -21,6 +22,7 @@ export default function App({ Component, pageProps }) {
           {getLayout(
             <main className={lato.className}>
               <Component {...pageProps} />
+              <Analytics />
             </main>
           )}
           {/* // <main className={lato.className}>
