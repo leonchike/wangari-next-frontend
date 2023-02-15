@@ -7,6 +7,7 @@ import API_Routes from "@/utils/Api/APIRoutes";
 import { ContactData } from "@/types/apiTypes";
 
 export const GetContactData = async (url: string) => {
+  // @ts-ignore
   const response = await Get({ endpoint: url });
   return response.data;
 };
