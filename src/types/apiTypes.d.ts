@@ -104,3 +104,80 @@ export interface CollectionSortData {
   updatedAt: string;
   "--v": number;
 }
+
+export interface CVData {
+  _id: string;
+  title: string;
+  createdBy: string;
+  liveStatus: boolean;
+  status: string;
+  deletedStatus: boolean;
+  type: string;
+  createdAt: string;
+  updatedAt: string;
+  "--v": number;
+}
+
+export interface CVsData {
+  data: CVData[];
+}
+
+export interface DataOrderData {
+  _id: string;
+  createdBy: string;
+  cvOrder: string[];
+  pressOrder: string[];
+  createdAt: string;
+  updatedAt: string;
+  "--v": number;
+}
+
+export interface PressData {
+  _id: string;
+  title: string;
+  createdBy: string;
+  deletedStatus: boolean;
+  datePublished: string;
+  createdAt: string;
+  updatedAt: string;
+  "--v": number;
+  publication: string;
+  author: string;
+  description: string;
+  publicationLogoUrl: string;
+  url: string;
+}
+
+export interface PressesData {
+  data: PressData[];
+}
+
+export interface UserData {
+  _id: string;
+  email: string;
+  role: string;
+  firstName: string;
+  lastName: string;
+  disabled: boolean;
+  createdAt: string;
+  updatedAt: string;
+  "--v": number;
+  settings: {
+    theme: string;
+    language: string;
+    notifications: string;
+  };
+  pagesUpdates: {
+    contactUnReadMessages: number;
+    contactLastGetCall: string;
+    aboutLastUpdate: string;
+    cvLastUpdate: string;
+    pressLastUpdate: string; 
+  };
+}
+
+export interface UpdatePasswordRequest {
+  email: string;
+  password: string;
+  newPassword: string;
+}

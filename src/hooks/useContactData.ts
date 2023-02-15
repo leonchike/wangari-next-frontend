@@ -1,8 +1,12 @@
 import useSWR from "swr";
+// @ts-ignore
 import { Get, Put } from "@/utils/Api/admin/securedAPI";
+// @ts-ignore
 import API_Routes from "@/utils/Api/APIRoutes";
+// @ts-ignore
+import { ContactData } from "@/types/apiTypes";
 
-export const GetContactData = async (url) => {
+export const GetContactData = async (url: string) => {
   const response = await Get({ endpoint: url });
   return response.data;
 };
@@ -16,7 +20,7 @@ export const useContactData = () => {
   };
 };
 
-export const updateContactData = async (id, data) => {
+export const updateContactData = async (id: string, data: ContactData) => {
   const response = await Put({ endpoint: API_Routes.contact, id, data });
   return response.data;
 };
