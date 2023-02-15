@@ -1,7 +1,5 @@
 import { useEffect } from "react";
-import Link from "next/link";
 import { useRouter } from "next/router";
-import styled from "styled-components";
 
 // Component imports
 import GalleryView from "@/components/PublicGalleryComponents/GalleryView";
@@ -102,6 +100,7 @@ const GalleryViewController = ({ id, collectionId, assetArray, assetData }) => {
 
     // Clean up function to remove event listeners
     return () => {};
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
   // useEffect to hide buttons when there is no previous or next asset
@@ -116,6 +115,7 @@ const GalleryViewController = ({ id, collectionId, assetArray, assetData }) => {
     } else {
       document.getElementById("GalleryRightButton").style.display = "block";
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
   return <GalleryView id={id} assetData={assetData} />;

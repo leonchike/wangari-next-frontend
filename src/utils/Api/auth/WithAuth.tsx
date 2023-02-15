@@ -13,6 +13,7 @@ export default function WithAuth(WrappedComponent: typeof React.Component) {
           Router.push("/login"); //note the hook "useAuth" will also redirect to login if the user is not authenticated
         }
       }, 100);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
