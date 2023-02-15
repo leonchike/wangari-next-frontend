@@ -1,13 +1,13 @@
 /*
 This file creates the context API and the reducer function for providing data and state to the Collection Page and related Assets on the Admin Dashboard.
 */
-
 import { createContext, useContext, useReducer } from "react";
 import {
   updateCollectionData,
   postCollectionData,
 } from "@/hooks/useCollectionsData";
 import { updateAssetData, postAssetData } from "@/hooks/useAssetData";
+import { CollectionState, AssetData, CollectionData } from "@/types/apiTypes";
 
 const CollectionDataContext = createContext(null);
 const CollectionDispatchContext = createContext(null);
@@ -70,7 +70,17 @@ export function useAssetPost() {
   return useContext(AssetPost);
 }
 
-function collectionReducer(state, action) {
+interface CollectionAction {
+  type: string;
+  collection: any;
+  id: string;
+  assetSort: string[];
+  assets: any;
+  asset: AssetData;
+  assetURL: string;
+}
+
+function collectionReducer(state: CollectionState, action: CollectionAction) {
   switch (action.type) {
     case "UPDATED_COLLECTION_FROM_API":
       return {
@@ -90,8 +100,9 @@ function collectionReducer(state, action) {
     case "DELETED_COLLECTION":
       return {
         ...state,
+        // @ts-ignore
         collection: state.collection.filter(
-          (collection) => collection._id !== action.id
+          (collection: CollectionData) => collection._id !== action.id
         ),
       };
     case "DELETED_ASSET":
@@ -102,6 +113,7 @@ function collectionReducer(state, action) {
     case "ADDED_COLLECTION":
       return {
         ...state,
+        // @ts-ignore
         collection: [...state.collection, action.collection],
       };
     case "ADDED_ASSET":
@@ -178,7 +190,7 @@ function collectionReducer(state, action) {
   }
 }
 
-const initialState = {
+const initialState: CollectionState = {
   collection: {},
   assetSort: [],
   assets: [],

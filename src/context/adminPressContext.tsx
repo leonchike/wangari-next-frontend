@@ -3,6 +3,7 @@ This file focuses on the context API and the reducer function for providing data
 */
 import { createContext, useContext, useReducer } from "react";
 import { updatePressData, postPressData } from "@/hooks/usePressData";
+import { PressState } from "@/types/apiTypes";
 
 const PressDataContext = createContext(null);
 const PressDispatchContext = createContext(null);
@@ -41,7 +42,13 @@ export function usePressPost() {
   return useContext(PressPost);
 }
 
-function pressReducer(state, action) {
+interface PressAction {
+  type: string;
+  press: any;
+  id: string;
+}
+
+function pressReducer(state: PressState, action: PressAction) {
   switch (action.type) {
     case "UPDATED_PRESS_FROM_API":
       return {
@@ -76,6 +83,6 @@ function pressReducer(state, action) {
   }
 }
 
-const initialState = {
+const initialState: PressState = {
   press: [],
 };

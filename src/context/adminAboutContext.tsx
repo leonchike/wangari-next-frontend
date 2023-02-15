@@ -2,7 +2,9 @@
 This file focuses on the context API and the reducer function for providing data and state to the About Page on the Admin Dashboard.
 */
 import { createContext, useContext, useReducer } from "react";
-import { updateAboutData, postAboutData } from "@/hooks/useAboutData";
+import { updateAboutData } from "@/hooks/useAboutData";
+// @ts-ignore
+import { AboutData, AboutState } from "@/types/apiTypes";
 
 const AboutDataContext = createContext(null);
 const AboutDispatchContext = createContext(null);
@@ -34,7 +36,16 @@ export function useAboutUpdate() {
   return useContext(AboutUpdate);
 }
 
-function aboutReducer(state, action) {
+interface AboutAction {
+  type: string;
+  about: any;
+  id: string;
+  jpg: string;
+  profileURL: string;
+  profileURLWebPOriginalSize: string;
+}
+
+function aboutReducer(state: AboutState, action: AboutAction) {
   switch (action.type) {
     case "UPDATE_ABOUT_FROM_API":
       return {
@@ -44,7 +55,7 @@ function aboutReducer(state, action) {
     case "UPDATED_ABOUT":
       return {
         ...state,
-        about: state.about.map((about) => {
+        about: state.about.map((about: AboutData) => {
           if (about._id === action.id) {
             return {
               ...about,
@@ -57,7 +68,7 @@ function aboutReducer(state, action) {
     case "CHANGED_IMAGE":
       return {
         ...state,
-        about: state.about.map((about) => {
+        about: state.about.map((about: AboutData) => {
           if (about._id === action.id) {
             return {
               ...about,
@@ -71,7 +82,7 @@ function aboutReducer(state, action) {
     case "IMAGE_UPDATED":
       return {
         ...state,
-        about: state.about.map((about) => {
+        about: state.about.map((about: AboutData) => {
           if (about._id === action.id) {
             return {
               ...about,
@@ -86,6 +97,6 @@ function aboutReducer(state, action) {
   }
 }
 
-const initialState = {
+const initialState: AboutState = {
   about: [],
 };

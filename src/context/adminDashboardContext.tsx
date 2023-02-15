@@ -8,6 +8,7 @@ import {
   useCollectionSortData,
 } from "@/hooks/useCollectionsData";
 import { useUserData } from "@/hooks/useUserData";
+import { AdminDashboardState } from "@/types/apiTypes";
 
 const DashboardDataContext = createContext(null);
 const DashboardDispatchContext = createContext(null);
@@ -53,8 +54,14 @@ export function useDashboardUser() {
   return useContext(DashboardUser);
 }
 
+interface DashboardAction {
+  type: string;
+  collections: any;
+  collectionSort: string[];
+}
+
 // reducer function for the Dashboard Page
-function dashboardReducer(state, action) {
+function dashboardReducer(state: AdminDashboardState, action) {
   switch (action.type) {
     case "SET_COLLECTIONS":
       return {

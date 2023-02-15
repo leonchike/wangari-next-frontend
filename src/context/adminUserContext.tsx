@@ -8,6 +8,7 @@ import {
   updateUserData,
   updatePassword,
 } from "@/hooks/useUserData";
+import { AdminUserState } from "@/types/apiTypes";
 
 const SettingsDataContext = createContext(null);
 const SettingsDispatchContext = createContext(null);
@@ -53,8 +54,13 @@ export function useUpdatePassword() {
   return useContext(UpdatePassword);
 }
 
+interface SettingsAction {
+  type: string;
+  payload: any;
+}
+
 // reducer function for the Settings Page
-function settingsReducer(state, action) {
+function settingsReducer(state: AdminUserState, action: SettingsAction) {
   switch (action.type) {
     case "SET_USER":
       return {
@@ -156,7 +162,7 @@ function settingsReducer(state, action) {
   }
 }
 
-const initialState = {
+const initialState: AdminUserState = {
   user: null,
   displayProfile: true,
   displayEmail: true,

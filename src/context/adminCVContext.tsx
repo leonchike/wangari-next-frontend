@@ -3,6 +3,7 @@ This file focuses on the context API and the reducer function for providing data
 */
 import { createContext, useContext, useReducer } from "react";
 import { updateCVData, postCVData } from "@/hooks/useCVData";
+import { CVState } from "@/types/apiTypes";
 
 const CVDataContext = createContext(null);
 const CVDispatchContext = createContext(null);
@@ -39,7 +40,14 @@ export function useCVPost() {
   return useContext(CVPost);
 }
 
-function cvReducer(state, action) {
+interface CVAction {
+  type: string;
+  cv: any;
+  id: string;
+  cvOrder: string[];
+}
+
+function cvReducer(state: CVState, action: CVAction) {
   switch (action.type) {
     case "UPDATE_CV_FROM_API":
       return {
@@ -80,7 +88,7 @@ function cvReducer(state, action) {
   }
 }
 
-export const initialState = {
+export const initialState: CVState = {
   cv: [],
   cvOrder: [],
 };

@@ -5,9 +5,9 @@ export interface LoginResponse {
       _id: string;
       email: string;
       password: string;
-    },
+    };
     token: string;
-  }
+  };
 }
 
 export interface LoginRequest {
@@ -47,6 +47,10 @@ export interface AboutData {
   profileURLWebP500w: string;
   profileURLWebPOriginalSize: string;
   instagramHandle: string;
+}
+
+export interface AboutState {
+  about: AboutData[];
 }
 
 export interface AssetData {
@@ -92,6 +96,16 @@ export interface CollectionData {
   "--v": number;
 }
 
+export interface CollectionState {
+  collection: {};
+  assetSort: string[];
+  assets: AssetData[];
+  addAsset: {
+    title: string;
+    showForm: boolean;
+  };
+}
+
 export interface CollectionsData {
   data: CollectionData[];
 }
@@ -116,6 +130,11 @@ export interface CVData {
   createdAt: string;
   updatedAt: string;
   "--v": number;
+}
+
+export interface CVState {
+  cv: CVData[];
+  cvOrder: DataOrderData.cvOrder;
 }
 
 export interface CVsData {
@@ -148,6 +167,10 @@ export interface PressData {
   url: string;
 }
 
+export interface PressState {
+  press: PressData[];
+}
+
 export interface PressesData {
   data: PressData[];
 }
@@ -172,7 +195,7 @@ export interface UserData {
     contactLastGetCall: string;
     aboutLastUpdate: string;
     cvLastUpdate: string;
-    pressLastUpdate: string; 
+    pressLastUpdate: string;
   };
 }
 
@@ -180,4 +203,28 @@ export interface UpdatePasswordRequest {
   email: string;
   password: string;
   newPassword: string;
+}
+
+export interface AdminUserState {
+  user: UserData;
+  displayProfile: boolean;
+  displayEmail: boolean;
+  displayPassword: boolean;
+  password: {
+    current: string;
+    new: string;
+    confirm: string;
+    error: {
+      current: string | null;
+      new: string | null;
+      confirm: string | null;
+      apiError: string | null;
+    };
+  };
+}
+
+export interface AdminDashboardState {
+  collections: CollectionData[];
+  collectionSort: CollectionSortData[];
+  user: UserData;
 }
