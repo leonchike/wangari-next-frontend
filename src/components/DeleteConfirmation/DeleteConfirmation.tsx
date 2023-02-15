@@ -4,7 +4,25 @@ import { DialogOverlay, DialogContent } from "@reach/dialog";
 import Icon from "@/components/Icon";
 import Button from "@/components/Button";
 
-const DeleteConfirmation = ({ id, isOpen, onDismiss, title, handleDelete }) => {
+interface DeleteConfirmationProps {
+  id?: string;
+  isOpen: boolean;
+  onDismiss: () => void;
+  title: string;
+  handleDelete: (id: string) => void;
+}
+
+type DeleteConfirmationType = DeleteConfirmationProps &
+  React.HTMLAttributes<HTMLDivElement> &
+  React.ButtonHTMLAttributes<HTMLDivElement>;
+
+const DeleteConfirmation = ({
+  id,
+  isOpen,
+  onDismiss,
+  title,
+  handleDelete,
+}: DeleteConfirmationType) => {
   return (
     <Wrapper isOpen={isOpen} onDismiss={onDismiss}>
       <Backdrop />

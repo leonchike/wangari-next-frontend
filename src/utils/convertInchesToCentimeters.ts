@@ -1,4 +1,4 @@
-const inTOcm = (inches: string) => {
+const inTOcm = (inches: number) => {
   return Math.ceil(Number(inches) * 2.54);
 };
 

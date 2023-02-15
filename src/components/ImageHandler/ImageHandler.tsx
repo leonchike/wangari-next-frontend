@@ -4,14 +4,25 @@ import ImageUpload from "@/components/ImageUpload";
 import ImageOutput from "@/components/ImageOutput";
 import Button from "@/components/Button";
 
+interface ImageHandlerProps {
+  id: string;
+  image: {
+    jpg: string;
+    webp: string;
+    alt: string;
+  };
+  intent: string;
+  handleChangeImage: () => void;
+  imageUpdatedWithAPIRepsonse: (arg0: string) => void;
+}
+
 const ImageHandler = ({
   id,
   image,
   intent,
-  dispatch,
   handleChangeImage,
   imageUpdatedWithAPIRepsonse,
-}) => {
+}: ImageHandlerProps) => {
   // check if image object values are not truthy
   const checkImageObject = () => {
     if (!image.jpg) {
@@ -21,10 +32,6 @@ const ImageHandler = ({
   };
 
   const imageStatus = checkImageObject();
-
-  // const handleHandleChangeImage = () => {
-  //   dispatch({ id: id, type: "CHANGED_IMAGE" });
-  // };
 
   return (
     <>

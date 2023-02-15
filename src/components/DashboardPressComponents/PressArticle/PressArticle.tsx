@@ -19,7 +19,7 @@ const PressArticle = ({ data, index }) => {
     url,
   } = data;
 
-  let jsDate = new Date(data.datePublished).toISOString().split("T")[0];
+  let jsDate = new Date(datePublished).toISOString().split("T")[0];
 
   // form state
   const [formState, setFormState] = useState({
@@ -40,7 +40,10 @@ const PressArticle = ({ data, index }) => {
   // api update function
   const updatePressData = usePressUpdate();
 
-  const handleUpdatePress = (e) => {
+  const handleUpdatePress = (e: {
+    preventDefault: () => void;
+    target: { name: string; value: string };
+  }) => {
     e.preventDefault();
     const { name, value } = e.target;
     dispatch({
@@ -63,22 +66,24 @@ const PressArticle = ({ data, index }) => {
       <Title>Article #{index + 1}</Title>
       <Form>
         <Input
+          // @ts-ignore
           label="Title"
           type="text"
           name="title"
           value={formState.title}
-          onChange={(e) =>
+          onChange={(e: { target: { value: any } }) =>
             setFormState({ ...formState, title: e.target.value })
           }
           onBlur={handleUpdatePress}
           placeholder="Title"
         />
         <Input
+          // @ts-ignore
           label="Publication"
           type="text"
           name="publication"
           value={formState.publication}
-          onChange={(e) =>
+          onChange={(e: { target: { value: any } }) =>
             setFormState({ ...formState, publication: e.target.value })
           }
           onBlur={handleUpdatePress}
@@ -86,56 +91,63 @@ const PressArticle = ({ data, index }) => {
         />
         <FormRow>
           <Input
+            // @ts-ignore
             label="Author"
             type="text"
             name="author"
             value={formState.author}
-            onChange={(e) =>
+            onChange={(e: { target: { value: any } }) =>
               setFormState({ ...formState, author: e.target.value })
             }
             onBlur={handleUpdatePress}
             placeholder="Author"
           />
           <Input
+            // @ts-ignore
             label="Date Published"
             type="date"
             name="datePublished"
             value={formState.datePublished}
-            onChange={(e) =>
+            onChange={(e: { target: { value: any } }) =>
               setFormState({ ...formState, datePublished: e.target.value })
             }
             onBlur={handleUpdatePress}
           />
         </FormRow>
         <TextArea
+          // @ts-ignore
           label="Abstract / Synopsis"
           type="textarea"
           rows="4"
           name="description"
           value={formState.description}
-          onChange={(e) =>
+          onChange={(e: { target: { value: any } }) =>
             setFormState({ ...formState, description: e.target.value })
           }
           onBlur={handleUpdatePress}
           placeholder="Abstract / Synopsis"
         />
         <Input
+          // @ts-ignore
           label="Publication Logo URL"
           type="text"
           name="publicationLogoUrl"
           value={formState.publicationLogoUrl}
-          onChange={(e) =>
+          onChange={(e: { target: { value: any } }) =>
             setFormState({ ...formState, publicationLogoUrl: e.target.value })
           }
           onBlur={handleUpdatePress}
           placeholder="Publication Logo URL"
         />
         <Input
+          // @ts-ignore
           label="Article Link"
           type="text"
           name="url"
           value={formState.url}
-          onChange={(e) => setFormState({ ...formState, url: e.target.value })}
+          onChange={(e: { target: { value: any } }) =>
+            setFormState({ ...formState, url: e.target.value })
+          }
           onBlur={handleUpdatePress}
           placeholder="Article Link"
         />
@@ -150,7 +162,6 @@ const PressArticle = ({ data, index }) => {
           isOpen={showDeleteConfirmation}
           onDismiss={() => setShowDeleteConfirmation(false)}
           title="Remove Press Article"
-          setShowDeleteConfirmation={setShowDeleteConfirmation}
           handleDelete={handleDelete}
         />
       )}

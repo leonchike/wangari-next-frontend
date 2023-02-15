@@ -3,17 +3,22 @@ import { usePressState } from "@/context/adminPressContext";
 
 import PressArticle from "@/components/DashboardPressComponents/PressArticle";
 
+//types
+import { PressData } from "@/types/apiTypes";
+
 const PressArticles = () => {
   const state = usePressState();
 
   // order in reverse chronological order by datePublished
-  state.press.sort((a, b) => {
-    return new Date(b.datePublished) - new Date(a.datePublished);
+  state.press.sort((a: PressData, b: PressData) => {
+    return (
+      new Date(b.datePublished).valueOf() - new Date(a.datePublished).valueOf()
+    );
   });
 
   return (
     <Wrapper>
-      {state.press.map((item, index) => (
+      {state.press.map((item: PressData, index: number) => (
         <PressArticle key={item._id} data={item} index={index} />
       ))}
     </Wrapper>

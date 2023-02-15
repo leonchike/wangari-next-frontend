@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-export default styled.button`
+interface UnstyledButtonProps {
+  display?: string;
+}
+
+export default styled.button<UnstyledButtonProps>`
   display: ${(props) => props.display || "block"};
   margin: 0;
   padding: 0;

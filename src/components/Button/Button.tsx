@@ -1,17 +1,16 @@
 import styled from "styled-components";
 
-const Button = ({ children, onClick, block, ...otherProps }) => {
-  const type = {
-    primary: {
-      backgroundColor: "var(--color-offblack)",
-      color: "white",
-    },
-    secondary: {
-      backgroundColor: "var(--color-white)",
-      color: "var(--color-offblack)",
-    },
-  };
+interface ButtonProps {
+  children: React.ReactNode;
+  onClick?: () => void;
+  block?: boolean;
+}
 
+type ButtonType = ButtonProps &
+  React.HTMLAttributes<HTMLButtonElement> &
+  React.ButtonHTMLAttributes<HTMLButtonElement>;
+
+const Button = ({ children, onClick, block, ...otherProps }: ButtonType) => {
   return (
     <StyledButton block={block} onClick={onClick} {...otherProps}>
       {children}
@@ -19,7 +18,7 @@ const Button = ({ children, onClick, block, ...otherProps }) => {
   );
 };
 
-const StyledButton = styled.button`
+const StyledButton = styled.button<ButtonProps>`
   background-color: var(--color-offblack);
   border: none;
   color: white;

@@ -6,7 +6,7 @@ const VisuallyHidden = ({ children, ...delegated }) => {
 
   React.useEffect(() => {
     if (process.env.NODE_ENV !== "production") {
-      const handleKeyDown = (ev) => {
+      const handleKeyDown = (ev: { key: string }) => {
         if (ev.key === "Alt") {
           setForceShow(true);
         }

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 
 //data
@@ -18,9 +18,12 @@ const Bio = ({ data }) => {
     useState(instagramHandle);
   const [formTwitterHandle, setFormTwitterHandle] = useState(twitterHandle);
 
-  const handleUpdate = (e) => {
+  const handleUpdate = (e: React.SyntheticEvent) => {
     e.preventDefault();
-    const { name, value } = e.target;
+    const { name, value } = e.target as typeof e.target & {
+      name: string;
+      value: string;
+    };
     dispatch({
       type: "UPDATED_ABOUT",
       id: _id,
@@ -35,6 +38,7 @@ const Bio = ({ data }) => {
       <Heading>Bio</Heading>
       <BioTextWrapper>
         <StyledInput
+          //@ts-ignore
           type="textarea"
           name="bio"
           placeholder="Bio"
@@ -48,6 +52,7 @@ const Bio = ({ data }) => {
         <Heading>Social</Heading>
         <SocialInputWrapper>
           <StyledInput
+            //@ts-ignore
             type="text"
             label="Instagram Handle"
             name="instagramHandle"
@@ -57,6 +62,7 @@ const Bio = ({ data }) => {
             onBlur={handleUpdate}
           />
           <StyledInput
+            //@ts-ignore
             type="text"
             label="Twitter Handle"
             name="twitterHandle"

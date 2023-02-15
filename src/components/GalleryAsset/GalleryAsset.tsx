@@ -6,6 +6,8 @@ import { getAssetData } from "@/api/public/publicAPI";
 import inTOcm from "@/utils/convertInchesToCentimeters";
 import { QUERIES } from "@/styles/styleConstants";
 
+import { AssetData } from "@/types/apiTypes";
+
 const GalleryAsset = ({ id }) => {
   const assetQuery = useQuery(["asset", id], getAssetData);
 
@@ -13,7 +15,7 @@ const GalleryAsset = ({ id }) => {
     return null;
   }
 
-  const data = assetQuery.data.data.data;
+  const data: AssetData = assetQuery.data.data.data;
 
   return (
     <Link href={`/art/gallery/${id}`} role="link" id={id}>

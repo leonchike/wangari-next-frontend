@@ -24,7 +24,7 @@ const AboutDetails = () => {
     dispatch({ id: id, type: "CHANGED_IMAGE" });
   };
 
-  const imageUpdatedWithAPIRepsonse = (jpg) => {
+  const imageUpdatedWithAPIRepsonse = (jpg: string) => {
     dispatch({ id: id, type: "IMAGE_UPDATED", jpg: jpg });
   };
 

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { SetStateAction, useState } from "react";
 import styled from "styled-components";
 
 import Button from "@/components/Button";
@@ -14,7 +14,7 @@ export const AddNew = () => {
   const postPressData = usePressPost();
   const dispatch = usePressDispatch();
 
-  const handleAdd = (e) => {
+  const handleAdd = (e: { preventDefault: () => void }) => {
     e.preventDefault();
     // add new article to database
     async function addToDB() {
@@ -49,12 +49,15 @@ export const AddNew = () => {
           <Title>Add New Article</Title>
           <Form onSubmit={handleAdd}>
             <Input
+              // @ts-ignore
               type="text"
               placeholder="Title"
               value={title}
               minLength="1"
               required
-              onChange={(e) => setTitle(e.target.value)}
+              onChange={(e: { target: { value: SetStateAction<string> } }) =>
+                setTitle(e.target.value)
+              }
             />
             <FormButton type="submit">Add</FormButton>
           </Form>

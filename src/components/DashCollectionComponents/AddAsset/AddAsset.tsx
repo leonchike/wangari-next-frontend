@@ -22,7 +22,7 @@ const AddAsset = () => {
   const showForm = state.addAsset.showForm;
   const title = state.addAsset.title;
 
-  const handleFormUpdate = (e) => {
+  const handleFormUpdate = (e: { target: { value: string } }) => {
     dispatch({
       type: "UPDATED_ADD_ASSET_FORM",
       title: e.target.value,
@@ -35,7 +35,7 @@ const AddAsset = () => {
     });
   };
 
-  const handleAddDB = (e) => {
+  const handleAddDB = (e: { preventDefault: () => void }) => {
     e.preventDefault();
     // use mutate from SWR to make API call
     mutate("/api/asset", async () => {
@@ -69,6 +69,7 @@ const AddAsset = () => {
           <Title>Add New Work</Title>
           <Form onSubmit={handleAddDB}>
             <Input
+              // @ts-ignore
               type="text"
               name="title"
               placeholder="Title"

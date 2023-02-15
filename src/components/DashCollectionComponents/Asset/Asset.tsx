@@ -7,7 +7,7 @@ import { QUERIES } from "@/styles/styleConstants";
 import ImageHandler from "@/components/ImageHandler";
 import AssetDetails from "@/components/DashCollectionComponents/AssetDetails";
 
-const Asset = ({ collectionId, data }) => {
+const Asset = ({ data }) => {
   const dispatch = useCollectionDispatch();
 
   const image = {
@@ -20,7 +20,7 @@ const Asset = ({ collectionId, data }) => {
     dispatch({ id: data._id, type: "REMOVE_ASSET_IMAGE_FROM_VIEW" });
   };
 
-  const imageUpdatedWithAPIRepsonse = (jpg) => {
+  const imageUpdatedWithAPIRepsonse = (jpg: string) => {
     dispatch({ id: data._id, type: "ASSET_IMAGE_UPDATED", assetURL: jpg });
   };
 
