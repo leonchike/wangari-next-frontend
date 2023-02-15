@@ -1,8 +1,10 @@
 import useSWR from "swr";
 import { Get, Put, Post } from "@/utils/Api/admin/securedAPI";
 import API_Routes from "@/utils/Api/APIRoutes";
+import { CollectionData } from "@/types/apiTypes";
 
-export const GetCollectionsData = async (url) => {
+export const GetCollectionsData = async (url: string) => {
+  // @ts-ignore
   const response = await Get({ endpoint: url });
   return response.data;
 };
@@ -19,7 +21,7 @@ export const useCollectionsData = () => {
   };
 };
 
-export const useGetOneCollectionData = (id) => {
+export const useGetOneCollectionData = (id: string) => {
   const { data, error, isLoading } = useSWR(
     `${API_Routes.collection}/${id}`,
     GetCollectionsData
@@ -43,13 +45,14 @@ export const useCollectionSortData = () => {
   };
 };
 
-export const updateCollectionData = async (id, data) => {
+export const updateCollectionData = async (id: string, data: CollectionData) => {
   const response = await Put({ endpoint: API_Routes.collection, id, data });
   return response.data;
 };
 
 // Post new collection data
-export const postCollectionData = async (data) => {
+export const postCollectionData = async (data: CollectionData) => {
+  // @ts-ignore
   const response = await Post({ endpoint: API_Routes.collection, data });
   return response.data;
 };

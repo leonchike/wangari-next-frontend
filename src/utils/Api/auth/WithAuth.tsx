@@ -1,9 +1,10 @@
+import React from "react";
 import { useEffect } from "react";
 import { useAuth } from "@/hooks/use-auth";
 import Router from "next/router";
 
-export default function WithAuth(WrappedComponent) {
-  return function ProtectedComponent(props) {
+export default function WithAuth(WrappedComponent: typeof React.Component) {
+  return function ProtectedComponent(props: any) {
     const { user, logout, login } = useAuth();
 
     useEffect(() => {

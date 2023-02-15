@@ -1,8 +1,16 @@
+import {ContactData, ContactState} from "@/types/apiTypes"
+
+interface Action {
+  type: string;
+  messages?: ContactData[];
+  id?: string;
+}
+
 export const initialState = {
   messages: [],
 };
 
-const contactReducer = (state, action) => {
+const contactReducer = (state: ContactState, action: Action) => {
   switch (action.type) {
     case "UPDATE_MESSAGES_FROM_API":
       return {

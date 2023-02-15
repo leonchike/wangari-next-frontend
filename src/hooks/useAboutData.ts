@@ -1,8 +1,9 @@
 import useSWR from "swr";
 import { Get, Put, Post } from "@/utils/Api/admin/securedAPI";
 import API_Routes from "@/utils/Api/APIRoutes";
+import { AboutData } from "@/types/apiTypes"
 
-export const GetAboutData = async (url) => {
+export const GetAboutData = async (url: string) => {
   const response = await Get({ endpoint: url });
   return response.data;
 };
@@ -16,7 +17,7 @@ export const useAboutData = () => {
   };
 };
 
-export const updateAboutData = async (id, data) => {
+export const updateAboutData = async (id: string, data: AboutData): Promise<AboutData> => {
   const response = await Put({ endpoint: API_Routes.about, id, data });
   return response.data;
 };

@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { loginAPI } from "@/utils/Api/auth/APIAuth";
 import { checkForExpiredJWT } from "@/utils/helpers/checkJWT";
 
-const authContext = createContext();
+const authContext = createContext(undefined);
 
 export function ProvideAuth({ children }) {
   const auth = useProvideAuth();

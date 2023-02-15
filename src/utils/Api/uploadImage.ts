@@ -2,7 +2,7 @@ import API_Routes from "@/utils/Api/APIRoutes";
 
 let baseURL = process.env.NEXT_PUBLIC_API_URL;
 
-export const uploadImage = async (id, file, intent) => {
+export const uploadImage = async (id: string, file: string | Blob, intent: string) => {
   let formData = new FormData();
   formData.append("file", file);
 

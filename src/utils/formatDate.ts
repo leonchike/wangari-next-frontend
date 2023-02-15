@@ -1,7 +1,7 @@
 // date conversion
-const formatDate = (date, region = "en-uk") => {
+const formatDate = (date: string | Date, region = "en-uk") => {
   date = new Date(date);
-  const options = {
+  const options: Intl.DateTimeFormatOptions = {
     // weekday: "short",
     year: "numeric",
     month: "long",
@@ -10,9 +10,9 @@ const formatDate = (date, region = "en-uk") => {
   return date.toLocaleDateString(region, options);
 };
 
-export const formatDateWithTime = (date, region = "en-uk") => {
+export const formatDateWithTime = (date: string | Date, region = "en-uk") => {
   date = new Date(date);
-  const options = {
+  const options: Intl.DateTimeFormatOptions = {
     weekday: "short",
     year: "numeric",
     month: "long",

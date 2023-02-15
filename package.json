@@ -15,6 +15,7 @@
     "axios": "^1.2.3",
     "eslint": "8.32.0",
     "eslint-config-next": "13.1.5",
+    "eslint-import-resolver-typescript": "^3.5.3",
     "jwt-decode": "^3.1.2",
     "libphonenumber-js": "^1.10.18",
     "next": "13.1.5",
@@ -30,6 +31,7 @@
   "devDependencies": {
     "@types/node": "18.13.0",
     "@types/react": "18.0.28",
+    "@types/styled-components": "^5.1.26",
     "prettier": "^2.8.3",
     "typescript": "4.9.5"
   }
