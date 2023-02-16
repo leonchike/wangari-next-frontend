@@ -35,7 +35,6 @@ const AboutDetails = () => {
           id={id}
           image={image}
           intent="about-profile"
-          dispatch={dispatch}
           handleChangeImage={handleChangeImage}
           imageUpdatedWithAPIRepsonse={imageUpdatedWithAPIRepsonse}
         />
