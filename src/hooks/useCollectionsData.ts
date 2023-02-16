@@ -21,7 +21,19 @@ export const useCollectionsData = () => {
   };
 };
 
-export const useGetOneCollectionData = (id: string) => {
+interface useGetOneCollectionData {
+  (id: string): {
+    collection: {
+      data: CollectionData;
+    };
+    isLoading: boolean;
+    error: any;
+  };
+}
+
+export const useGetOneCollectionData: useGetOneCollectionData = (
+  id: string
+) => {
   const { data, error, isLoading } = useSWR(
     `${API_Routes.collection}/${id}`,
     GetCollectionsData
@@ -45,7 +57,10 @@ export const useCollectionSortData = () => {
   };
 };
 
-export const updateCollectionData = async (id: string, data: CollectionData) => {
+export const updateCollectionData = async (
+  id: string,
+  data: CollectionData
+) => {
   const response = await Put({ endpoint: API_Routes.collection, id, data });
   return response.data;
 };

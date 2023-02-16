@@ -18,6 +18,7 @@ const Delete = () => {
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
 
   const handleDelete = () => {
+    if (!collection) return;
     const id = collection._id;
     updateCollectionData(id, { deletedStatus: true }).then(() => {
       router.push(routes.adminIndex);
@@ -33,7 +34,6 @@ const Delete = () => {
         <DeleteConfirmation
           isOpen={showDeleteConfirmation}
           onDismiss={() => setShowDeleteConfirmation(false)}
-          setShowDeleteConfirmation={setShowDeleteConfirmation}
           handleDelete={handleDelete}
           title={`Delete ${collection.name} collection?`}
         />

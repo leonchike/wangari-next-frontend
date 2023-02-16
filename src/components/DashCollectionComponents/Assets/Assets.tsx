@@ -1,18 +1,16 @@
 import styled from "styled-components";
-
 // State and API
 import { useCollectionState } from "@/context/adminCollectionContext";
-
 // Helpers
 import { sortAssets } from "@/utils/helpers/collectionHelpers";
-
 // Components
 import Asset from "@/components/DashCollectionComponents/Asset";
+// types
+import { CollectionState, AssetData } from "@/types/apiTypes";
 
 const Assets = () => {
-  const state = useCollectionState();
+  const state: CollectionState = useCollectionState();
 
-  const collectionId = state.collection._id;
   const assets = state.assets;
   const sortOrder = state.assetSort;
 
@@ -24,7 +22,7 @@ const Assets = () => {
     return <NoAssets>This collection does not have any works.</NoAssets>;
   }
 
-  const sortedAssets = sortAssets(sortOrder, assets);
+  const sortedAssets: AssetData[] = sortAssets(sortOrder, assets);
 
   // Check if sortedAssets is empty or has undefined values in each array
   if (sortedAssets.length === 0 || sortedAssets.includes(undefined)) {
@@ -34,7 +32,7 @@ const Assets = () => {
   return (
     <Wrapper>
       {sortedAssets.map((asset) => (
-        <Asset key={asset._id} collectionId={collectionId} data={asset} />
+        <Asset key={asset._id} data={asset} />
       ))}
     </Wrapper>
   );

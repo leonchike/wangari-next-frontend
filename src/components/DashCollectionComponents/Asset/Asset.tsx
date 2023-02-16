@@ -7,12 +7,18 @@ import { QUERIES } from "@/styles/styleConstants";
 import ImageHandler from "@/components/ImageHandler";
 import AssetDetails from "@/components/DashCollectionComponents/AssetDetails";
 
-const Asset = ({ data }) => {
+import { AssetData } from "@/types/apiTypes";
+
+interface Props {
+  data: AssetData;
+}
+
+const Asset = ({ data }: Props) => {
   const dispatch = useCollectionDispatch();
 
   const image = {
     jpg: data?.assetURL,
-    webp: data?.assetURLWebPOriginalSize,
+    webp: data?.WebPOriginalSizePublicURL,
     alt: "asset image",
   };
 

@@ -38,9 +38,12 @@ export function CollectionProvider({ children }) {
   );
 }
 
-export function useCollectionState() {
-  return useContext(CollectionDataContext);
+interface useCollectionState {
+  (): CollectionState;
 }
+export const useCollectionState: useCollectionState = () => {
+  return useContext(CollectionDataContext);
+};
 
 export function useCollectionDispatch() {
   return useContext(CollectionDispatchContext);

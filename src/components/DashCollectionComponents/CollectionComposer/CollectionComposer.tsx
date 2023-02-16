@@ -1,7 +1,6 @@
 /*
   This component is the main component for the collection page. It is responsible for fetching the collection data and the asset data to then dispatch it to the reducer to set state.
 */
-
 import { useEffect } from "react";
 import { useGetOneCollectionData } from "@/hooks/useCollectionsData";
 import { useAssetData } from "@/hooks/useAssetData";
@@ -40,6 +39,7 @@ const CollectionComposer = ({ collectionId }) => {
 
   useEffect(() => {
     if (assets && assets.data) {
+      // @ts-ignore
       const filteredAssets = filterAssets(assets, collectionId);
       dispatch({
         type: "UPDATED_ASSETS_FROM_API",

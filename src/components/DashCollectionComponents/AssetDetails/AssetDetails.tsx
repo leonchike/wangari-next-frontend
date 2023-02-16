@@ -13,22 +13,27 @@ import UnstyledButton from "@/components/UnstyledButton";
 import DeleteConfirmation from "@/components/DeleteConfirmation";
 
 import { QUERIES } from "@/styles/styleConstants";
+import { AssetData, CollectionState, UpdateAssetData } from "@/types/apiTypes";
 
-const AssetDetails = ({ data }) => {
-  const state = useCollectionState();
+interface Props {
+  data: AssetData;
+}
+
+const AssetDetails = ({ data }: Props) => {
+  const state: CollectionState = useCollectionState();
   const dispatch = useCollectionDispatch();
-  const updateAsset = useAssetUpdate();
+  const updateAsset: UpdateAssetData = useAssetUpdate();
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
 
   // find asset in state using data._id from props
   const asset = state.assets.find((asset) => asset._id === data._id);
 
-  const handleChange = (e) => {
+  const handleChange = (e: { target: { name: string; value: string } }) => {
     const { name, value } = e.target;
     dispatch({ id: data._id, type: "UPDATED_ASSET", [name]: value });
   };
 
-  const handleBlur = (e) => {
+  const handleBlur = (e: { target: { name: string; value: string } }) => {
     const { name, value } = e.target;
     updateAsset(data._id, { [name]: value });
   };
@@ -42,6 +47,7 @@ const AssetDetails = ({ data }) => {
     <Wrapper>
       <Form onSubmit={(e) => e.preventDefault()}>
         <Input
+          // @ts-ignore
           label="Title"
           type="text"
           name="title"
@@ -53,6 +59,7 @@ const AssetDetails = ({ data }) => {
           labelWeight="var(--font-weight-bold)"
         />
         <TextArea
+          // @ts-ignore
           label="Story"
           type="textarea"
           name="story"
@@ -66,6 +73,7 @@ const AssetDetails = ({ data }) => {
         />
         <Grouped>
           <Input
+            // @ts-ignore
             label="Medium"
             type="text"
             name="medium"
@@ -77,10 +85,11 @@ const AssetDetails = ({ data }) => {
             labelWeight="var(--font-weight-bold)"
           />
           <Input
+            // @ts-ignore
             label="Year"
             type="text"
-            name="year"
-            value={asset.year}
+            name="yearProduced"
+            value={asset.yearProduced}
             onChange={handleChange}
             onBlur={handleBlur}
             padding="5px"
@@ -90,6 +99,7 @@ const AssetDetails = ({ data }) => {
         </Grouped>
         <GroupedDimensions>
           <Input
+            // @ts-ignore
             label="Width (in)"
             type="number"
             name="widthInInches"
@@ -102,6 +112,7 @@ const AssetDetails = ({ data }) => {
             noWidth={true}
           />
           <Input
+            // @ts-ignore
             label="Height (in)"
             type="number"
             name="heightInInches"
@@ -125,7 +136,6 @@ const AssetDetails = ({ data }) => {
           isOpen={showDeleteConfirmation}
           onDismiss={() => setShowDeleteConfirmation(false)}
           title="Are you sure you want to delete this work?"
-          setShowDeleteConfirmation={setShowDeleteConfirmation}
           handleDelete={handleDelete}
         />
       )}

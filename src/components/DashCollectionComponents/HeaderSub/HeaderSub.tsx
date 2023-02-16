@@ -22,7 +22,7 @@ const HeaderSub = () => {
   const numberOfWorks = state.collection.numberOfWorks;
   const createdAt = state.collection.createdAt;
 
-  const updateStateAndDB = (e) => {
+  const updateStateAndDB = (e: { target: { name: any; checked: any } }) => {
     const { name, checked } = e.target;
 
     dispatch({

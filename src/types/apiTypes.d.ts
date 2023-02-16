@@ -54,6 +54,7 @@ export interface AboutState {
 }
 
 export interface AssetData {
+  [x: string]: AssetData;
   _id: string;
   title: string;
   story: string;
@@ -78,6 +79,10 @@ export interface AssetData {
   medium: string;
 }
 
+export interface AssetsAPIResponse {
+  data: AssetData[];
+}
+
 export interface CollectionData {
   _id: string;
   name: string;
@@ -97,7 +102,7 @@ export interface CollectionData {
 }
 
 export interface CollectionState {
-  collection: {};
+  collection: CollectionData | Record<string, never>;
   assetSort: string[];
   assets: AssetData[];
   addAsset: {
@@ -227,4 +232,8 @@ export interface AdminDashboardState {
   collections: CollectionData[];
   collectionSort: CollectionSortData[];
   user: UserData;
+}
+
+export interface UpdateAssetData {
+  (_id: string, data: {});
 }

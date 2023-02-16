@@ -13,7 +13,7 @@ const HeaderTitle = () => {
   const title = state.collection.name;
   const id = state.collection._id;
 
-  const updateState = (e) => {
+  const updateState = (e: { target: { name: any; value: any } }) => {
     const { name, value } = e.target;
     dispatch({
       type: "UPDATED_COLLECTION",
@@ -21,7 +21,10 @@ const HeaderTitle = () => {
     });
   };
 
-  const updateDB = (e) => {
+  const updateDB = (e: {
+    preventDefault: () => void;
+    target: { name: any; value: any };
+  }) => {
     e.preventDefault();
     const { name, value } = e.target;
     // update database
@@ -36,7 +39,7 @@ const HeaderTitle = () => {
         placeholder="Collection Name"
         name="name"
         value={title}
-        maxLength="60"
+        maxLength={60}
         required
         onChange={updateState}
         onBlur={updateDB}

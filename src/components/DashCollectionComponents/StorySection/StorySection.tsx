@@ -18,7 +18,7 @@ const StorySection = () => {
   const id = state.collection._id;
   const story = state.collection.notes;
 
-  const updateState = (e) => {
+  const updateState = (e: { target: { name: any; value: any } }) => {
     const { name, value } = e.target;
 
     dispatch({
@@ -27,7 +27,7 @@ const StorySection = () => {
     });
   };
 
-  const updateDB = (e) => {
+  const updateDB = (e: { target: { name: any; value: any } }) => {
     const { name, value } = e.target;
 
     updateCollectionData(id, { [name]: value });
@@ -37,6 +37,7 @@ const StorySection = () => {
     <Wrapper>
       <Heading>Story</Heading>
       <StyledInput
+        // @ts-ignore
         type="textarea"
         name="notes"
         value={story}
