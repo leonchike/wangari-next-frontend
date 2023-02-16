@@ -18,7 +18,7 @@ const StorySection = () => {
   const id = state.collection._id;
   const story = state.collection.notes;
 
-  const updateState = (e: { target: { name: any; value: any } }) => {
+  const updateState = (e: { target: { name: string; value: string } }) => {
     const { name, value } = e.target;
 
     dispatch({
@@ -27,7 +27,7 @@ const StorySection = () => {
     });
   };
 
-  const updateDB = (e: { target: { name: any; value: any } }) => {
+  const updateDB = (e: { target: { name: string; value: string } }) => {
     const { name, value } = e.target;
 
     updateCollectionData(id, { [name]: value });
