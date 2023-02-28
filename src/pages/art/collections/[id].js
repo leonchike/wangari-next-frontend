@@ -109,7 +109,7 @@ const Abstract = styled.p`
   font-size: 1.1rem;
   color: var(--color-offblack);
   line-height: 1.75;
-  max-width: 600px;
+  /* max-width: 600px; */
   padding-block-start: 30px;
   padding-block-end: 40px;
 `;
