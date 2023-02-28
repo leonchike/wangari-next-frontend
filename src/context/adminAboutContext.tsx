@@ -24,9 +24,13 @@ export function AboutProvider({ children }) {
   );
 }
 
-export function useAboutState() {
-  return useContext(AboutDataContext);
+interface UseAboutState {
+  (): AboutState;
 }
+
+export const useAboutState: UseAboutState = () => {
+  return useContext(AboutDataContext);
+};
 
 export function useAboutDispatch() {
   return useContext(AboutDispatchContext);

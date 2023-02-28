@@ -11,7 +11,7 @@ const AboutDetails = () => {
   const state = useAboutState();
   const dispatch = useAboutDispatch();
 
-  // create image object
+  // create image objec
   const image = {
     jpg: state.about[0]?.profileURL,
     webp: state.about[0]?.profileURLWebPOriginalSize,
