@@ -31,11 +31,15 @@ const ToggleReorder = () => {
 
   return (
     <>
-      {state.reorderable === false && (
-        <button onClick={handleClick}>Reorder</button>
-      )}
-      {state.reorderable === true && (
-        <button onClick={handleSaveOrder}>Save Order</button>
+      {state.assetSort.length > 1 && (
+        <>
+          {state.reorderable === false && (
+            <button onClick={handleClick}>Reorder</button>
+          )}
+          {state.reorderable === true && (
+            <button onClick={handleSaveOrder}>Save Order</button>
+          )}
+        </>
       )}
     </>
   );
