@@ -41,6 +41,7 @@ export function CollectionProvider({ children }: any) {
 interface useCollectionState {
   (): CollectionState;
 }
+// @ts-ignore
 export const useCollectionState: useCollectionState = () => {
   return useContext(CollectionDataContext);
 };
@@ -96,6 +97,11 @@ function collectionReducer(state: CollectionState, action: CollectionAction) {
         collection: action.collection,
       };
     case "UPDATED_ASSET_SORT_FROM_API":
+      return {
+        ...state,
+        assetSort: action.assetSort,
+      };
+    case "UPDATED_ASSET_SORT":
       return {
         ...state,
         assetSort: action.assetSort,

@@ -7,12 +7,12 @@ DND ToDo
 
 ### new components
 
-- [ ] Create new component to display card UI (Image, Title)
-- [ ] Add button to set draggable state to true
-- [ ] Add fixed footer to set draggable state to false and link API updater function
+- [x] Create new component to display card UI (Image, Title)
+- [x] Add button to set draggable state to true
+- [x] Add fixed footer to set draggable state to false and link API updater function
 
 ### Add Drag and Drop Context to asset wrapper
 
-- [ ] Add Drag and Drop Context to asset wrapper
-- [ ] Test state updating via on drag end function
-- [ ] Test API update on fixed footer button
+- [x] Add Drag and Drop Context to asset wrapper
+- [x] Test state updating via on drag end function
+- [x] Test API update on fixed footer button

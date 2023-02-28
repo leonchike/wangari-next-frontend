@@ -56,7 +56,7 @@ const Asset = ({ data }: Props) => {
       {state.reorderable === true && (
         <ReOrderContainer>
           <ReOrderImage>
-            <Image src={image.jpg} alt={""} layout="fill" />
+            <Image src={image.jpg} alt={""} width={120} height={120} />
           </ReOrderImage>
           <ReOrderText>{data.title}</ReOrderText>
         </ReOrderContainer>
@@ -105,6 +105,7 @@ const ReOrderContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 1rem;
+  pointer-events: none;
 `;
 
 const ReOrderImage = styled.div`
