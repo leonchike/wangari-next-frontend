@@ -1,13 +1,17 @@
 import styled from "styled-components";
 
 // State and API
-import { useCollectionDispatch } from "@/context/adminCollectionContext";
+import {
+  useCollectionDispatch,
+  useCollectionState,
+} from "@/context/adminCollectionContext";
 
 import { QUERIES } from "@/styles/styleConstants";
 import ImageHandler from "@/components/ImageHandler";
 import AssetDetails from "@/components/DashCollectionComponents/AssetDetails";
 
 import { AssetData } from "@/types/apiTypes";
+import Image from "next/image";
 
 interface Props {
   data: AssetData;
@@ -15,6 +19,7 @@ interface Props {
 
 const Asset = ({ data }: Props) => {
   const dispatch = useCollectionDispatch();
+  const state = useCollectionState();
 
   const image = {
     jpg: data?.assetURL,
@@ -23,35 +28,51 @@ const Asset = ({ data }: Props) => {
   };
 
   const handleChangeImage = () => {
+    // @ts-ignore
     dispatch({ id: data._id, type: "REMOVE_ASSET_IMAGE_FROM_VIEW" });
   };
 
   const imageUpdatedWithAPIRepsonse = (jpg: string) => {
+    // @ts-ignore
     dispatch({ id: data._id, type: "ASSET_IMAGE_UPDATED", assetURL: jpg });
   };
 
   return (
-    <Wrapper>
-      <ImageWrapper>
-        <ImageHandler
-          id={data._id}
-          image={image}
-          intent="assetImage"
-          handleChangeImage={handleChangeImage}
-          imageUpdatedWithAPIRepsonse={imageUpdatedWithAPIRepsonse}
-        />
-      </ImageWrapper>
-      <AssetDetails data={data} />
-    </Wrapper>
+    <AssetWrapper>
+      {state.reorderable === false && (
+        <Wrapper>
+          <ImageWrapper>
+            <ImageHandler
+              id={data._id}
+              image={image}
+              intent="assetImage"
+              handleChangeImage={handleChangeImage}
+              imageUpdatedWithAPIRepsonse={imageUpdatedWithAPIRepsonse}
+            />
+          </ImageWrapper>
+          <AssetDetails data={data} />
+        </Wrapper>
+      )}
+      {state.reorderable === true && (
+        <ReOrderContainer>
+          <ReOrderImage>
+            <Image src={image.jpg} alt={""} layout="fill" />
+          </ReOrderImage>
+          <ReOrderText>{data.title}</ReOrderText>
+        </ReOrderContainer>
+      )}
+    </AssetWrapper>
   );
 };
 
-const Wrapper = styled.article`
+const AssetWrapper = styled.article`
   padding: 2rem 1rem;
   margin-block-end: 2rem;
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
+`;
 
+const Wrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   gap: 2rem;
@@ -79,5 +100,30 @@ const ImageWrapper = styled.div`
 `;
 
 const FormWrapper = styled.div``;
+
+const ReOrderContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+`;
+
+const ReOrderImage = styled.div`
+  position: relative;
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+
+  & > img {
+    object-fit: contain;
+    position: relative;
+    opacity: 1;
+  }
+`;
+
+const ReOrderText = styled.div`
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--color-offblack);
+`;
 
 export default Asset;

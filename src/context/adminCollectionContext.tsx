@@ -18,7 +18,7 @@ const AssetDispatchContext = createContext(null);
 const AssetUpdate = createContext(null);
 const AssetPost = createContext(null);
 
-export function CollectionProvider({ children }) {
+export function CollectionProvider({ children }: any) {
   const [state, dispatch] = useReducer(collectionReducer, initialState);
 
   return (
@@ -85,6 +85,11 @@ interface CollectionAction {
 
 function collectionReducer(state: CollectionState, action: CollectionAction) {
   switch (action.type) {
+    case "TOGGLE_REORDER":
+      return {
+        ...state,
+        reorderable: !state.reorderable,
+      };
     case "UPDATED_COLLECTION_FROM_API":
       return {
         ...state,
@@ -201,4 +206,5 @@ const initialState: CollectionState = {
     title: "",
     showForm: false,
   },
+  reorderable: false,
 };

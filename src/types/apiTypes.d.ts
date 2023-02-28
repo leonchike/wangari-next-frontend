@@ -109,6 +109,7 @@ export interface CollectionState {
     title: string;
     showForm: boolean;
   };
+  reorderable: boolean;
 }
 
 export interface CollectionsData {

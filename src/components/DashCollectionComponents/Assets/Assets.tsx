@@ -25,6 +25,7 @@ const Assets = () => {
   const sortedAssets: AssetData[] = sortAssets(sortOrder, assets);
 
   // Check if sortedAssets is empty or has undefined values in each array
+  // @ts-ignore
   if (sortedAssets.length === 0 || sortedAssets.includes(undefined)) {
     return <div>Loading...</div>;
   }
