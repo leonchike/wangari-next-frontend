@@ -23,6 +23,12 @@ export const submitContactform = async ({
   email,
   subject,
   message,
+}: {
+  firstName: string;
+  lastName: string;
+  email: string;
+  subject: string;
+  message: string;
 }) => {
   const response = await axios.post(
     `${BASE_API_URL}/public-api/submitcontact`,
