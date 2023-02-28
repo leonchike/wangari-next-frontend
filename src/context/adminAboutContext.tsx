@@ -10,7 +10,7 @@ const AboutDataContext = createContext(null);
 const AboutDispatchContext = createContext(null);
 const AboutUpdate = createContext(null);
 
-export function AboutProvider({ children }) {
+export function AboutProvider({ children }: { children: React.ReactNode }) {
   const [state, dispatch] = useReducer(aboutReducer, initialState);
 
   return (

@@ -17,7 +17,10 @@ const AboutContent = () => {
   useEffect(() => {
     // if contact.data is not empty, update the reducer state with the data
     if (!!aboutData?.data) {
-      dispatch({ type: "UPDATE_ABOUT_FROM_API", about: aboutData.data });
+      if (typeof aboutData.data === "object") {
+        // @ts-ignore
+        dispatch({ type: "UPDATE_ABOUT_FROM_API", about: aboutData.data });
+      }
     }
   }, [aboutData, dispatch]);
 
