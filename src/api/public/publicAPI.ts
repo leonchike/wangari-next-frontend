@@ -58,7 +58,11 @@ export const getCollectionSort = async () => {
 };
 
 // get collection data
-export const getCollectionData = async ({ queryKey }) => {
+export const getCollectionData = async ({
+  queryKey,
+}: {
+  queryKey: string[];
+}) => {
   const [collection, collectionId] = queryKey;
   const response = await axios.get(
     `${BASE_API_URL}/public-api/collections/${collectionId}`
@@ -67,7 +71,7 @@ export const getCollectionData = async ({ queryKey }) => {
 };
 
 // get asset data
-export const getAssetData = async ({ queryKey }) => {
+export const getAssetData = async ({ queryKey }: { queryKey: string[] }) => {
   const [asset, assetId] = queryKey;
   const response = await axios.get(
     `${BASE_API_URL}/public-api/assets/${assetId}`
