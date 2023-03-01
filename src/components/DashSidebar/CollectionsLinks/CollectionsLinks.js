@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import styled from "styled-components";
 
@@ -10,6 +11,7 @@ import {
 import { sortCollections } from "@/utils/helpers/sortCollections";
 
 const CollectionsLinks = () => {
+  const [collectionOrder, setCollectionOrder] = useState([]);
   const { collections, isLoading, isError } = useCollectionsData();
   const {
     collectionSort,
@@ -17,17 +19,22 @@ const CollectionsLinks = () => {
     isError: sortError,
   } = useCollectionSortData();
 
+  // set collection order from db
+  useEffect(() => {
+    if (collectionSort && collectionSort.data.length) {
+      setCollectionOrder(collectionSort.data[0].collections);
+    }
+  }, [collectionSort]);
+
   if (isLoading || sortLoading) return <div>Loading...</div>;
   if (isError || sortError) return <div>Error...</div>;
 
   if (!collectionSort || !collections || !collectionSort.data.length) {
     return <div>No collections</div>;
   }
-  // Extracting nesting data
-  const order = collectionSort.data[0].collections;
 
   // Sorting collections by order from db
-  const sortedCollections = sortCollections(collections, order);
+  const sortedCollections = sortCollections(collections, collectionOrder);
 
   // check if any items in sortedCollections are undefined and remove them
   const filteredCollections = sortedCollections.filter(
