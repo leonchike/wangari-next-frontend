@@ -77,7 +77,6 @@ const ImageWrapper = styled.div`
   flex: 1;
   display: grid;
   place-content: center;
-  background-color: green;
   height: 100%;
   width: 100%;
   position: relative;
