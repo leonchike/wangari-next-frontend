@@ -77,13 +77,10 @@ const ImageWrapper = styled.div`
   flex: 1;
   display: grid;
   place-content: center;
-  padding: 1rem;
+  background-color: green;
   height: 100%;
   width: 100%;
-
-  @media ${QUERIES.laptopAndUp} {
-    padding: 2rem;
-  }
+  position: relative;
 `;
 
 const TextWrapper = styled.div`
@@ -110,6 +107,10 @@ const StyledImage = styled.img`
 
 const Picture = styled.picture`
   overflow: hidden;
+
+  img {
+    object-fit: contain;
+  }
 `;
 
 const Placard = styled.div`
