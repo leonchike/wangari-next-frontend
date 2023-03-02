@@ -14,7 +14,7 @@ export const PageWrapper = styled.div`
   animation: ${fadeIn} 2s 500ms both;
 
   @media ${QUERIES.tabletAndUp} {
-    padding-block-start: calc(37 / 16 * 1rem);
+    padding-block-start: calc(35 / 16 * 1rem);
   }
 
   --max-mobile-width: 500px;

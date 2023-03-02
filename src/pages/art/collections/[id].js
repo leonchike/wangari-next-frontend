@@ -3,6 +3,7 @@ import { useQuery } from "react-query";
 import styled, { keyframes } from "styled-components";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { PageWrapper } from "@/styles/reusableStyles";
 
 //API imports
 import { getCollectionData } from "@/api/public/publicAPI";
@@ -39,7 +40,7 @@ const Collections = () => {
   }
 
   return (
-    <PageWrapper>
+    <FullWidthPageWrapper>
       <HeadingSection>
         <Title>
           {isLoading ? (
@@ -73,7 +74,7 @@ const Collections = () => {
           )}
         </MasonryGrid>
       </ImageSection>
-    </PageWrapper>
+    </FullWidthPageWrapper>
   );
 };
 
@@ -81,19 +82,23 @@ Collections.getLayout = function getLayout(page) {
   return <PublicLayout>{page}</PublicLayout>;
 };
 
-const PageWrapper = styled.div`
-  margin: 0 auto;
+// const PageWrapper = styled.div`
+//   margin: 0 auto;
+//   max-width: var(--max-collections-width);
+//   padding-inline-start: 1rem;
+//   padding-inline-end: 1rem;
+//   padding-block-start: 1rem;
+//   padding-block-end: 6rem;
+
+//   animation: ${fadeIn} 2s 250ms both;
+
+//   @media ${QUERIES.tabletAndUp} {
+//     padding-block-start: calc(37 / 16 * 1rem);
+//   }
+// `;
+
+const FullWidthPageWrapper = styled(PageWrapper)`
   max-width: var(--max-collections-width);
-  padding-inline-start: 1rem;
-  padding-inline-end: 1rem;
-  padding-block-start: 1rem;
-  padding-block-end: 6rem;
-
-  animation: ${fadeIn} 2s 250ms both;
-
-  @media ${QUERIES.tabletAndUp} {
-    padding-block-start: calc(37 / 16 * 1rem);
-  }
 `;
 
 const HeadingSection = styled.section`
