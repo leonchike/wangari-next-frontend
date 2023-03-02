@@ -9,6 +9,11 @@ const WelcomeImages = () => {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
+    // check if images are loaded
+    if (!imagesJPG) {
+      return null;
+    }
+
     const interval = setInterval(() => {
       setIndex((prevIndex) => {
         if (prevIndex === imagesJPG.length - 1) {

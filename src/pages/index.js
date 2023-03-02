@@ -53,7 +53,7 @@ const Home = () => {
       </Head>
       <Link href={nextUrl}>
         <Main>
-          <Button as={Link} href={nextUrl}>
+          <Button>
             <VisuallyHidden>Next</VisuallyHidden>
             <Icon id="arrowRight" size={50} />
           </Button>
@@ -69,16 +69,20 @@ Home.getLayout = function getLayout(page) {
 };
 
 const Button = styled(UnstyledButton)`
+  opacity: 0;
   position: absolute;
   top: 50%;
   left: 3rem;
-  transform: translateY(-50%);
   z-index: 1;
   color: var(--color-white);
+  transition: transform 300ms ease-in-out, opacity 200ms ease-in-out;
 
   &:hover {
     opacity: 0.9;
+    transform: scale(1.1);
   }
+
+  animation: ${fadeIn} 2s 3s ease-in-out both;
 `;
 
 const Main = styled.div`
@@ -87,7 +91,7 @@ const Main = styled.div`
   position: relative;
   overflow: clip;
 
-  animation: ${fadeIn} 2s ease-in-out both;
+  animation: ${fadeIn} 2s 1s ease-in-out both;
 `;
 
 export default Home;

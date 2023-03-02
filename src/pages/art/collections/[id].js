@@ -100,7 +100,7 @@ const HeadingSection = styled.section`
   animation: ${fadeIn} 2s both;
 `;
 
-const Title = styled.h1`
+const Title = styled.div`
   font-size: 2rem;
   color: var(--color-offblack);
 `;
