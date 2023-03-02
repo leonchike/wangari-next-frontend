@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import styled from "styled-components";
@@ -16,10 +17,15 @@ import {
 } from "@/api/public/publicAPI";
 
 const Home = () => {
+  const [isMounted, setIsMounted] = useState(false);
   const collectionSort = useQuery(["collectionSort"], getCollectionSort);
   const collections = useQuery(["collections"], getAllCollectionData);
 
   let nextUrl = "/art/about";
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   // logic to get collections data and collections order > filter collections data to get the first collection > construct the url for the first collection and update the nexturl variable.
 
@@ -53,10 +59,12 @@ const Home = () => {
       </Head>
       <Link href={nextUrl}>
         <Main>
-          <Button>
-            <VisuallyHidden>Next</VisuallyHidden>
-            <Icon id="arrowRight" size={50} />
-          </Button>
+          {isMounted && (
+            <Button>
+              <VisuallyHidden>Next</VisuallyHidden>
+              <Icon id="arrowRight" size={50} />
+            </Button>
+          )}
           <WelcomeImages />
         </Main>
       </Link>
