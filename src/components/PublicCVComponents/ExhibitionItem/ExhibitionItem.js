@@ -5,7 +5,7 @@ const ExhibitionItem = ({ data }) => {
     <div>
       <CVContent>
         {data.title}
-        {data.status === "upcoming" ? <span> - [{data.status}]</span> : null}
+        {data.status === "forthcoming" ? <span> - [{data.status}]</span> : null}
       </CVContent>
     </div>
   );
