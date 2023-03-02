@@ -3,13 +3,9 @@ import Icon from "@/components/Icon";
 import { QUERIES } from "@/styles/styleConstants";
 
 const PublicAboutSocial = ({ instagram, twitter }) => {
-  // check is props have data
-  const hasInstagram = instagram !== undefined;
-  const hasTwitter = twitter !== undefined;
-
   return (
     <Wrapper>
-      {hasInstagram && (
+      {!!instagram && (
         <SocialLink
           role="link"
           href={`https://www.instagram.com/${instagram}`}
@@ -20,7 +16,7 @@ const PublicAboutSocial = ({ instagram, twitter }) => {
           <span>{instagram}</span>
         </SocialLink>
       )}
-      {hasTwitter && (
+      {!!twitter && (
         <SocialLink
           role="link"
           href={`https://www.twitter.com/${twitter}`}
