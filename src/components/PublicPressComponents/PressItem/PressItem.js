@@ -1,7 +1,7 @@
 import Image from "next/image";
 import styled from "styled-components";
 
-import formatDate from "@/utils/formatDate";
+import { formatDatetoUTC } from "@/utils/formatDate";
 
 const PressItem = ({ data }) => {
   const {
@@ -14,21 +14,14 @@ const PressItem = ({ data }) => {
     publicationLogoUrl,
   } = data;
 
-  const altURL = [
-    "https://upload.wikimedia.org/wikipedia/commons/7/77/The_New_York_Times_logo.png",
-    "https://upload.wikimedia.org/wikipedia/commons/4/4a/WSJ_Logo.svg",
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/VOGUE_LOGO.svg/2880px-VOGUE_LOGO.svg.png",
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Cond%C3%A9_Nast_logo.svg/2880px-Cond%C3%A9_Nast_logo.svg.png",
-  ];
-
-  const randomNumber = Math.floor(Math.random() * 4);
+  console.log(datePublished);
 
   const logoURL = publicationLogoUrl;
 
   return (
     <ArticleWrapper>
       <LogoWrapper>
-        <Image src={logoURL} alt="publication logo" width={300} height={100} />
+        <Image src={logoURL} alt="publication logo" fill />
       </LogoWrapper>
       <PublicationNameWrapper>
         <h4>{publication}</h4>
@@ -38,7 +31,7 @@ const PressItem = ({ data }) => {
       </TitleWrapper>
       <ArthorDateWrapper>
         <p>{author} </p>
-        <p> - {formatDate(datePublished)}</p>
+        <p> - {formatDatetoUTC(datePublished)}</p>
       </ArthorDateWrapper>
       <Abstract>
         <p>{description}</p>
@@ -58,15 +51,17 @@ const ArticleWrapper = styled.article`
 
 const LogoWrapper = styled.div`
   width: 100%;
-  height: 60px;
+  height: 120px;
   overflow: clip;
   display: grid;
   align-items: center;
+  position: relative;
+  margin-block-end: 0.5rem;
 
   img {
     width: auto;
     height: auto;
-    object-fit: scale-down;
+    object-fit: contain;
   }
 `;
 
@@ -112,6 +107,12 @@ const Abstract = styled.div`
     color: var(--color-offblack);
     font-size: 1rem;
     font-weight: var(--font-weight-normal);
+
+    // limit 6 lines
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 `;
 
