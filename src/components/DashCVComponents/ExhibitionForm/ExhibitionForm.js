@@ -64,7 +64,7 @@ const EducationForm = ({ data }) => {
           placeholder="Status"
           noWidth
         >
-          <option value="upcoming">Upcoming</option>
+          <option value="forthcoming">forthcoming</option>
           <option value="past">Past</option>
         </StatusInput>
       </Inputs>
