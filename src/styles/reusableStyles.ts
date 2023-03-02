@@ -35,11 +35,11 @@ export const Title = styled.h1`
 
 // Styles for the CV Page Components
 export const CVHeading = styled.h2`
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   color: var(--color-orange);
   margin-block-start: 0;
-  margin-block-end: 0.75rem;
-  font-weight: var(--font-weight-normal);
+  margin-block-end: 1.25rem;
+  font-weight: 550;
 `;
 
 export const CVContent = styled.p`

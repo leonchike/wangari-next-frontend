@@ -28,7 +28,8 @@ const YearWrapper = styled.div`
 `;
 
 const CVYearTitle = styled.p`
-  font-size: 1rem;
+  font-size: calc(16 / 16 * 1rem);
+  font-weight: 550;
   color: var(--color-offblack);
 `;
 

@@ -30,7 +30,7 @@ const Exhibition = ({ category, data }) => {
 
   return (
     <div className="cv-section-container">
-      <CVHeading className="cv-category-title">{title}</CVHeading>
+      <CVHeading>{title}</CVHeading>
       {years.map((year) => {
         const exhibitions = data.filter((item) => Number(item.year) === year);
         return (
