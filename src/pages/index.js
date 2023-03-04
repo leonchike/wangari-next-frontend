@@ -98,6 +98,7 @@ const Main = styled.div`
   height: 100vh;
   position: relative;
   overflow: clip;
+  position: fixed;
 
   animation: ${fadeIn} 2s 1s ease-in-out both;
 `;
