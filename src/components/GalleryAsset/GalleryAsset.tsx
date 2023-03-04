@@ -18,7 +18,7 @@ const GalleryAsset = ({ id }) => {
   const data: AssetData = assetQuery.data.data.data;
 
   return (
-    <Link href={`/art/gallery/${id}`} role="link" id={id}>
+    <StyledLink href={`/art/gallery/${id}`} role="link" id={id}>
       <AssetWrapper className="gallery-asset masonry-item">
         <picture>
           <source srcSet={data.WebP500wPublicURL} type="image/webp" />
@@ -38,9 +38,19 @@ const GalleryAsset = ({ id }) => {
           </SIZE>
         </MobileDetails>
       </AssetWrapper>
-    </Link>
+    </StyledLink>
   );
 };
+
+const StyledLink = styled(Link)`
+  pointer-events: none;
+  cursor: not-allowed;
+
+  @media ${QUERIES.tabletAndUp} {
+    pointer-events: revert;
+    cursor: revert;
+  }
+`;
 
 const AssetWrapper = styled.article`
   width: 100%;

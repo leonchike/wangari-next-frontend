@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import styled from "styled-components";
+import Spacer from "@/components/Spacer";
 
 const PublicMobileMenuLinks = ({ links, staticLinks, onDismiss }) => {
   const router = useRouter();
@@ -8,7 +9,7 @@ const PublicMobileMenuLinks = ({ links, staticLinks, onDismiss }) => {
   return (
     <Wrapper>
       <div>
-        <h2>Collections</h2>
+        <Title>Collections</Title>
         <ul role="list">
           {links.map((link) => (
             <LinkWrapper key={link.path}>
@@ -23,6 +24,7 @@ const PublicMobileMenuLinks = ({ links, staticLinks, onDismiss }) => {
           ))}
         </ul>
       </div>
+      <Spacer height="1rem" />
       <div>
         <ul role="list">
           {staticLinks.map((link) => (
@@ -43,6 +45,12 @@ const Wrapper = styled.div`
   flex-direction: column;
 `;
 
+const Title = styled.div`
+  color: var(--color-gray-700);
+  font-size: calc(20 / 16 * 1rem);
+  font-weight: 550;
+`;
+
 const LinkWrapper = styled.li`
   margin-block-end: 1rem;
   margin-block-start: 1rem;
@@ -51,8 +59,8 @@ const LinkWrapper = styled.li`
 const StyledLink = styled(Link)`
   color: var(--color-offblack);
   text-decoration: none;
-  text-transform: uppercase;
   font-size: calc(18 / 16 * 1rem);
+  font-weight: 500;
 
   &[data-active="true"] {
   }

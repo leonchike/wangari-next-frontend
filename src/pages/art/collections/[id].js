@@ -147,17 +147,6 @@ const MasonryGrid = styled.div`
   column-gap: var(--masonry-spacing);
 
   ${createCSSMasonryLoop()}
-
-  & a {
-    pointer-events: none;
-    cursor: not-allowed;
-  }
-
-  @media ${QUERIES.tabletAndUp} {
-    & a {
-      pointer-events: auto;
-    }
-  }
 `;
 
 export default Collections;
