@@ -82,21 +82,6 @@ Collections.getLayout = function getLayout(page) {
   return <PublicLayout>{page}</PublicLayout>;
 };
 
-// const PageWrapper = styled.div`
-//   margin: 0 auto;
-//   max-width: var(--max-collections-width);
-//   padding-inline-start: 1rem;
-//   padding-inline-end: 1rem;
-//   padding-block-start: 1rem;
-//   padding-block-end: 6rem;
-
-//   animation: ${fadeIn} 2s 250ms both;
-
-//   @media ${QUERIES.tabletAndUp} {
-//     padding-block-start: calc(37 / 16 * 1rem);
-//   }
-// `;
-
 const FullWidthPageWrapper = styled(PageWrapper)`
   max-width: var(--max-collections-width);
 `;
@@ -114,7 +99,6 @@ const Abstract = styled.p`
   font-size: 1.1rem;
   color: var(--color-offblack);
   line-height: 1.75;
-  /* max-width: 600px; */
   padding-block-start: 30px;
   padding-block-end: 40px;
 `;
@@ -166,6 +150,7 @@ const MasonryGrid = styled.div`
 
   & a {
     pointer-events: none;
+    cursor: not-allowed;
   }
 
   @media ${QUERIES.tabletAndUp} {
