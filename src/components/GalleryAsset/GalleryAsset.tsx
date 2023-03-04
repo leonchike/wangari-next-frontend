@@ -19,18 +19,18 @@ const GalleryAsset = ({ id }) => {
 
   return (
     <StyledLink href={`/art/gallery/${id}`} role="link" id={id}>
-      <AssetWrapper className="gallery-asset masonry-item">
+      <AssetWrapper>
         <picture>
           <source srcSet={data.WebP500wPublicURL} type="image/webp" />
           <source srcSet={data.assetURL} type="image/jpeg" />
           <Asset src={data.assetURL} alt={data?.title} />
         </picture>
 
-        <MobileDetails className="gallery-asset-info">
-          <Title className="gallery-asset-info-title">{data?.title}</Title>
-          <Story className="gallery-asset-info-story">{data?.story}</Story>
-          <Medium className="gallery-asset-info-medium">{data?.medium}</Medium>
-          <SIZE className="gallery-asset-info-size">
+        <MobileDetails>
+          <Title>{data?.title}</Title>
+          <Story>{data?.story}</Story>
+          <Medium>{data?.medium}</Medium>
+          <SIZE>
             <span>{data?.widthInInches}</span> x{" "}
             <span>{data?.heightInInches}</span> in (
             <span>{inTOcm(data?.widthInInches)}</span> x{" "}
@@ -63,6 +63,7 @@ const Asset = styled.img`
 `;
 
 const MobileDetails = styled.div`
+  padding-block-start: 0.75rem;
   padding-block-end: 2rem;
 
   @media ${QUERIES.tabletAndUp} {
@@ -72,15 +73,14 @@ const MobileDetails = styled.div`
 
 const Title = styled.h3`
   font-size: 0.95em;
-  padding-block-start: 5px;
-  padding-block-end: 5px;
   color: var(--color-offblack);
   text-decoration: revert;
 `;
 
 const Story = styled.p`
   font-size: 0.85em;
-  padding-block-end: 10px;
+  padding-block-start: 5px;
+  padding-block-end: 8px;
   color: var(--color-offblack);
 `;
 
